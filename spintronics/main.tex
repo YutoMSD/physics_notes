@@ -1,0 +1,153 @@
+\documentclass{ltjarticle}
+\input{head.tex}
+\title{Basic ideas of Spintronics and Orbitronics}
+\author{Yuto Masuda}
+\date{\today}
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\textbf{研究室HPを見て内容がわかるようになることを目指す}．最初の方は物質中の軌道角運動量を無視する．
+\section{Spin Current}
+\subsection{Conservation of Angular Momentum and Spin current}
+電荷保存則
+\begin{align}
+  \frac{\partial}{\partial t}\rho = -\nabla \cdot \bm{j}_{\r{c}}
+\end{align}
+角運動量保存則
+\begin{align}
+  \frac{\partial}{\partial t}\bm{S} = -\nabla\cdot\bm{j}_{\r{s}}
+\end{align}
+$\bm{M} = \gamma\bm{S}$だから，磁化の時間変化はスピン角運動量の流れを生む．
+
+\subsection{Spin Relaxation}
+\begin{align}
+  \frac{\partial}{\partial t}\bm{S} = -\nabla\cdot\bm{j}_{\r{s}} + \bm{T}
+\end{align}
+スピン流の伝搬距離は数 nmほど．緩和機構には
+\begin{enumerate}
+  \item EY機構
+  \item D'yakonov-Perel'機構
+  \item スピンメモリーロス
+\end{enumerate}
+などがある．
+\begin{align}
+  \psi \sim a\e^{\i\epsilon_{\uparrow}t/\hbar}\ket{\uparrow} + b\e^{\i\epsilon_{\downarrow}t/\hbar}\ket{b}
+\end{align}
+\subsection{Cunduction-electron Spin Current}
+スピン偏極した伝導電子の流れ．強磁性体
+
+\section{Spin Dynamics in Solids}
+\subsection{LLG equation}
+\begin{align}
+  \dv{\bm{M}}{t} &= -\frac{\i}{\hbar}\qty[\bm{M},\hat{H}]\\
+  \hat{H} &= -\bm{M}\cdot\bm{H}_{\r{eff}}\\
+  \Rightarrow \dv{\bm{M}}{t} &= -\gamma \bm{M}\times\bm{H}_{\r{eff}} \label{landau-eq}
+\end{align}
+有効磁場$\bm{H}_{\r{eff}}$形状磁気異方性，結晶磁気異方性，界面磁気異方性による効果を含む．
+\refe{landau-eq}は歳差運動を表している．これでは歳差運動し続けるので緩和項を加える．
+\begin{align}
+  \frac{\r{d}}{\dd{t}}\bm{M} = -\gamma \bm{M}\times \bm{H}_{\r{eff}} + \frac{\alpha}{M}\bm{M}\times \frac{\r{d}}{\dd{t}}\bm{M} \label{LLG-eq}
+\end{align}
+\refe{LLG-eq}をLLG方程式という．
+\subsection{Exchange Spin Current}
+Heisenbergの交換相互作用より，
+\begin{align}
+  \hat{H} = -2J\sum_{i,j} \bm{S}_i \cdot \bm{S}_j
+\end{align}
+である．有効磁場は
+\begin{align}
+  \bm{H}_{\r{eff}} = -\frac{\delta E(\bm{m})}{\delta\bm{m}} = -2\frac{J}{\gamma}\sum_{i,j} \bm{S}_j
+\end{align}
+であるので，
+\begin{align}
+  \dv{\bm{M}}{t} = 2J\bm{M}_i \times \sum_{j} \bm{S}_j + \bm{T}'
+\end{align}
+が磁化の運動方程式．$\bm{T}'$は緩和項．連続体近似$\bm{S}_i = \bm{S}(\bm{r}),\ \bm{S}_j = \bm{S}(\bm{r+a})$を使う．
+\begin{align}
+  \bm{S}(\bm{r}+\bm{a}) = \bm{S}(\bm{r}) + \frac{\partial\bm{S}}{\bm{r}}\cdot\bm{a} + \frac{1}{2}\frac{\partial^2\bm{S}}{\partial\bm{r}^2}\bm{a}^2 + \cdots
+\end{align}
+\begin{align}
+  \sum_{j} \bm{S}_j \to \frac{\partial^2 \bm{S}}{\partial \bm{r}^2} a^2 = \nabla^2 \bm{M}a^2
+\end{align}
+\begin{align}
+  \frac{\r{d}}{\dd{t}}\bm{M}(\bm{r}) = \frac{2Ja^2}{\gamma}\bm{M}(\bm{r})\times\nabla^2\bm{M}(\bm{r}) + \bm{T}' = -A\gamma\nabla\cdot(\bm{M}(\bm{r})\times\nabla\bm{M}(\bm{r})) + \bm{T}'
+\end{align}
+この$\bm{j}_{\r{s}} = A\bm{M}(\bm{r})\times\nabla\bm{M}(\bm{r})$を交換スピン流という．磁気モーメントの勾配があるとき，それが消えるまで磁化を変化させる作用が働く．
+交換相互作用が運ぶ角運動量の流れ．
+
+\subsection{Spin-wave Spin Current and Magnon}
+磁化は磁場を中心に歳差運動する．強磁性体内では交換相互作用のために歳差運動が伝わり，全体で波ができる．
+これをスピン波といい，それを量子化したものがマグノン．マグノンはスピン流を運ぶ．マグノンによる伝搬は電子伝導を伴わないため
+絶縁体内でも可能である．
+\subsection{Spin Torque}
+スピン偏極した電流が強磁性体に注入されたとき．電流のスピンの向きは強磁性体の磁化の向きにそろおうとする．このとき，
+角運動量保存則により強磁性体の磁化は逆向きのトルクを受ける．
+\begin{align}
+  \bm{S}_1 \times (\bm{S}_1\times \bm{S}_2)
+\end{align}
+これをスピン移行トルク(STT)という．STTは磁化と垂直な向きに働く．磁化の大きさを変えるには大きなエネルギーが必要なため，
+磁化と平行向きには働かない．
+\subsection{Spin Pumping}
+スピントルクの逆現象がスピンポンピング．強磁性中の磁化を時間変化させることでスピン流を生み出す．
+\subsubsection{スピン蓄積}
+\begin{align}
+  \bm{j}_s = \bm{j}_{\uparrow} - \bm{j}_{\downarrow} = \frac{1}{e}\nabla(\sigma_{\uparrow}\mu_{\uparrow} - \sigma_{\downarrow}\mu_{\downarrow}) = \frac{\sigma}{2e}\nabla\mu_{s}
+\end{align}
+スピン蓄積$\mu_s=\mu_{\uparrow}- \mu_{\downarrow}$
+\begin{align}
+  \nabla^2\mu_s=\frac{1}{\lambda^2}\mu_s
+\end{align}
+スピン蓄積があるとスピン流が流れる．
+\subsubsection{スピンポンピング}
+スピン蓄積
+\begin{align}
+  \Delta N \simeq -\frac{\chi}{\gamma}\frac{\Gamma^2 + 1}{\Gamma}\qty(\frac{1}{\Gamma}\bm{m}\times\dot{\bm{m}} + \dot{\bm{m}})
+\end{align}
+\section{How to induce Spin Current?}
+スピン流の生成方法を紹介する．
+\subsection{Spin Hall effect}
+電流と直行する向きにスピン流が発生．磁場を必要としない．強いスピン軌道相互作用が必要．
+外因性と内因性がある．外因性は不純物による散乱．内因性はベリー曲率(バンド構造に依る)
+\begin{align}
+  \dot{\bm{r}} &= \frac{1}{\hbar}\dv{E}{\bm{k}} - \dot{\bm{k}} \times \bm{\Omega}_n\\
+  \hbar\dot{\bm{k}} &= -e\bm{E} - e\dot{\bm{r}}\times \mu_0 \bm{H}
+\end{align}
+\subsection{Spin Rashba effect}
+空間反転対称性の破れた系
+\begin{align}
+  H = \bm{s}\cdot(\bm{p}\times\bm{e}_z)
+\end{align}
+\begin{align}
+  H = 
+  \begin{pmatrix}
+    \hbar^2(k_x^2 + k_y^2)/2m & \alpha_{\r{SR}}(\i k_x + k_y)\\
+    \alpha_{\r{SR}}(-\i k_x + k_y) & \hbar(k_x^2 + k_y^2)/2m
+  \end{pmatrix}
+\end{align}
+運動量とスピンがロッキング．
+\subsection{Light-induced Spin Current}
+円偏光のスピン．
+\subsection{Spin Seebeck effect}
+熱勾配をかける．スピンの歳差運動は反時計回りしかありえない．
+\section{How to measure Spin Current?}
+\section{Orbital Current}
+今まで，物質中の軌道角運動量は無視されてきた．
+空間反転対称性から
+\begin{align}
+  \langle \bm{L} \rangle_{\bm{k}} = \langle \bm{L} \rangle_{-\bm{k}}
+\end{align}
+時間反転対称性から
+\begin{align}
+  \langle \bm{L} \rangle_{\bm{k}} = -\langle \bm{L} \rangle_{-\bm{k}}
+\end{align}
+\section{Orbitronics}
+軌道Hall効果．軌道Rashba効果．軌道トルク．軌道ポンピング．
+\section*{Reference}
+\begin{enumerate}
+  \item スピン流とトポロジカル絶縁体，ざっくり書いてる．
+  \item Spin Current，いっぱい書いてる
+  \item 
+\end{enumerate}
+\end{document}
