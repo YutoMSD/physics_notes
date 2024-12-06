@@ -169,6 +169,24 @@ Debye遮蔽と準中性条件は以下の関係にある．
 \end{align}
 となる．ここで，$\frac{e^2 n_0}{\epsilon_0 k_B T} = \frac{1}{\lambda_D^2}$とおくと，$r\neq0$で，
 \begin{align}
-  \frac{1}{r^2}
+  \frac{1}{r^2}\frac{\partial}{\partial r}\qty(r^2\frac{\partial \phi}{\partial r}) = \frac{1}{\lambda_D^2}\phi(r)
 \end{align}
+である．上式の一般解は
+\begin{align}
+  \phi(r) = \frac{A}{r}\exp\qty(-\frac{r}{\lambda_D}) + \frac{B}{r}\exp\qty(+\frac{r}{\lambda_D})
+\end{align}
+である．次に境界条件を考える．無限遠でポテンシャルが発散することは無いので
+\begin{align}
+  B=0
+\end{align}
+試験電荷の極近傍ではポテンシャルはCoulombポテンシャルと一致するはずなので
+\begin{align}
+  \phi(0^{+}) &= \frac{q_{\r{T}}}{4\pi\epsilon_0 r}\\
+  \Rightarrow A&= \frac{q_{\r{T}}}{4\pi\epsilon_0}
+\end{align}
+である．以上からDebye遮蔽のポテンシャル
+\begin{align}
+  \phi(r) = \frac{q_{\r{T}}}{4\pi\epsilon_0 r}\exp\qty(-\frac{r}{\lambda_D})
+\end{align}
+が得られる．
 \end{document}

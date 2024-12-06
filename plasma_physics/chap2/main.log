@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.11.6)  6 DEC 2024 11:57
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.11.6)  6 DEC 2024 13:29
  restricted system commands enabled.
 **main
 (./main.tex
@@ -2230,6 +2230,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [2]
 
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.06757pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.06757pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-0.06757pt}.
+
+[3]
+
 Package caption Warning: Unused \captionsetup[figure] on input line 72.
 See the caption package documentation for explanation.
 
@@ -2255,7 +2265,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-0.06757pt}.
 
-[3] (./main.aux)
+[4] (./main.aux)
  ***********
 LaTeX2e <2024-11-01>
 L3 programming layer <2024-11-02>
@@ -2268,12 +2278,12 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 51188 strings out of 475664
+ 51194 strings out of 475664
  156564,2373549 words of node,token memory allocated
  1187 words of node memory still in use:
    11 hlist, 2 vlist, 5 rule, 2 glue, 4 kern, 1 glyph, 203 attribute, 78 glue_sp
 ec, 30 attribute_list, 2 write, 14 user_defined nodes
-   avail lists: 1:25,2:38131,3:434,4:798,5:506,6:69,7:5149,8:47,9:3108,10:11,11:
+   avail lists: 1:25,2:39403,3:434,4:798,5:506,6:69,7:5149,8:47,9:3108,10:11,11:
 18
  72872 multiletter control sequences out of 65536+600000
  68 fonts using 38163399 bytes
@@ -2293,10 +2303,10 @@ ts/cm/cmmib10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
 exlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2024/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2024/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on main.pdf (3 pages, 180173 bytes).
+Output written on main.pdf (4 pages, 185706 bytes).
 
-PDF statistics: 163 PDF objects out of 1000 (max. 8388607)
- 128 compressed objects within 2 object streams
- 42 named destinations out of 1000 (max. 131072)
+PDF statistics: 172 PDF objects out of 1000 (max. 8388607)
+ 136 compressed objects within 2 object streams
+ 48 named destinations out of 1000 (max. 131072)
  40 words of extra memory for PDF output out of 10000 (max. 100000000)
 
