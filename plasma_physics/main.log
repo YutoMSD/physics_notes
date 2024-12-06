@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.11.6)  6 DEC 2024 10:08
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.11.6)  6 DEC 2024 12:12
  restricted system commands enabled.
 **main
 (./main.tex
@@ -2288,7 +2288,31 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [3]
 Chapter 2.
-(./chap2/main.tex)
+(./chap2/main.tex
+
+[4
+
+](load cache: extra_lmromandemi10-regular.luc)
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.06757pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.06757pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-0.06757pt}.
+
+[5]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.06757pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.06757pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-0.06757pt}.
+
+[6])
 
 Package caption Warning: Unused \captionsetup[figure] on input line 72.
 See the caption package documentation for explanation.
@@ -2307,47 +2331,57 @@ See the caption package documentation for explanation.
 
 
 
-[4
 
-] (./main.aux)
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.06757pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.06757pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-0.06757pt}.
+
+[7] (./main.aux)
  ***********
 LaTeX2e <2024-11-01>
 L3 programming layer <2024-11-02>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 40873168EEFD2752B74349AD210FACBF;788.
+(rerunfilecheck)             Checksum: A75D7E30C56577734987B7E163AB95C8;1023.
 Package logreq Info: Writing requests to 'main.run.xml'.
 
 \openout1 = main.run.xml
 )
 
 Here is how much of LuaTeX's memory you used:
- 51278 strings out of 475664
- 125244,2373549 words of node,token memory allocated
+ 51320 strings out of 475664
+ 156557,2373549 words of node,token memory allocated
  1187 words of node memory still in use:
    11 hlist, 2 vlist, 5 rule, 2 glue, 4 kern, 1 glyph, 203 attribute, 78 glue_sp
 ec, 30 attribute_list, 2 write, 14 user_defined nodes
-   avail lists: 1:13,2:28628,3:324,4:392,5:264,6:39,7:2956,8:43,9:1498,10:10,11:
-9
- 72958 multiletter control sequences out of 65536+600000
- 111 fonts using 82115151 bytes
+   avail lists: 1:41,2:40208,3:361,4:535,5:364,6:51,7:4535,8:49,9:2426,10:11,11:
+19
+ 72970 multiletter control sequences out of 65536+600000
+ 117 fonts using 82688743 bytes
  115i,14n,118p,1912b,851s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf><c:/t
-exlive/2024/texmf-dist/fonts/opentype/public/haranoaji/HaranoAjiGothic-Medium.ot
-f><c:/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf><c:/te
-xlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf><c:/texlive/20
-24/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf><c:/texlive/2024/te
-xmf-dist/fonts/opentype/public/haranoaji/HaranoAjiMincho-Regular.otf><c:/texlive
-/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2024/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2024/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmr10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
-.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on main.pdf (5 pages, 144481 bytes).
+<c:/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.otf><c:/te
+xlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf><c:/texlive
+/2024/texmf-dist/fonts/opentype/public/haranoaji/HaranoAjiGothic-Medium.otf><c:/
+texlive/2024/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf><c:/texlive/
+2024/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf><c:/texlive/2024/tex
+mf-dist/fonts/opentype/public/lm/lmroman12-regular.otf><c:/texlive/2024/texmf-di
+st/fonts/opentype/public/haranoaji/HaranoAjiMincho-Regular.otf><c:/texlive/2024/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2024/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2024/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmmi7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmib10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pf
+b><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texliv
+e/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2024/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2024/texmf-dist/font
+s/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on main.pdf (8 pages, 210216 bytes).
 
-PDF statistics: 151 PDF objects out of 1000 (max. 8388607)
- 117 compressed objects within 2 object streams
- 28 named destinations out of 1000 (max. 131072)
- 64 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 226 PDF objects out of 1000 (max. 8388607)
+ 183 compressed objects within 2 object streams
+ 58 named destinations out of 1000 (max. 131072)
+ 80 words of extra memory for PDF output out of 10000 (max. 100000000)
 

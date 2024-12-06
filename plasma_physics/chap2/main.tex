@@ -5,7 +5,7 @@
 プラズマの\textbf{温度}は，\textbf{密度}とともにもっとも
 基本的かつ重要な物理量の一つである．
 
-壁のオンと$T$が一定の容器に．十分長い時間気体粒子を閉じ込めると
+壁の温度$T$が一定の容器に．十分長い時間気体粒子を閉じ込めると
 気体粒子は衝突を繰り返し熱平衡状態になる．
 
 粒子の速度分布はMaxwell分布に従う．単位体積当たり$n$個の粒子が温度$T$で熱平衡状態に
@@ -46,5 +46,129 @@
 \begin{align}
   F(v) = 4\pi n \qty(\frac{m}{2\pi k_B T})^{3/2} v^2 \exp\qty[-\frac{1}{2}\frac{mv^2}{k_B T}]
 \end{align}
-である．これは$v=v_{th}$で最大となる．
+である．これは$v=v_{th}$で最大となる．また，速度ベクトルの向きに依らず，速さのみに依存する．\textbf{等方分布}である．
+
+速度あるいは速さの平均値は，温度や熱速度と共に，\textbf{速度分布を特徴づける物理量}として，今後，重要となる．
+速度ベクトルの平均値は0である．
+\begin{align}
+  \ev{\bm{v}} = \bm{0}
+\end{align}
+次に速さの平均値を計算する．
+\begin{align}
+  \ev{v} = \frac{1}{n}\int_{0}^{\infty} v F(v) dd{v} = \sqrt{\frac{8 k_B T}{\pi m}}
+\end{align}
+これは熱速度よりわずかに大きい．
+
+速度分布関数についての平均は一般的に次のようになる．ある物理量$X$を考える．$X$の平均値は
+\begin{align}
+  \ev{X} = \frac{1}{n}\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} Xf(v_x,v_y,v_z) \dd{v_x}\dd{v_y}\dd{v_z}
+\end{align}
+である．特に，等方的な分布の場合，
+\begin{align}
+  \ev{X} = \frac{1}{n} \int_{0}^{\infty} XF(v) \dd{v}
+\end{align}
+である．これはプラズマを流体的に扱う時に用いられる．
+
+\section{電気的中性}
+電子の個数密度を$n_e$，イオンの個数密度を$n_i$とする．イオンが1価ならば，
+\begin{align}
+  (-e)n_e + (+e)n_i &= 0\\
+  \Rightarrow n_e &= n_i
+\end{align}
+が成り立つ．$Z$価のイオンならば，
+\begin{align}
+  (-e)n_e + (+Ze)n_i &= 0\\
+  \Rightarrow n_e &= Zn_i
+\end{align}
+
+イオンの種類が多数の場合には，
+\begin{align}
+  \sum_{j} (Z_j e)n_j = 0
+\end{align}
+が成り立つ．ただし，$j$は荷電粒子の種類，例えば電子やイオン，を表す．ヘリウムを例に考えてみる．
+ヘリウムには1価イオンと2価イオンがあるので，
+\begin{align}
+  (-e)n_e + (+e)n_{\r{He}^{+}} + (+2e)n_{\r{He}^{2+}} = 0
+\end{align}
+が成り立つ．
+
+以上はマクロに見た電気的中性であったが，プラズマはミクロに見ると揺らいでいる．
+プラズマは以下の機構により\textbf{準中性}と呼ばれる．まず，プラズマはランダムな熱運動をしている．この熱運動により，ある瞬間には
+揺動電場が形成される．プラズマはこの電場を打ち消すように運動する．よって，プラズマはほぼ中性であり，
+\begin{align}
+  n_i \simeq n_e
+\end{align}
+が成り立つ．
+
+\section{Debye遮蔽}
+プラズマ粒子は互いにCoulomb相互作用
+\begin{align}
+  F = \frac{1}{4\pi \epsilon_0}\frac{qq'}{r^2}
+\end{align}
+を及ぼしあう．このときのポテンシャルは
+\begin{align}
+  \phi(r) = \frac{1}{4\pi \epsilon_0}\frac{q}{r}
+\end{align}
+であるが，これはあくまで真空中でのポテンシャルであり，プラズマの存在を加味していない．
+プラズマによる遮蔽を考えたものとして，次の\textbf{Debyeポテンシャル}がある．
+\begin{align}
+  \phi(r) = \frac{1}{4\pi\epsilon_0}\frac{q}{r}\exp\qty(-\frac{r}{\lambda_D})
+\end{align}
+$\lambda_D$をDebyeの遮蔽長，$\exp(-r/\lambda_D)$をDebyeの遮蔽ファクターという．
+プラズマ中で正電荷の偏りができると，そこに電子が引き寄せられる．この引き寄せられた電子たちが正電荷の電場を遮蔽する．
+
+Debyeの遮蔽長は以下の式を満たす．
+\begin{align}
+  \lambda_D = \sqrt{\frac{\epsilon_0 k_B T}{e^2 n}}
+\end{align}
+つまり，$T$が大きいほど，電子はランダムな熱運動をするため，正電荷の周りにとどまらず，$\lambda_D$は大きくなる．一方，$n$が大きいほど電子が集まりやすいため，$\lambda_D$は小さくなる．
+また，係数を計算すると，
+\begin{align}
+  \lambda_D \ \r{m} = 7.4\times10^3\sqrt{\frac{T\ \r{eV}}{n\ \r{m}^{-3}}}
+\end{align}
+である．
+
+Debye遮蔽と準中性条件は以下の関係にある．
+プラズマの特徴的な大きさや長さ$L$がDebye遮蔽長$\lambda_D$より十分に大きい，つまり，
+\begin{align}
+  L \gg \lambda_D
+\end{align}
+のとき，空間的な電荷の偏りは無視でき，ほぼ中性とみなせる．
+
+定性的な議論は以上として，次にDebye遮蔽を導出する．出発点は\refe{poisson-eq}のPoisson方程式である．
+\begin{align}
+  \nabla^2 \phi(\bm{r}) = -\frac{\rho(\bm{r})}{\epsilon_0} \label{poisson-eq}
+\end{align}
+ここで，1価のイオンと電子で構成されるプラズマの場合，
+\begin{align}
+  \rho(\bm{r}) = e[n_i(\bm{r}) - n_e(\bm{r})]
+\end{align}
+である．モデルとして，プラズマ中で生じた電荷の偏りを試験電荷，つまり点電荷として近似する．
+試験電荷の電荷量を$q_{\r{T}}$として，これが原点にあるとする．
+試験電荷を含めると電荷密度は
+\begin{align}
+  \rho(\bm{r}) = e[n_i(\bm{r}) - n_e(\bm{r})] + q_{\r{T}}\delta(\bm{r}) \label{density-charge}
+\end{align}
+とかける．また，
+球対称性を仮定し，$\theta,\phi$依存性を捨てると，
+ラプラシアンは
+\begin{align}
+  \nabla^2\phi = \frac{1}{r^2} \frac{\partial}{\partial r} \qty(r^2 \frac{\partial \phi}{\partial r})
+\end{align}
+となる．ここで，イオンの質量は電子に比較して大きく動きにくいとすると，イオンの電荷密度は試験電荷がない場合の一様な密度にほぼ等しい．
+\begin{align}
+  n_i(r) \simeq n_0 \label{density-ion}
+\end{align}
+また，電子密度はBoltzmann関係式
+\begin{align}
+  n_e(r) = n_0\exp\qty[\frac{e\phi(r)}{k_B T}] \simeq n_0\qty[1 + \frac{e\phi(r)}{k_B T}] \label{density-e}
+\end{align}
+を満たす．\refe{density-charge}，\refe{density-e}，\refe{density-ion}を\refe{poisson-eq}に代入すると，
+\begin{align}
+  \frac{1}{r^2}\frac{\partial}{\partial r}\qty(r^2\frac{\partial \phi}{\partial r}) = \frac{e^2 n_0}{\epsilon_0 k_B T}\phi(r) - \frac{q_{\r{T}}}{\epsilon_0}\delta(r)
+\end{align}
+となる．ここで，$\frac{e^2 n_0}{\epsilon_0 k_B T} = \frac{1}{\lambda_D^2}$とおくと，$r\neq0$で，
+\begin{align}
+  \frac{1}{r^2}
+\end{align}
 \end{document}
