@@ -1,0 +1,50 @@
+\documentclass{report}
+\input{../head.tex}
+\begin{document}
+\section{プラズマの温度}
+プラズマの\textbf{温度}は，\textbf{密度}とともにもっとも
+基本的かつ重要な物理量の一つである．
+
+壁のオンと$T$が一定の容器に．十分長い時間気体粒子を閉じ込めると
+気体粒子は衝突を繰り返し熱平衡状態になる．
+
+粒子の速度分布はMaxwell分布に従う．単位体積当たり$n$個の粒子が温度$T$で熱平衡状態に
+あるとする．速度が$v_x$と$v_x + \dd{v_x}$の範囲にある粒子の個数は
+\begin{align}
+  f(v_x) &= \dd{v_x}\\
+  f(v_x) &= A \exp\qty(-\frac{mv_x^2}{2k_B T})
+\end{align}
+である．$A$は規格化条件から求められる．
+\begin{align}
+  \int_{\infty}^{\infty} f(v_x) \dd{v_x} &= n\\
+  \Rightarrow A &= n\sqrt{\frac{m}{2\pi k_B T}}
+\end{align}
+温度は速度分布の広がりを表すパラメータである．高温ほど，速度が大きい粒子が多い．
+
+粒子の平均エネルギーを計算する．
+\begin{align}
+  E_{av} = \frac{1}{n}\int_{\infty}^{\infty} \frac{1}{2}mv_x^2f(v_x) \dd{v_x} = \frac{1}{2}k_B T
+\end{align}
+
+熱速度
+\begin{align}
+  v_{th} = \sqrt{\frac{2k_B T}{m}}
+\end{align}
+とすると，
+\begin{align}
+  f(\pm v_{th}) = \frac{f(0)}{\e}
+\end{align}
+である．
+
+3次元に拡張する．
+\begin{align}
+  f(v_x,v_y,v_z) &= n\qty(\frac{m}{2\pi k_B T})^{3/2} \exp\qty[-\frac{1}{2}\frac{m(v_x^2 + v_y^2 + v_z^2)}{k_B T}]\\
+  E_{av} &= \frac{3}{2}k_B T
+\end{align}
+
+速さ$v$に関する速度分布は
+\begin{align}
+  F(v) = 4\pi n \qty(\frac{m}{2\pi k_B T})^{3/2} v^2 \exp\qty[-\frac{1}{2}\frac{mv^2}{k_B T}]
+\end{align}
+である．これは$v=v_{th}$で最大となる．
+\end{document}
