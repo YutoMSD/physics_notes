@@ -9,3 +9,5 @@
 [qft]場の量子論
 
 [spintronics](https://github.com/YutoMSD/physics_notes/blob/main/spintronics/main.pdf): ある人のためのセミナーのためのノート．口頭がメイン．
+
+[QuantumOpticsAndQuantumInfomatics]WIP
