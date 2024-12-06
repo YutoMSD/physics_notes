@@ -4,7 +4,7 @@
 
 [phonon]
 
-[physics_of_magnetism]磁気物理の講義ノート
+[physics_of_magnetism](https://github.com/YutoMSD/physics_notes/blob/main/physics_of_magnetism/main.pdf)磁気物理の講義ノート
 
 [plasma_physics](https://github.com/YutoMSD/physics_notes/blob/main/plasma_physics/main.pdf)プラズマ物理の講義ノート．
 
