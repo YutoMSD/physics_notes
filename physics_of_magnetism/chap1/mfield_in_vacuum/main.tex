@@ -1,0 +1,155 @@
+\documentclass{report}
+\input{../../head.tex}
+\begin{document}
+  \subsection{電磁気学における2つの立場}
+  電気と磁気の本質的な違いを復習する．電気には電荷が存在する．しかし，磁気には磁気単極子(モノポール)は未だ発見されておらず，
+  磁気双極子の存在のみが確認されているのであった．
+
+  そのため，磁気を考える時の立場は2つに分かれる．1つは仮想的に磁極を考える立場で\textbf{$E-H$対応}と呼ばれる．
+  もう1つは磁極を考えず，電流が作る磁場に着目する立場で\textbf{$E-B$対応}と呼ばれる．本講義ノートでは，材料を考える時に有用な$E-H$対応を用いる．
+
+  \subsection{単位系について}
+  電磁気学の単位系は次の3つの関係式の係数のどれを1と置くかで決まる．
+  \begin{align}
+    &f = k_{\r{e}} \frac{q_1q_2}{r^2} \quad &\text{電気のCoulombの法則} \\
+    &f = k_{\r{m}} \frac{q_{m1}q_{m2}}{r^2} \quad &\text{磁気のCoulombの法則} \\
+    &\nabla \times \bm{H} = K\bm{i} \quad &\text{Ampèreの法則}
+  \end{align}
+  ここで$q_i$は電荷，$q_{mi}$は磁極を表す．
+  $k_{\r{e}} = 1$とするとき，この単位系をcgs esu単位系と呼ぶ．$k_{\r{m}} = 1$とするとき，この単位系をcgs emu単位系と呼ぶ．さらに，
+  $k_{\r{e}} = k_{\r{m}} 1$とするとき，この単位系をcgs gauss単位系と呼ぶ．また，$K=1$とするとき，この単位系をMKSA単位系と呼ぶ．
+
+  単位系による電束密度と電場の関係および磁束密度と磁場の関係を確認する．
+  まず，MKSA系を考える．分極$\bm{P}$が存在するときのGaussの法則は，真電荷を$Q_e$とすると，
+  \begin{align}
+    \iint_{S} \qty(\epsilon_0 \bm{E} + \bm{P}) \cdot \dd{\bm{S}} = Q_e
+  \end{align}
+  であった．これにより電束密度と電場の関係は
+  \begin{align}
+    \bm{D} = \epsilon_0 \bm{E} + \bm{P}\ (\text{MKSA})
+  \end{align}
+  となる．これをcgs esu単位系に変換する．cgs esu単位系では
+  \begin{align}
+    \frac{1}{4\pi\epsilon_0} \to 1
+  \end{align}
+  とするため，
+  \begin{align}
+    \iint_{S} \qty(\frac{\bm{E}}{4\pi} + \bm{P}) \cdot \dd{\bm{S}} &= Q_e\\
+    \iint_{S} \qty(\bm{E} + 4\pi\bm{P}) \cdot \dd{\bm{S}} &= 4\pi Q_e
+  \end{align}
+  となる．よって，電束密度と電場は
+  \begin{align}
+    \bm{D} = \bm{E} + 4\pi \bm{P}\ (\text{cgs esu})
+  \end{align}
+  で結ばれる．
+
+  同様に磁場に関するGaussの法則を考える．まず，MKSA単位系では，
+  \begin{align}
+    \iint_{S} \qty(\mu_0 \bm{H} + \bm{M}) \cdot \dd{\bm{S}} = 0
+  \end{align}
+  である．よって，磁束密度と磁場は
+  \begin{align}
+    \bm{B} = \mu_0 \bm{H} + \bm{M}\ (\text{MKSA})
+  \end{align}
+  の関係にある．一方，cgs emu単位系では
+  \begin{align}
+    \frac{1}{4\pi\mu_0} \to 1
+  \end{align}
+  であるため，
+  \begin{align}
+    \iint_{S} \qty(\frac{\bm{H}}{4\pi} + \bm{M}) \cdot \dd{\bm{S}} &= 0\\
+    \iint_{S} \qty(\bm{H} + 4\pi \bm{M}) \cdot \dd{\bm{S}} &= 0
+  \end{align}
+  となる．よって，磁束密度と磁場は
+  \begin{align}
+    \bm{B} = \bm{H} + 4\pi \bm{M}\ (\text{cgs emu})
+  \end{align}
+  の関係にある．
+
+  \subsection{磁場とは}
+  $E-H$対応を用いる場合，電場と磁場の定義は同等である．まず，電場の定義を復習する．
+  電場とは，静止した単位電荷に働く力を意味するのであった．つまり，電荷$q$がつくる電場は
+  \begin{align}
+    \bm{E} = \frac{q}{4\pi\epsilon_0 r^2} \frac{\bm{r}}{r}
+  \end{align}
+  であり，その単位は[N/C]=[V/m]である．同様に，磁場を，仮想的な単位磁極に働く力として定義する．磁極$q_m$がつくる磁場は
+  \begin{align}
+    \bm{H} = \frac{q_{m}}{4\pi\mu_0 r^2} \frac{\bm{r}}{r}
+  \end{align}
+  であり，その単位は[N/Wb]=[A/m]である．
+
+  \subsection{静磁場の発生}
+  \subsubsection{磁気双極子が作る磁場}
+  負電荷と正電荷の対を電気双極子というのであった．同様に負の磁極と正の磁極からなる磁気双極子を考える．
+  磁極$q_m$と磁極$-q_m$があるとする．このとき$-q_m$から$q_m$に向かうベクトルを$\bm{S}$とする．$\bm{S}$を用いて
+  磁気双極子モーメントを
+  \begin{align}
+    \bm{m} = q_m \bm{S}
+  \end{align}
+  と定義する．この磁気双極子モーメントが作る磁場を計算する．まず，磁気双極子モーメントの作る磁場のポテンシャル$磁位$を計算する．
+  \begin{align}
+    \phi_m(\bm{r}) &= \frac{q_m}{4\pi\mu_0}\qty(\frac{1}{r_1} - \frac{1}{r_2})\\
+    &= \frac{q_m}{4\pi\mu_0}\qty[\frac{1}{\sqrt{r^2+\qty(\frac{s}{2})^2 - rs\cos\theta}} - \frac{1}{\sqrt{r^2+\qty(\frac{s}{2})^2 + rs\cos\theta}}]\\
+    &= \frac{q_m}{4\pi\mu_0 r}\qty[\qty(1 + \qty(\frac{s}{2r})^2 - \frac{s}{r}\cos\theta)^{-\frac{1}{2}} - \qty(1 + \qty(\frac{s}{2r})^2 + \frac{s}{r}\cos\theta)^{-\frac{1}{2}}]\\
+    &\simeq \frac{q_m}{4\pi\mu_0 r} \qty[\qty(1 - \frac{1}{2}\qty(\qty(\frac{s}{2r})^2 - \frac{s}{r}\cos\theta)) - \qty(1 - \frac{1}{2}\qty(\qty(\frac{s}{2r})^2 + \frac{s}{r}\cos\theta))]\\
+    &= \frac{q_ms}{4\pi\mu_0 r^2}\cos\theta\\
+    &= \frac{m}{4\pi\mu_0 r^2}\cos\theta
+  \end{align}
+  磁位が得られたので磁場は
+  \begin{align}
+    \bm{H} = -\nabla\phi_m
+  \end{align}
+  から得られる．球座標系では
+  \begin{align}
+    \nabla = \dfrac{\partial}{\partial r}\bm{e}_r + \dfrac{1}{r}\dfrac{\partial}{\partial \theta}\bm{e}_\theta + \dfrac{1}{r\sin\theta}\dfrac{\partial}{\partial \phi}\bm{e}_\phi
+  \end{align}
+  であるので，これを用いる．$\phi$に関しては対象であるので$\phi$成分は考えない．$r$成分と$\theta$成分を計算すると
+  \begin{align}
+    H_r &= -\dfrac{\partial \phi_m}{\partial r} = \dfrac{m}{4\pi\mu_0 r^3}2\cos\theta\\
+    H_\theta &= -\dfrac{1}{r}\dfrac{\partial \phi_m}{\partial \theta} = -\dfrac{m}{4\pi\mu_0 r^3}\sin\theta
+  \end{align}
+  が得られる．よって，磁気双極子モーメントが作る磁場は
+  \begin{align}
+    \bm{H}(\bm{r}) = H_r \bm{e}_r + H_\theta \bm{e}_\theta = \frac{m}{4\pi\mu_0 r^3}\qty(2\cos\theta \bm{e}_r - \sin\theta \bm{e}_\theta) = \frac{1}{4\pi\mu_0}\qty[-\frac{\bm{m}}{r^3} + \frac{3\bm{r}(\bm{m}\cdot\bm{r})}{r^5}]
+  \end{align}
+  である．
+
+  \subsubsection{磁気双極子モーメントベクトルの性質(磁化の定義)}
+  磁気双極子モーメントベクトルの和
+  \begin{align}
+    \bm{m}_1 + \bm{m}_2 = q_{m1}\bm{S}_1 + q_{m2}\bm{S}_2
+  \end{align}
+  を考える．$q_{m1} = q_{m2} = q_m,\bm{S}_1 = \bm{S}_2 = \bm{S}$のとき，
+  \begin{align}
+    \bm{m}_1 + \bm{m}_2 &= q_m\bm{S} + q_m\bm{S}\\
+    &= q_m(2\bm{S})\\
+    &= 2q_m\bm{S}
+  \end{align}
+  が成り立つ．2行目の右辺は$2\bm{S}$離れた磁極$q_m,-q_m$からなる磁気双極子モーメントを表す．
+  3行目の右辺は$\bm{S}$離れた磁極$q_m,-q_m$からなる磁気双極子モーメントが2つあることを表す．
+  このように，同じ磁気双極子モーメントベクトルが違う描像を示すことがある．
+
+  そこで，多数の磁気双極子モーメントベクトルの合成から\textbf{磁化}を定義し，その意味を考える．
+  長さ$k$幅$j$高さ$k$からなる物質中の磁気双極子モーメントベクトルを考える．全体積を$V$とする．
+  全磁気双極子モーメントベクトルの和は
+  \begin{align}
+    \bm{m}_{\r{total}} = \sum_{i} \bm{m}_i = \sum_{i} q_m \bm{S}
+  \end{align}
+  である．体積$v$内の磁気双極子モーメントベクトルを$\bm{m}_v$とすると，
+  \begin{align}
+    \bm{m}_v &= \frac{\bm{m}_{\r{total}}}{V}v\\
+    &=\bm{M}v
+  \end{align}
+  である．ここで単位体積当たりの磁気双極子モーメントベクトル$\bm{M}$を\textbf{磁化ベクトル}と呼ぶ．
+  定義により，磁化ベクトルは\textbf{形状に依存しない}．さらに，断面積を$hk=a$，磁極の面密度を$\sigma_m$と置くと，
+  \begin{align}
+    \bm{m}_{\r{total}} &= (hkj)(q_m\bm{S})\\
+    &= (hkq_m)(j\bm{S})\\
+    &= (hkq_m)(\bm{l})\\
+    &= (\sigma_m a)\bm{l}\\
+    &= \sigma_m(al)\\
+    &= \sigma_m V
+  \end{align}
+  となる．よって，\textbf{磁化の大きさ$M$は磁化ベクトルに垂直な面における磁極の面密度$\sigma_m$に等しい}ことがわかる．
+  単位を確認すると，磁気双極子モーメントベクトル$\bm{m}$は$[\r{Wb\cdot m}]$で，磁化ベクトル$\bm{M}$は$[\r{Wb/m^2}]=[\r{T}]$である．
+\end{document}
