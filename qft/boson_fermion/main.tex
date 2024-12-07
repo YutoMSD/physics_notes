@@ -1,0 +1,180 @@
+\documentclass{report}
+\input{../head.tex}
+\begin{document}
+1粒子の量子力学では波動関数を導入し，位置演算子と運動量演算子の非可換性から量子化を行った．
+場の量子論では粒子数が量子的に変化しうるため，波動関数を生成消滅演算子で表す必要がある．
+生成消滅演算子の非可換性を用いた2度目の量子化を\textbf{第2量子化}(second quantization)という．
+
+量子状態を$i$番目の状態に何個の粒子が入っているかという意味で
+\begin{align}
+  \ket{n_1,n_2,\cdots,n_i,\cdots}
+\end{align}
+と表す．この表記法を\textbf{Fock表記}という．
+
+$i$番目の固有状態に粒子を1つ生成する演算子を$\hat{a}_i^{\dagger}$と表し，
+消滅させる演算子を$\hat{a}_i$と表す．それぞれ粒子の\textbf{生成演算子}，\textbf{消滅演算子}という．
+これらを用いると$n$粒子系の状態は
+\begin{align}
+  \ket{n_1,n_2,\cdots,n_i,\cdots} = \frac{1}{\sqrt{n_1!n_2!\cdots n_i!\cdots}}(\hat{a}_1^{\dagger})^{n_1}(\hat{a}_2^{\dagger})^{n_2}\cdots(\hat{a}_i^{\dagger})^{n_i}\cdots\ket{0}
+\end{align}
+と書ける．$\ket{0}$は真空状態である．また，生成消滅演算子は
+\textbf{粒子数演算子}$\hat{n}_i$とは非可換である．なぜなら，粒子を生成してから粒子数を測定する操作$\hat{n}\hat{a}^{\dagger}_i$と
+粒子数を測定してから粒子を生成する操作$\hat{a}_i^{\dagger}\hat{n}$では，結果として得られる粒子数は1異なるからである．これを数式で表すと，
+同じ固有状態の演算子の間には
+\begin{align}
+  \hat{n}_i\hat{a}^{\dagger}_i - \hat{a}^{\dagger}_i\hat{n}_i = \hat{a}^{\dagger}_i
+\end{align}
+が要請される．同様に，
+\begin{align}
+  \hat{n}_i\hat{a}_i - \hat{a}_i\hat{n}_i = -\hat{a}_i
+\end{align}
+が要請される．よって，これらを満たす$\hat{n}_i$と$\hat{a}_i,\hat{a}_i^{\dagger}$の間には
+\begin{align}
+  &\hat{n}_i = \hat{a}_i^{\dagger}\hat{a}_i\\
+  &\begin{dcases}
+    \qty[\hat{a}^{\dagger}_i,\hat{a}_j] = -\delta_{ij}\\
+    \qty[\hat{a}_i,\hat{a}_j] = \qty[\hat{a}_i^{\dagger},\hat{a}^{\dagger}_j] = 0
+  \label{boson-com}
+  \end{dcases}
+\end{align}
+または
+\begin{align}
+  &\hat{n}_i = \hat{a}^{\dagger}_i\hat{a}_i\\
+  &\begin{dcases}
+    \qty{\hat{a}_i^{\dagger},\hat{a}_j} = \delta_{ij}\\
+    \qty{\hat{a}_i,\hat{a}_j} = \qty{\hat{a}_i^{\dagger},\hat{a}_j^{\dagger}} = 0
+  \label{fermion-com}
+  \end{dcases}
+\end{align}
+が満たされる必要がある．以下の議論でわかるように\refe{boson-com}はボゾンを表し，\refe{fermion-com}はフェルミオンを表す．よって
+\refe{boson-com}に従う演算子を\textbf{Bose演算子}，\refe{fermion-com}に従う演算子を\textbf{Fermi演算子}という．
+
+まずは上で述べた交換関係がボゾンとフェルミオンを表していることを確認する．
+Bose演算子を使い，
+\begin{align}
+  \hat{\psi}(\bm{r},t) = \sum_i \e^{-\i\epsilon_i t/\hbar} \phi_i(\bm{r})\hat{a}_i \label{boson-field}
+\end{align}
+という演算子をつくる．ここで，$\phi_i(\bm{r})$は$i$番目の固有状態の固有関数，$\epsilon_i$は固有エネルギーである．
+
+\refe{boson-field}は\refe{boson-com}より
+\begin{align}
+  \qty[\hat{\psi}^\dagger(\bm{r}',t'),\hat{\psi}(\bm{r},t)] &= -\delta(\bm{r} - \bm{r}')\delta(t - t')\\
+  \qty[\hat{\psi}(\bm{r}',t'),\hat{\psi}(\bm{r},t)] &= \qty[\hat{\psi}^{\dagger}(\bm{r}',t'),\hat{\psi}^{\dagger}(\bm{r},t)] = 0
+\end{align}
+を満たしていることが確認できる．つまり，\refe{boson-field}はラベリングを粒子の粒子数から粒子の位置に変換している．
+よって，$\hat{\psi(\bm{r},t)}^{\dagger}$と$\hat{\psi(\bm{r},t)}$はそれぞれ時空点$\bm{r},t$における粒子の生成消滅演算子である．また，
+波動関数を生成消滅演算子で表したということもできる．
+
+次に，ハミルトニアンが生成消滅演算子を用いてどのように表されるかを考える．
+1粒子系のハミルトニアンは
+\begin{align}
+  \hat{H}_1 = -\frac{\hbar^2}{2m}\nabla^2 + V(\bm{r})
+\end{align}
+であった．これを多粒子系に拡張する．多粒子のハミルトニアンとして
+\begin{align}
+  \hat{H} = \int \dd{\bm{r}} \hat{\psi}^{\dagger}(\bm{r}) \qty(-\frac{\hbar^2}{2m}\nabla^2 + V(\bm{r}))\hat{\psi}(\bm{r}) \label{hamiltonian-many1}
+\end{align}
+というものを候補にする．上式は部分積分を実行することで
+\begin{align}
+  \hat{H} = \int \dd{\bm{r}} \qty(\frac{\hbar^2}{2m}(\nabla\hat{\psi}^{\dagger})(\nabla\hat{\psi}) + V(\bm{r})\hat{\psi}^{\dagger}\hat{\psi}) \label{hamiltonian-many2}
+\end{align}
+と変形できる．
+
+\refe{hamiltonian-many1}及び\refe{hamiltonian-many2}のハミルトニアンが1粒子の量子力学を再現することを確認する．まず，真空を
+\begin{align}
+  \hat{\psi}(\bm{r})\ket{0} = 0
+\end{align}
+として定義する．つまり，粒子が存在しないという状態である．また，粒子が$\bm{r}$に存在する状態$\ket{\bm{r}}$は
+\begin{align}
+  \ket{\bm{r}} = \hat{\psi}^{\dagger}(\bm{r}) \ket{0}
+\end{align}
+と表される．点$\bm{r}$に粒子が存在する確率振幅を$\phi(\bm{r},t)$とすると1粒子状態は
+\begin{align}
+  \ket{\phi} = \int \dd{\bm{r}} \phi(\bm{r},t) \ket{\bm{r}} = \int \dd{\bm{r}} \phi(\bm{r},t) \hat{\psi}^{\dagger}(\bm{r})\ket{0} \label{1-state}
+\end{align}
+と表される．\refe{1-state}に\refe{hamiltonian-many2}を作用させると，
+\begin{align}
+  \hat{H}\ket{\phi} = \int \dd{\bm{r}} \int \dd{\bm{r}'} \phi(\bm{r},t) \qty(\frac{\hbar^2}{2m}\qty(\nabla_{\bm{r}'}\hat{\psi}^{\dagger}(\bm{r}'))\qty(\nabla_{\bm{r}'}\hat{\psi}(\bm{r}')) + V(\bm{r}')\hat{\psi}^{\dagger}(\bm{r}')\hat{\psi}(\bm{r}'))\hat{\psi}^{\dagger}(\bm{r})\ket{0}
+\end{align}
+を得る．
+さらに第1項を部分積分して
+\begin{align}
+  \hat{H}\ket{\phi} = \int \dd{\bm{r}} \int \dd{\bm{r}'} \phi(\bm{r},t) \qty(-\frac{\hbar^2}{2m}\qty(\nabla_{\bm{r}'}^2\hat{\psi}^{\dagger}(\bm{r}'))\hat{\psi}(\bm{r}') + V(\bm{r}')\hat{\psi}^{\dagger}(\bm{r}')\hat{\psi}(\bm{r}'))\hat{\psi}^{\dagger}(\bm{r})\ket{0}
+\end{align}
+を得る．ここで，
+\begin{align}
+  \hat{\psi}(\bm{r}')\hat{\psi}^{\dagger}(\bm{r}) \ket{0} = \delta(\bm{r}' - \bm{r})
+\end{align}
+だから，さらに変形することができ，
+\begin{align}
+  \hat{H}\ket{\phi} &= \int \dd{\bm{r}} \int \dd{\bm{r}'} \phi(\bm{r},t) \qty(-\frac{\hbar^2}{2m}\qty(\nabla_{\bm{r}'}^2\hat{\psi}^{\dagger}(\bm{r}')) + V(\bm{r}')\hat{\psi}^{\dagger}(\bm{r}))\delta(\bm{r}' - \bm{r})\\
+  &= \int \dd{\bm{r}} \qty[\qty(-\frac{\hbar^2}{2m}\nabla^2 + V(\bm{r}))\phi(\bm{r},t)]\hat{\psi}^{\dagger}(\bm{r})\ket{0} \label{integral-of-state}
+\end{align}
+を得る．\refe{integral-of-state}に左から$\bra{\bm{r}}$を作用すると，
+\begin{align}
+  \bra{\bm{r}}\hat{H}\ket{\phi} = \qty(-\frac{\hbar^2}{2m}\nabla^2 + V(\bm{r}))\phi(\bm{r},t)
+\end{align}
+となる．上式の左辺はSchrödinger方程式
+\begin{align}
+  \qty(-\frac{\hbar^2}{2m}\nabla^2 + V(\bm{r}))\phi(\bm{r},t) = \i\hbar\frac{\partial}{\partial t}\phi(\bm{r},t)
+\end{align}
+の左辺と一致する．よって，
+\begin{align}
+  \hat{H} \ket{\phi} = \i\hbar\frac{\partial}{\partial t}\ket{\phi}
+\end{align}
+を得る．これが，多体の量子論の時間発展を記述する方程式である．
+
+次に2粒子系を考える．粒子が$\bm{r}_1,\bm{r}_2$にいる状態は
+\begin{align}
+  \ket{\bm{r}_1,\bm{r}_2} = \hat{\psi}(\bm{r}_1)^{\dagger}\hat{\psi}(\bm{r}_2)^{\dagger}\ket{0}
+\end{align}
+である．さらに2粒子状態$\ket{\phi_2\phi_1}$は
+\begin{align}
+  \ket{\phi_2\phi_1} = \frac{1}{\sqrt{2}}\int\dd{\bm{r}}\int\dd{\bm{r}'} \phi_2(\bm{r}')\phi_1(\bm{r}) \hat{\psi}^{\dagger}(\bm{r}')\hat{\psi}^{\dagger}(\bm{r}) \ket{0}
+\end{align}
+と表される．よって，$\bm{r}_1,\bm{r}_2$で粒子を観測する確率振幅は
+\begin{align}
+  \bra{\bm{r}_1\bm{r}_2}\ket{\phi_2\phi_1} &= \frac{1}{\sqrt{2}}\int\dd{\bm{r}}\int\dd{\bm{r}'}\phi_2(\bm{r}')\phi_1(\bm{r})\bra{0}\hat{\psi}(\bm{r}_1)\hat{\psi}(\bm{r}_2)\hat{\psi}^{\dagger}(\bm{r}')\hat{\psi}^{\dagger}(\bm{r}) \ket{0}\\
+  &= \frac{1}{\sqrt{2}}\int\dd{\bm{r}}\int\dd{\bm{r}'}\phi_2(\bm{r}')\phi_1(\bm{r})\bra{0}\qty(\delta(\bm{r}_2 - \bm{r}')\hat{\psi}^{\dagger}(\bm{r}) + \delta(\bm{r}_2 - \bm{r})\hat{\psi}^{\dagger}(\bm{r}')) \ket{0}\\
+  &= \frac{1}{\sqrt{2}}\int\dd{\bm{r}}\qty(\phi_2(\bm{r}_2)\phi_1(\bm{r}) + \phi_2(\bm{r})\phi_1(\bm{r}_2))\bra{0}\hat{\psi}(\bm{r}_1)\hat{\psi}^{\dagger}(\bm{r})\ket{0}\\
+  &= \frac{1}{\sqrt{2}}\qty(\phi_2(\bm{r}_2)\phi_1(\bm{r}_1) + \phi_2(\bm{r}_1)\phi_1(\bm{r}_2))
+\end{align}
+となる．これは2つの粒子の分布を対称化した確率振幅となっている．つまり，どちらの粒子がどちらの波動関数の状態にあるのか区別できない．
+また，これはBose統計に従う粒子，ボゾンを表している．思い出してほしいのは，出発点は\refe{boson-com}であったことである．
+
+任意の個数の粒子の場合も数学的帰納法により証明できる．$N$粒子系の状態は
+\begin{align}
+  \ket{\phi_1\phi_2\cdots\phi_N} = \frac{1}{\sqrt{N}}\int\dd{\bm{r}_1}\cdots\int\dd{\bm{r}_N}\phi_1(\bm{r}_1)\cdots\phi_N(\bm{r}_N)\hat{\psi}^{\dagger}(\bm{r}_N)\cdots\hat{\psi}^{\dagger}(\bm{r}_1)\ket{0}
+\end{align}
+であり，その確率振幅は
+\begin{align}
+  \bra{\bm{r}_1\bm{r}_2\cdots\bm{r}_N}\ket{\phi_1\phi_2\cdots\phi_N} = \frac{1}{\sqrt{N}}\sum_{P^{(N)}} \phi_1(P^{(N)}\bm{r}_1)\cdots\phi_{N}(P^{(N)}\bm{r}_N)
+\end{align}
+である．
+
+フェルミオンの場合も同様である．反交換関係
+\begin{align}
+  \qty{\psi^{\dagger}(\bm{r}',t'),\psi(\bm{r},t)} &= \delta(\bm{r} - \bm{r}')\delta(t - t')\\
+  \qty{\psi(\bm{r}',t'),\psi(\bm{r},t)} &= \qty{\psi^{\dagger}(\bm{r}',t'),\psi^{\dagger}(\bm{r},t)} = 0 \label{fermion-com-same}
+\end{align}
+を要請する．\refe{fermion-com-same}から，
+\begin{align}
+  (\psi(\bm{r},t))^2 = (\psi^{\dagger}(\bm{r},t))^2 = 0
+\end{align}
+が導かれる．これは，同じ場所に2つのフェルミオンが存在しないこと，つまり，Pauliの排他律を表している．
+
+ボゾンの時と同様に2つの粒子状態を
+\begin{align}
+  \ket{\phi_2\phi_1} = \frac{1}{\sqrt{2}}\int\dd{\bm{r}}\int\dd{\bm{r}'} \phi_2(\bm{r}')\phi_1(\bm{r}) \hat{\psi}^{\dagger}(\bm{r}')\hat{\psi}^{\dagger}(\bm{r}) \ket{0}
+\end{align}
+と表す．このとき，$\bm{r}_1,\bm{r}_2$で粒子を観測する確率振幅は
+\begin{align}
+  \bra{\bm{r}_1\bm{r}_2}\ket{\phi_2\phi_1} &= \frac{1}{\sqrt{2}}\int\dd{\bm{r}}\int\dd{\bm{r}'}\phi_2(\bm{r}')\phi_1(\bm{r})\bra{0}\hat{\psi}(\bm{r}_1)\hat{\psi}(\bm{r}_2)\hat{\psi}^{\dagger}(\bm{r}')\hat{\psi}^{\dagger}(\bm{r}) \ket{0}\\
+  &= \frac{1}{\sqrt{2}}\int\dd{\bm{r}}\int\dd{\bm{r}'}\phi_2(\bm{r}')\phi_1(\bm{r})\bra{0}\qty(\delta(\bm{r}_2 - \bm{r}')\hat{\psi}^{\dagger}(\bm{r}) - \delta(\bm{r}_2 - \bm{r})\hat{\psi}^{\dagger}(\bm{r}')) \ket{0}\\
+  &= \frac{1}{\sqrt{2}}\int\dd{\bm{r}}\qty(\phi_2(\bm{r}_2)\phi_1(\bm{r}) - \phi_2(\bm{r})\phi_1(\bm{r}_2))\bra{0}\hat{\psi}(\bm{r}_1)\hat{\psi}^{\dagger}(\bm{r})\ket{0}\\
+  &= -\frac{1}{\sqrt{2}}\qty(\phi_2(\bm{r}_2)\phi_1(\bm{r}_1) - \phi_2(\bm{r}_1)\phi_1(\bm{r}_2))
+\end{align}
+である．これは2つの粒子の分布を反対称化した確率振幅となっており，Fermi統計に従う．つまりフェルミオンである．
+
+以上，交換関係を要請するとボゾン，反交換関係を要請するとフェルミオンが導かれることを示した．
+\end{document}

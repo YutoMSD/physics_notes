@@ -1,0 +1,69 @@
+\documentclass{report}
+\input{../head.tex}
+\begin{document}
+演算子がどのように第2量子化されるかを見る．
+
+まずは1粒子に作用する演算子を足し合わせた
+\begin{align}
+  \hat{F} = \sum_i \hat{f}(\bm{r}_i)
+\end{align}
+が場の演算子を用いてどのように表されるのかを考える．$\hat{f}$の例は，運動エネルギー$\frac{\hat{p}_i^2}{2m}$や中心力ポテンシャル$V(\bm{r}_i)$などである．
+位置$\bm{r}_i$固有状態$\lambda$にある粒子の波動関数を$\v_{\lambda}(\bm{r}_i)$と書くことにする．
+これを使って多体系全体の状態$\ket{n}$を
+\begin{align}
+  \ket{n} = \ket{v_\alpha(\bm{r}_1)}\otimes\ket{v_\beta(\bm{r}_2)}\otimes\cdots\otimes\ket{v_\mu(\bm{r}_n)} = \ket{v_\alpha(\bm{r}_1),v_\beta(\bm{r}_2),\cdots,v_\nu(\bm{r}_n)}
+\end{align}
+と書く．まず，
+\begin{align}
+  \hat{f}(\bm{r}_i)\ket{v_\lambda(\bm{r}_i)} &= \sum_{\mu}\ket{v_\mu(\bm{r}_i)}\bra{v_\mu(\bm{r}_i)}\hat{f}(\bm{r}_i)\ket{v_\lambda(\bm{r}_i)}\\
+  &= \sum_{\mu} \bra{v_\mu(\bm{r}_i)}\hat{f}(\bm{r}_i)\ket{v_\lambda(\bm{r}_i)}\ket{v_\mu(\bm{r}_i)}
+\end{align}
+が成り立つ．ここで，
+\begin{align}
+  \bra{v_\mu(\bm{r})}\hat{f}(\bm{r})\ket{v_\lambda(\bm{r})} = \int \dd[3]{\bm{r}}\v_{\mu}^*(\bm{r})\hat{f}(\bm{r})\v_{\lambda}(\bm{r})
+\end{align}
+である．
+これを用いて
+\begin{align}
+  \hat{f}(\bm{r}_i)\ket{n} &= \hat{f}(\bm{r}_i)\ket{v_\alpha(\bm{r}_1),v_\beta(\bm{r}_2),\cdots,v_\lambda(\bm{r}_i),\cdots,v_\nu(\bm{r}_n)}\\
+  &= \ket{v_\alpha(\bm{r}_1)}\otimes\ket{v_\beta(\bm{r}_2)}\otimes\cdots\qty(\hat{f}(\bm{r}_i)\ket{v_\lambda(\bm{r}_i)})\cdots\otimes\ket{v_\nu(\bm{r}_n)}\\
+  &= \sum_{\mu} \bra{v_\mu(\bm{r}_i)}\hat{f}(\bm{r}_i)\ket{v_\lambda(\bm{r}_i)}\ket{v_\alpha(\bm{r}_1),v_\beta(\bm{r}_2),\cdots,v_\mu(\bm{r}_i),\cdots,v_\nu(\bm{r}_n)}\\
+\end{align}
+を得る．ここで，
+\begin{align}
+  \ket{v_\alpha(\bm{r}_1),v_\beta(\bm{r}_2),\cdots,v_\mu(\bm{r}_i),\cdots,v_\nu(\bm{r}_n)} = \hat{a}_\mu^{\dagger}\hat{a}_\lambda\ket{v_\alpha(\bm{r}_1),v_\beta(\bm{r}_2),\cdots,v_\lambda(\bm{r}_i),\cdots,v_\nu(\bm{r}_n)} =  \hat{a}_\mu^{\dagger}\hat{a}_\lambda\ket{n}
+\end{align}
+であるので，
+\begin{align}
+  \hat{F}\ket{n} &= \sum_i \hat{f}(\bm{r}_i)\ket{n}\\
+  &= \sum_{i}\sum_{\mu} \bra{v_\mu(\bm{r}_i)}\hat{f}(\bm{r}_i)\ket{v_\lambda(\bm{r}_i)}\hat{a}_\mu^{\dagger}\hat{a}_\lambda\ket{n}\\
+  &= \sum_{\mu,\lambda}\sum_{i} \bra{v_\mu(\bm{r})}\hat{f}(\bm{r})\ket{v_\lambda(\bm{r})}\hat{a}_\mu^{\dagger}\hat{a}_\lambda\ket{n}\\
+\end{align}
+となる．よって，1粒子に作用する演算子は第2量子化により
+\begin{align}
+  \hat{F} = \sum_{\lambda,\mu} \bra{v_\mu(\bm{r})}\hat{f}(\bm{r})\ket{v_\lambda(\bm{r})}\hat{a}_\mu^{\dagger}\hat{a}_\lambda \label{f}
+\end{align}
+と書ける．
+
+2つの粒子の相互作用を表す演算子
+\begin{align}
+  \hat{G} = \sum_{i\neq j} \hat{g}(\bm{r}_i,\bm{r}_j)
+\end{align}
+の第2量子化も同様に
+\begin{align}
+  \hat{G} = \frac{1}{2} \sum_{\alpha,\beta,\lambda,\mu} \bra{v_\alpha(\bm{r}_1)v_\beta(\bm{r}_2)}\hat{g}(\bm{r}_1,\bm{r}_2)\ket{v_\lambda(\bm{r}_1)v_\mu(\bm{r}_2)}\hat{a}_\alpha^{\dagger}\hat{a}_\beta^{\dagger}\hat{a}_\mu\hat{a}_\lambda \label{g}
+\end{align}
+である．
+
+さらに，場の演算子は座標の依存性のみを考えると，
+\begin{align}
+  \psi(\bm{r}) = \sum_i v_i(\bm{r})\hat{a}_i,\ \psi(\bm{r})^{\dagger} = \sum_i v_i^*(\bm{r})\hat{a}_i^{\dagger} \label{field-v}
+\end{align}
+と書けるのであった．これを用いると$\hat{F}$と$\hat{G}$は
+\begin{align}
+  \hat{F} &= \int \dd[3]{\bm{r}}\psi^{\dagger}(\bm{r})\hat{f}(\bm{r})\psi(\bm{r}) \label{f-field} \\
+  \hat{G} &= \frac{1}{2}\int\dd[3]{\bm{r}_1}\int\dd[3]{\bm{r}_2}\psi^{\dagger}(\bm{r}_1)\psi^{\dagger}(\bm{r}_2)\hat{g}(\bm{r}_1,\bm{r}_2)\psi(\bm{r}_2)\psi(\bm{r}_1) \label{g-field}
+\end{align}
+と表される．確かに\refe{f-field}と\refe{g-field}に\refe{field-v}を代入すると，\refe{f}と\refe{g}に一致する．
+
+\end{document}
