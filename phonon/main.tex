@@ -1,0 +1,111 @@
+\documentclass{report}
+\input{head.tex}
+\begin{document}
+\section{1次元の結晶}
+$N$個の質量$M$の電子が1次元に並んでいるとする．$s$番目の原子の格子点からのずれを$Q_s$とする．
+$s$番目の原子の座標は平衡点での座標を$q^{(0)}$として$q_s = q^{(0)}_s + Q_s$と表される．
+平衡点近傍での原子間のポテンシャル$U$をTaylor展開すると，
+\begin{align}
+  U &= U(q_s^{(0)}, \cdots, q_N^{(0)}) + \frac{1}{2} \sum_{s,s'} \frac{\partial^2}{\partial q_s \partial q_{s'}} U(q_1,\cdots,q_N)\\
+  &= U_0 + \frac{1}{2} \sum_{s,s'} U_{ss'} Q_s Q_{s'} + \cdots
+\end{align}
+である．ここで，原子間隔を$a$とすると$q_s^{(0)} = sa$である．同様に平衡点からの運動量のずれを$P_s$とすると，ハミルトニアンは
+\begin{align}
+  \hat{H} = \sum_s \frac{\hat{P}_s^2}{2M} + \frac{1}{2} \sum_{s,s'} U_{ss'} \hat{Q}_s \hat{Q}_{s'} + U_0
+\end{align}
+である．Heisenbergの運動方程式より，
+\begin{align}
+  \i\hbar  \dot{\hat{Q}}_s &= \qty[\hat{Q}_s,\hat{H}] = \i\hbar\frac{\hat{P}_s}{M}\\
+  \i\hbar  \dot{\hat{P}}_s &= \qty[\hat{P}_s,\hat{H}] = -\i\hbar\sum_{s'} U_{ss'} \hat{Q}_{s'}
+\end{align}
+である．よって，
+\begin{align}
+  \ddot{\hat{Q}}_s = -\sum_{s'} \frac{U_{ss'}}{M} \hat{Q}_{s'} \label{eom-q}
+\end{align}
+を得る．また，原子に働く力が原子間距離のみに依存すると仮定すると，$U_{ss'} = U_{s-s'} = U_{s's}$となる．
+
+$s$番目の原子の運動方程式が求められたので，次に，基準振動を求める．$Q_s = u_s e^{-\i\omega t}$とおき，\refe{eom-q}に代入する．
+\begin{align}
+  -M\omega^2 u_s + \sum_{s'} U(s-s')u_{s'} = 0
+\end{align}
+を得る．ここで，Blochの定理より$u_s = A\e^{\i ksa}$であるので，これを使うと，
+\begin{align}
+  \omega^2 &= \frac{1}{M} \sum_{s'} U(s-s') \e^{\i k(s-s')a}\\
+  &= \frac{1}{M} \sum_{s'} U(s - s') \cos(k(s-s')a)
+\end{align}
+と，基準振動の角振動数が求まる．さらに，$U$は隣接する原子間のみに作用することにするt．つまり，
+$U$は$s - s' = \pm 1$のときのみゼロでないとする．よって，
+\begin{align}
+  U(1) = U(-1) = -\frac{1}{2} U(0)
+\end{align}
+を得る．また，周期的境界条件より，
+\begin{align}
+  k = \frac{2\pi}{Na}n
+\end{align}
+である．以上より，
+\begin{align}
+  \omega^2 = \frac{U(0)}{M} \qty(1 - \cos(ka))
+\end{align}
+が求まる．
+
+以上を用いて量子化すると，
+\begin{align}
+  \hat{Q}_s(t) &= \sum_{k} \sqrt{\frac{\hbar}{2NM\omega_k}} \qty(\hat{a}_k \e^{\i ksa} \e^{-\i\omega_k t} + \hat{a}_k^\dagger \e^{-\i ksa} \e^{\i\omega_k t})\\
+  \hat{P}_s(t) &= -\sum_{k} \i\sqrt{\frac{\hbar M \omega_k}{2N}} \qty(\hat{a}_k \e^{\i ksa} \e^{-\i\omega_k t} - \hat{a}_k^\dagger \e^{-\i ksa} \e^{\i\omega_k t})
+\end{align}
+となる．このとき，ハミルトニアンは
+\begin{align}
+  \hat{H} = \sum_{k} \hbar \omega_k \qty(\hat{a}_k^\dagger \hat{a}_k + \frac{1}{2})
+\end{align}
+となる．このハミルトニアンの固有エネルギーは
+\begin{align}
+  \epsilon_k = \hbar\omega_k \qty(n_k + \frac{1}{2})
+\end{align}
+で，エネルギーが離散化されていることがわかる．
+また，上記の生成消滅演算子は
+\begin{align}
+  \qty[\hat{a}_k,\hat{a}_{k'}^\dagger] = \delta_{kk'}\\
+  \qty[\hat{a}_k,\hat{a}_{k'}] = \qty[\hat{a}_k^\dagger,\hat{a}_{k'}^\dagger] = 0
+\end{align}
+を満たしているのでボゾンであることがわかる．このように，エネルギー$\hbar\omega_k$をもった量子を\textbf{フォノン}と呼ぶ．
+
+\section{3次元の結晶}
+上記の議論を3次元に拡張する．3次元結晶中の原子の位置は並進ベクトル$\bm{R}_l = l_1\bm{a}_1 + l_2\bm{a}_2 + l_3\bm{a}_3$で表される．
+単位胞中の原子の数を$r$とする．$\kappa$番目の原子の平衡点からの位置のずれを$\bm{\xi}^{\kappa}(\bm{R}_l,t)$とする．
+$\bm{\xi}^{\kappa}$の運動方程式は同様に，
+\begin{align}
+  m_{\kappa}\ddot{\xi}_i^{\kappa}(\bm{R}_l,t) = - \sum_{\bm{R}_{l'}} \sum_{\kappa'} \sum_{j} U_{ij}^{\kappa\kappa'}(\bm{R}_l - \bm{R}_{l'}){\xi_j^{\kappa'}}(\bm{R}_{l'},t) \label{eom-3d}
+\end{align}
+である．
+ここで，Blochの定理より，$\bm{\xi}$は
+\begin{align}
+  \bm{\xi}^{\kappa}(\bm{R}_l,t) \sim \bm{u}^{\kappa} (\bm{k},J)\e^{\i \bm{k}\cdot\bm{R}_l} \e^{-\i \omega_J t} \label{bloch}
+\end{align}
+と表される．以下でわかるように，$J$はモードを表し，$J3r$個の値をとる．
+
+\refe{eom-3d}に\refe{bloch}を代入すると，
+\begin{align}
+  -\omega_J^2 m_\kappa u_{i}^{\kappa} + \sum_{\kappa'} \sum_{j} \qty(\sum_{\bm{R}_{l'}} U_{ij}^{\kappa\kappa'}(\bm{R}_l - \bm{R}_{l'})\e^{-\i\bm{k}\cdot(\bm{R}_l-\bm{R}_{l'})}) u_j^{\kappa'}=0
+\end{align}
+を得る．上式が恒等的にに0出ない条件は
+\begin{align}
+  \det(-\omega_J^2 m_{\kappa}\delta_{\kappa\kappa'}\delta_{ij} + \qty(\sum_{\bm{R}_{l'}} U_{ij}^{\kappa\kappa'}(\bm{R}_l - \bm{R}_{l'})\e^{-\i\bm{k}\cdot(\bm{R}_l-\bm{R}_{l'})})) = 0 \label{det}
+\end{align}
+である．ここで，$i$はベクトルの成分を表し，$i=1,2,3$をとるのであった．また，$\kappa$は単位胞中の原子の数を表し，$r$個の値を取るのであった．
+よって，上の行列式は$3r\times 3r$だから，$3r$個の解をもつ．したがって，モードの数は$3r$である．ここで，$3r$個のモードのうち，3個のモードは$\bm{k}\to0$とすると$\omega\to\bm{0}$となる音響モードである．残りの$3(r-1)$は$\bm{k}\to\bm{0}$で$\omega\to0$とならない光学モードである．
+これは原子の相対的な運動によるものである．
+
+\refe{det}の行列式を解くと基準振動が求まる．基準振動が求まったものとして量子化を行うと，
+\begin{align}
+  \hat{\bm{\xi}} (\bm{R}_l,t) = \sqrt{\hbar}\sum_{\bm{k}}\sum_{J} \hat{a}_J (\bm{k})\bm{u}^{\kappa}(\bm{k},J)\e^{\i\bm{k}\cdot\bm{R}_l}\e^{-\i\omega_J(\bm{k})t} + \hat{a}^{\dagger}_{J}(\bm{k})\bm{v}^{\kappa}(\bm{k},J)\e^{-\i\bm{k}\cdot\bm{R}_l}\e^{\i\omega_J(\bm{k})t}
+\end{align}
+を得る．ここで，$\bm{\xi}$は実であるため，エルミート性を保つために$\bm{v}=\bm{u}^{*}$とする．
+
+\paragraph*{参考文献}
+高橋康，物性研究者のための場の量子論1，培風館，1974
+
+\section{フォノンの角運動量}
+
+\section{熱勾配とフォノンの角運動量}
+
+\end{document}
