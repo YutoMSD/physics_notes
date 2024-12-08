@@ -53,7 +53,7 @@ $U$は$s - s' = \pm 1$のときのみゼロでないとする．よって，
   \hat{Q}_s(t) &= \sum_{k} \sqrt{\frac{\hbar}{2NM\omega_k}} \qty(\hat{a}_k \e^{\i ksa} \e^{-\i\omega_k t} + \hat{a}_k^\dagger \e^{-\i ksa} \e^{\i\omega_k t})\\
   \hat{P}_s(t) &= -\sum_{k} \i\sqrt{\frac{\hbar M \omega_k}{2N}} \qty(\hat{a}_k \e^{\i ksa} \e^{-\i\omega_k t} - \hat{a}_k^\dagger \e^{-\i ksa} \e^{\i\omega_k t})
 \end{align}
-となる．このとき，ハミルトニアンは
+となる．$\hat{a}_k$は波数$k$の波の振幅を表し，$\e^{-\i\omega_k t}$はその時間発展を表す．このとき，ハミルトニアンは
 \begin{align}
   \hat{H} = \sum_{k} \hbar \omega_k \qty(\hat{a}_k^\dagger \hat{a}_k + \frac{1}{2})
 \end{align}
@@ -99,12 +99,210 @@ $\bm{\xi}^{\kappa}$の運動方程式は同様に，
 \begin{align}
   \hat{\bm{\xi}} (\bm{R}_l,t) = \sqrt{\hbar}\sum_{\bm{k}}\sum_{J} \hat{a}_J (\bm{k})\bm{u}^{\kappa}(\bm{k},J)\e^{\i\bm{k}\cdot\bm{R}_l}\e^{-\i\omega_J(\bm{k})t} + \hat{a}^{\dagger}_{J}(\bm{k})\bm{v}^{\kappa}(\bm{k},J)\e^{-\i\bm{k}\cdot\bm{R}_l}\e^{\i\omega_J(\bm{k})t}
 \end{align}
-を得る．ここで，$\bm{\xi}$は実であるため，エルミート性を保つために$\bm{v}=\bm{u}^{*}$とする．
+を得る．ここで，$\bm{\xi}$は実であるため，エルミート性を保つために$\bm{v}=\bm{u}^{*}$とする．$\bm{u}$は波の振動方向を表し，例えば音響モードであれば，
+横波2つと縦波に対応する．
 
 \paragraph*{参考文献}
 高橋康，物性研究者のための場の量子論1，培風館，1974
 
 \section{フォノンの角運動量}
+単位胞$l$の中の$\alpha$番目の原子の平衡点からの変位を$\bm{u}_{l\alpha}$とする．結晶全体のフォノンの角運動量$\bm{J}^{\r{ph}}$は，
+\begin{align}
+  \bm{J}^{\r{ph}} = \sum_{l\alpha} \bm{u}_{l\alpha} \times \dot{\bm{u}}_{l\alpha}
+\end{align}
+と表される．ここで，$\sum_{l\alpha}$は$\sum_{l}\sum_{\alpha}$を表す．単一の原子の角運動量を単位胞内で和をとり($\sum_{\alpha}$)，結晶中の単位胞全てで足し上げている($\sum_{l}$)．
+
+特に，$z$方向の角運動量を考える．$z$方向の角運動量は，
+\begin{align}
+  J_z^{\r{ph}} &= \sum_{l\alpha} u_{l\alpha}^{x} \dot{u}_{l\alpha}^{y} - u_{l\alpha}^{y} \dot{u}_{l\alpha}^{x}\\
+  &= \sum_{l\alpha}
+  \begin{pmatrix}
+    u_{l\alpha}^{x} & u_{l\alpha}^{y}
+  \end{pmatrix}
+  \begin{pmatrix}
+    0 & 1\\
+    -1 & 0
+  \end{pmatrix}
+  \begin{pmatrix}
+    \dot{u}_{l\alpha}^{x}\\
+    \dot{u}_{l\alpha}^{y}
+  \end{pmatrix}
+\end{align}
+と書ける．．さらに，$\alpha$以外の単位胞内のすべての原子を考慮すると，
+\begin{align}
+  J_z^{\r{ph}} = \sum_{l}
+  \begin{pmatrix}
+    u_{1\alpha}^{x} & u_{1\alpha}^{y} & u_{2\alpha}^{x} & u_{2\alpha}^{y} & u_{3\alpha}^{x} & u_{3\alpha}^{y} & \cdots
+  \end{pmatrix}
+  \begin{pmatrix}
+    0 & 1 & 0 & 0 & 0 & 0 & \cdots\\
+    -1 & 0 & 0 & 0 & 0 & 0 & \cdots\\
+    0 & 0 & 0 & 1 & 0 & 0 & \cdots\\
+    0 & 0 & -1 & 0 & 0 & 0 & \cdots\\
+    0 & 0 & 0 & 0 & 0 & 1 & \cdots\\
+    0 & 0 & 0 & 0 & -1 & 0 & \cdots\\
+    \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots
+  \end{pmatrix}
+  \begin{pmatrix}
+    \dot{u}_{1\alpha}^{x}\\
+    \dot{u}_{1\alpha}^{y}\\
+    \dot{u}_{2\alpha}^{x}\\
+    \dot{u}_{2\alpha}^{y}\\
+    \dot{u}_{3\alpha}^{x}\\
+    \dot{u}_{3\alpha}^{y}\\
+    \vdots
+  \end{pmatrix}
+\end{align}
+と書ける．真ん中の行列は$2\alpha\times2\alpha$の行列であり，
+\begin{align}
+  \begin{pmatrix}
+    0 & 1\\
+    -1 & 0
+  \end{pmatrix}
+\end{align}
+のブロック行列となっている．よって，真ん中の行列を
+\begin{align}
+  \i M =
+  \begin{pmatrix}
+    0 & -\i\\
+    \i & 0
+  \end{pmatrix}
+  \otimes I
+\end{align}
+と置くと，
+$z$方向の角運動量は
+\begin{align}
+  J_z^{\r{ph}} = \sum_{l} u_l^T \i M \dot{u}_l \label{angular}
+\end{align}
+と書ける．ここで，$u_l = \begin{pmatrix}
+  u_{l\alpha}^{x}&
+  u_{l\alpha}^{y}&
+  u_{l\beta}^{x}&
+  u_{l\beta}^{y}&
+  \cdots
+\end{pmatrix}^T$
+と置いた．$u_l$は単位胞内の全ての原子の変位をまとめたベクトルで変位をまとめたベクトルである．
+
+$u_l$を第2量子化すると，
+\begin{align}
+  u_l = \sum_{k} \sqrt{\frac{\hbar}{2\omega_k N}}\qty(\epsilon_k \e^{\i(\bm{R}_l\cdot\bm{k} - \omega_k t)}\hat{a}_k + \epsilon_k^* \e^{-\i(\bm{R}_l\cdot\bm{k} - \omega_k t)}\hat{a}_k^\dagger) \label{phonon}
+\end{align}
+となる．ここで，$\bm{k}$は波数ベクトルである．$k$は$(\bm{k},\sigma)$の組であり，$\sigma$はモードを表す．つまり，$\sum_{k}$は$\sum_{\bm{k}}\sum_{\sigma}$を意味する．
+$\epsilon_k$は振動の方向を表すベクトルで，例えば，横波の方向や縦波を表す．\refe{phonon}を解釈すると，
+$\hat{a}_k$は波数$\bm{k}$の波の振幅を表し，$\epsilon_k$はその方向，$\e^{-\i\omega_k t}$はその時間発展を表す．
+
+\refe{phonon}から$\dot{u}_l$を計算する．
+\begin{align}
+  \dot{u}_l = \sum_{k} (-\i)\sqrt{\frac{\hbar\omega_k}{2N}}\qty(\epsilon_k \e^{\i(\bm{R}_l\cdot\bm{k} - \omega_k t)}\hat{a}_k - \epsilon_k^* \e^{-\i(\bm{R}_l\cdot\bm{k} - \omega_k t)}\hat{a}_k^\dagger) \label{phonon-dot}
+\end{align}
+\refe{phonon}と\refe{phonon-dot}を\refe{angular}に代入すると，
+\begin{align}
+  J_z^{\r{ph}} &= \frac{\hbar}{2N} \sum_{l} \sum_{k}\sum_{k'} \sqrt{\frac{\omega_{k'}}{\omega_k}} \qty(\epsilon_k^T \e^{\i(\bm{R}_l\cdot\bm{k} - \omega_k t)}\hat{a}_k + \epsilon_k^{\dagger} \e^{-\i(\bm{R}_l\cdot\bm{k} - \omega_k t)}\hat{a}_k^\dagger) M
+  \qty(\epsilon_{k'} \e^{\i(\bm{R}_l\cdot\bm{k'} - \omega_{k'} t)}\hat{a}_{k'} - \epsilon_{k'}^{*} \e^{-\i(\bm{R}_l\cdot\bm{k'} - \omega_{k'} t)}\hat{a}_{k'}^\dagger)\\
+\end{align}
+となる．これを展開するが，$\hat{a}_k\hat{a}_{k'}$及び$\hat{a}_k^\dagger\hat{a}_{k'}^\dagger$の項は急速に振動するため平衡状態に寄与しない．よって，これらの項は無視する．
+$\sum$の中だけを取り出して計算する．
+\begin{align}
+  \sqrt{\frac{\omega_{k'}}{\omega_k}} \qty(-\epsilon_k^T M \epsilon_{k'}^{*} \hat{a}_k\hat{a}_{k'}^{\dagger} \e^{\i\bm{R}_l\cdot(\bm{k}- \bm{k}')}\e^{\i(\omega_k - \omega_{k'})t} + \epsilon_k^\dagger M \epsilon_{k'} \hat{a}_k^\dagger\hat{a}_{k'} \e^{\i\bm{R}_l\cdot(\bm{k}'- \bm{k})}\e^{\i(\omega_k - \omega_{k'})t})
+\end{align}
+ここで，$M$の性質から$\epsilon_k^T (-M) \epsilon_{k'} = \epsilon_{k'}^{T}M\epsilon_k$が成り立つので，
+1項目の係数は$\epsilon_k^T (-M) \epsilon_{k'}^{*} = \epsilon_{k'}^{\dagger}M\epsilon_k$となる．
+よって，$J_z^{\r{ph}}$は
+\begin{align}
+  J_z^{\r{ph}} = \frac{\hbar}{2N} \sum_{l} \sum_{k}\sum_{k'} \sqrt{\frac{\omega_{k'}}{\omega_k}} \qty(\epsilon_{k'}^{\dagger}M\epsilon_k \hat{a}_k\hat{a}_{k'}^{\dagger} \e^{\i\bm{R}_l\cdot(\bm{k}- \bm{k}')}\e^{\i(\omega_k - \omega_{k'})t} + \epsilon_k^\dagger M \epsilon_{k'} \hat{a}_k^\dagger\hat{a}_{k'} \e^{\i\bm{R}_l\cdot(\bm{k}'- \bm{k})}\e^{\i(\omega_k - \omega_{k'})t})
+\end{align}
+となる．さらに，和を取るときに1項目の$k$と$k'$を入れ替えると，上式は
+\begin{align}
+  J_z^{\r{ph}} = \frac{\hbar}{2N} \sum_{l} \sum_{k}\sum_{k'} \qty(\sqrt{\frac{\omega_k}{\omega_{k'}}} \hat{a}_k^\dagger\hat{a}_{k'} + \sqrt{\frac{\omega_{k'}}{\omega_k}}\hat{a}_{k'}\hat{a}_k^\dagger) \epsilon_k^\dagger M \epsilon_{k'} \e^{\i\bm{R}_l\cdot(\bm{k}'- \bm{k})}\e^{\i(\omega_k - \omega_{k'})t}
+\end{align}
+と整理される．さらに，$\sum_l \e^{\i\bm{R}_l\cdot(\bm{k}' - \bm{k})} = N\delta_{\bm{k},\bm{k}'}$だから，
+\begin{align}
+  J_z^{\r{ph}} = \frac{\hbar}{2} \sum_{k}\sum_{k'} \qty(\sqrt{\frac{\omega_k}{\omega_{k'}}} \hat{a}_k^\dagger\hat{a}_{k'} + \sqrt{\frac{\omega_{k'}}{\omega_k}}\hat{a}_{k'}\hat{a}_k^\dagger) \epsilon_k^\dagger M \epsilon_{k'} \delta_{\bm{k},\bm{k}'}\e^{\i(\omega_k - \omega_{k'})t}
+\end{align}
+となる．また，$\qty[\hat{a}_{\bm{k},\sigma},\hat{a}_{\bm{k},\sigma'}^{\dagger}] = \delta_{\sigma,\sigma'}\Rightarrow\hat{a}_k\hat{a}_{k'}^{\dagger}= \delta_{\sigma,\sigma'} + \hat{a}_{k'}^{\dagger}\hat{a}_k$だから，
+\begin{align}
+  J_z^{\r{ph}} &= \frac{\hbar}{2} \sum_{\bm{k}}\sum_{\sigma}\sum_{\bm{k}'}\sum_{\sigma'} \qty[ \epsilon_k^\dagger M \epsilon_{k'} \qty(\sqrt{\frac{\omega_k}{\omega_{k'}}} + \sqrt{\frac{\omega_{k'}}{\omega_k}}) \hat{a}_{\bm{k},\sigma}^\dagger\hat{a}_{\bm{k}',\sigma'}\delta_{\bm{k},\bm{k}'} \e^{\i(\omega_k - \omega_{k'})t} + \sqrt{\frac{\omega_{k'}}{\omega_k}} \epsilon_k^T M \epsilon_{k'} \delta_{\bm{k},\bm{k}'}\delta_{\sigma,\sigma'} \e^{\i(\omega_k - \omega_{k'})t} ]\\
+  &= \frac{\hbar}{2} \sum_{\bm{k}}\sum_{\sigma}\sum_{\bm{k}'}\sum_{\sigma'} \qty[ \epsilon_k^\dagger M \epsilon_{k'} \qty(\sqrt{\frac{\omega_k}{\omega_{k'}}} + \sqrt{\frac{\omega_{k'}}{\omega_k}}) \hat{a}_{\bm{k},\sigma}^\dagger\hat{a}_{\bm{k}',\sigma'}\delta_{\bm{k},\bm{k}'} \e^{\i(\omega_k - \omega_{k'})t} ] +\frac{\hbar}{2}\sum_{k} \epsilon_k^T M \epsilon_{k}\\
+\end{align}
+と変形できる．平衡状態では，$\ev{\hat{a}^\dagger_{\bm{k},\sigma'}\hat{a}_{\bm{k},\sigma}} = f(\omega_k\delta_{\sigma,\sigma'})$である．$f(\omega_k)$はボース分布関数である．以上より，$z$方向の角運動量は
+\begin{align}
+  J_z^{\r{ph}} &= \sum_{k} \hbar \epsilon_k^T M \epsilon_k f(\omega_k) + \frac{\hbar}{2} \epsilon_k^T M \epsilon_k\\
+  &= \sum_{k} \epsilon_k^T M \epsilon_k \hbar \qty(f(\omega_k) + \frac{1}{2})
+\end{align}
+となる．ここで，$l_{k}^z = \hbar \epsilon_k^T M \epsilon_k$と置くと，
+\begin{align}
+  J_z^{\r{ph}} &= \sum_{k} l_{k}^z\qty(f(\omega_k) + \frac{1}{2})\\
+  &= \sum_{\bm{k}}\sum_{\sigma} l_{\bm{k},\sigma}^z \qty(f(\omega_{\bm{k},\sigma}) + \frac{1}{2})
+\end{align}
+となる．ここで，$T\to0$のとき，
+\begin{align}
+  J_z^{\r{ph}}(T=0) = \sum_{\bm{k}}\sum_{\sigma} \frac{\hbar}{2} l_{\bm{k},\sigma}^{z}
+\end{align}
+である．つまり，各モード各波数にはゼロ点角運動量が存在し，それは$l_{\bm{k},\sigma}^z = \hbar \epsilon_{\bm{k},\sigma}^T M \epsilon_{\bm{k},\sigma}$であることがわかる．
+
+スピン-フォノン相互作用がないときフォノンの角運動量が消失することを示す．スピン-フォノン相互作用がないとき，系のハミルトニアンは
+\begin{align}
+  \hat{H} = \frac{1}{2} p^T p + \frac{1}{2} q^T K q
+\end{align}
+である．ここで，$K$は原子間の変位による相互作用を表し，
+\begin{align}
+  K_{ij}  = \pdv[2]{U}{u_i}{u_j}
+\end{align}
+である．ここで，$K$のFourier変換より得られる行列を
+\begin{align}
+  D(\bm{k}) = \sum_{l'} K_{ll'} \e^{\i(\bm{R}_l - \bm{R}_{l'})\cdot\bm{k}}
+\end{align}
+とする．この$D(\bm{k})$は固有値問題
+\begin{align}
+  D(\bm{k})\epsilon_k = \omega_k^2 \epsilon_k \label{eigen}
+\end{align}
+を満たす．固有値が実数であることから$D$はエルミート行列である．よって，
+\begin{align}
+  D^\dagger = D
+\end{align}
+である．また，$K$は対称行列であるから$D$も対称行列で
+\begin{align}
+  D^T = D
+\end{align}
+である．よって，
+\begin{align}
+  D^\dagger(\bm{k}) = \qty(D^T(\bm{k}))^{*} = D(\bm{k})^{*} = D(-\bm{k})
+\end{align}
+である．
+まず，\refe{eigen}の両辺の複素共役をとると，
+\begin{align}
+  \epsilon^\dagger D^\dagger = \omega_k^2 \epsilon^\dagger\\
+  \epsilon^\dagger D = \omega_k^2 \epsilon^\dagger
+\end{align}
+となる．また，\refe{eigen}は$\bm{k} = -\bm{k}$としても成り立つから
+\begin{align}
+  D(-\bm{k})\epsilon_{-\bm{k}} = \omega_{-\bm{k}}^2 \epsilon_{-\bm{k}}
+\end{align}
+転置を取ると
+\begin{align}
+  \epsilon(-\bm{k})^T D(-\bm{k})^T &= \omega_{-\bm{k}}^2 \epsilon(-\bm{k})^T\\
+  \epsilon(-\bm{k})^T D(\bm{k}) &= \omega_{-\bm{k}}^2 \epsilon(-\bm{k})^T
+\end{align}
+となる．以上より，
+\begin{align}
+  \begin{dcases}
+    \omega_{-\bm{k}} = \omega_{\bm{k}}\\
+    \epsilon_{-\bm{k}} = \epsilon_{\bm{k}}^{*}
+  \end{dcases}
+\end{align}
+を得る．
+これらを使って，$l_{\bm{k},\sigma}^z$を計算する．
+\begin{align}
+  l_{-\bm{k},\sigma}^z &= \hbar \epsilon_{-\bm{k},\sigma}^T M \epsilon_{-\bm{k},\sigma}\\
+  &= \hbar \epsilon_{\bm{k},\sigma}^{*T} M \epsilon_{\bm{k},\sigma}^{*}\\
+  &= \hbar \epsilon_{\bm{k},\sigma}^{\dagger}(-M)\epsilon_{\bm{k},\sigma}\\
+  &= -l_{\bm{k},\sigma}^z
+\end{align}
+よって，$l_{\bm{k},\sigma}^z$は$\bm{k}$に関して反対称であることがわかる．したがって，スピン-フォノン相互作用がないとき，
+\begin{align}
+  J_z^{\r{ph}} = \sum_{\bm{k}}\sum_{\sigma} \frac{\hbar}{2} l_{\bm{k},\sigma}^{z} = 0
+\end{align}
+となる．フォノン角運動量は消失する．
 
 \section{熱勾配とフォノンの角運動量}
 
