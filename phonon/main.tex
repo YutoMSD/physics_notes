@@ -106,6 +106,7 @@ $\bm{\xi}^{\kappa}$の運動方程式は同様に，
 高橋康，物性研究者のための場の量子論1，培風館，1974
 
 \section{フォノンの角運動量}
+フォノンの角運動量がBose分布関数に従うことを示し，温度$T=0$でもゼロ点角運動量が存在することを示す．
 単位胞$l$の中の$\alpha$番目の原子の平衡点からの変位を$\bm{u}_{l\alpha}$とする．結晶全体のフォノンの角運動量$\bm{J}^{\r{ph}}$は，
 \begin{align}
   \bm{J}^{\r{ph}} = \sum_{l\alpha} \bm{u}_{l\alpha} \times \dot{\bm{u}}_{l\alpha}
@@ -232,19 +233,25 @@ $\sum$の中だけを取り出して計算する．
 となる．ここで，$l_{k}^z = \hbar \epsilon_k^T M \epsilon_k$と置くと，
 \begin{align}
   J_z^{\r{ph}} &= \sum_{k} l_{k}^z\qty(f(\omega_k) + \frac{1}{2})\\
-  &= \sum_{\bm{k}}\sum_{\sigma} l_{\bm{k},\sigma}^z \qty(f(\omega_{\bm{k},\sigma}) + \frac{1}{2})
+  &= \sum_{\bm{k}}\sum_{\sigma} l_{\bm{k},\sigma}^z \qty(f(\omega_{\bm{k},\sigma}) + \frac{1}{2}) \label{angular-phonon}
 \end{align}
-となる．ここで，$T\to0$のとき，
+となる．フォノンの角運動量はBose分布関数に従うことがわかった．ここで，$T\to0$のとき，
 \begin{align}
   J_z^{\r{ph}}(T=0) = \sum_{\bm{k}}\sum_{\sigma} \frac{\hbar}{2} l_{\bm{k},\sigma}^{z}
 \end{align}
 である．つまり，各モード各波数にはゼロ点角運動量が存在し，それは$l_{\bm{k},\sigma}^z = \hbar \epsilon_{\bm{k},\sigma}^T M \epsilon_{\bm{k},\sigma}$であることがわかる．
 
-スピン-フォノン相互作用がないときフォノンの角運動量が消失することを示す．スピン-フォノン相互作用がないとき，系のハミルトニアンは
+次に，スピン-フォノン相互作用がないときフォノンの角運動量が消失することを示す．
+まず，一様磁場中の格子のハミルトニアンは
 \begin{align}
-  \hat{H} = \frac{1}{2} p^T p + \frac{1}{2} q^T K q
+  \hat{H} = \frac{1}{2}\qty(p - \tilde{A}u)^T \qty(p - \tilde{A}u) + \frac{1}{2} u^T K u \label{spin-phonon}
 \end{align}
-である．ここで，$K$は原子間の変位による相互作用を表し，
+である．$p \tilde{A}u$はスピン-フォノン相互作用を表す．ここで，$\tilde{A}$はスピン-フォノン相互作用の強さを表す．
+スピン-フォノン相互作用がないとき，系のハミルトニアンは
+\begin{align}
+  \hat{H} = \frac{1}{2} p^T p + \frac{1}{2} q^T K q \label{no-spin-phonon}
+\end{align}
+となる．ここで，$K$は原子間の変位による相互作用を表し，
 \begin{align}
   K_{ij}  = \pdv[2]{U}{u_i}{u_j}
 \end{align}
@@ -298,12 +305,81 @@ $\sum$の中だけを取り出して計算する．
   &= \hbar \epsilon_{\bm{k},\sigma}^{\dagger}(-M)\epsilon_{\bm{k},\sigma}\\
   &= -l_{\bm{k},\sigma}^z
 \end{align}
-よって，$l_{\bm{k},\sigma}^z$は$\bm{k}$に関して反対称であることがわかる．したがって，スピン-フォノン相互作用がないとき，
+よって，$l_{\bm{k},\sigma}^z$は$\bm{k}$に関して反対称であることがわかる．これはフォノンのゼロ点角運動量が時間反転対称性を満たすことを示している．
+したがって，スピン-フォノン相互作用がないとき，
 \begin{align}
   J_z^{\r{ph}} = \sum_{\bm{k}}\sum_{\sigma} \frac{\hbar}{2} l_{\bm{k},\sigma}^{z} = 0
 \end{align}
-となる．フォノン角運動量は消失する．
+となる．フォノン角運動量は消失する．まとめると，フォノンの角運動量はBose分布関数に従い，温度$T=0$でもゼロ点角運動量が存在する．スピン-フォノン相互作用がないとき，つまり，時間反転対称性があるとき，フォノンの角運動量は消失する．
+
+最後に，フォノンの角運動量は十分大きな温度で消失することを示す．
+$T$が十分大きい時，
+\begin{align}
+  J_z^{\r{ph}} = \sum_{\bm{k}}\sum_{\sigma > 0} \qty(\frac{k_B T}{\hbar\omega} + \frac{\hbar\omega}{12k_B T}) l_{\bm{k},\sigma}^{z} \label{angular-temperature}
+\end{align}
+と近似でき，第2項が0であることは容易にわかる．第1項が0であることは以下のように示せる．
+
+まず，スピン-フォノン相互作用があるとき，ハミルトニアンは\refe{spin-phonon}である．このとき，
+$\epsilon$は
+\begin{align}
+  \qty[(-\i\omega + A)^2 + D]\epsilon = 0 \label{eigen-spin}
+\end{align}
+を満たす\footnote{ここから先よくわかんない．}．このとき，$x_k = (\mu_k,\epsilon_k)^T$と$\tilde{x}_k^T = (\epsilon_k^\dagger,-\mu_k^\dagger)/(-2\i\omega_k)$が完全系をなす．$\mu_k$は運動量に対応する．
+\refe{eigen-spin}は負の周波数を含んでいるが，角運動量の計算には$\sigma > 0$のモードのみが寄与する．
+これらの情報の下で計算する．まず$x_k,\tilde{x}_k^T$が完全系をなすことから，
+\begin{align}
+  \sum_{\sigma} x_k \otimes \tilde{x}_k^T = I
+\end{align}
+である．上式の非対角成分は0だから，
+\begin{align}
+  \sum_{\sigma} \epsilon_k \otimes \epsilon_k^\dagger / (-2\i\omega_k) &= O\\
+  \Rightarrow \sum_{\sigma} \frac{\epsilon_i(\bm{k},\sigma) \epsilon_j^{*}(\bm{k},\sigma)}{\omega_{\bm{k},\sigma}} &= 0
+\end{align}
+を得る．
+\begin{align}
+  \sum_{k, \sigma < 0} \frac{\epsilon_{k, \sigma}^\dagger M \epsilon_{k, \sigma}}{\omega_{k, \sigma}} 
+  &= \sum_{k', \sigma' > 0} \frac{\epsilon_{-k', -\sigma'}^\dagger M \epsilon_{-k', -\sigma'}}{\omega_{k', -\sigma'}} \\
+  &= \sum_{k', \sigma' > 0} \frac{\epsilon_{k', \sigma'}^T M \epsilon_{k', \sigma'}^*}{-\omega_{k', \sigma'}} \\
+  &= \sum_{k', \sigma' > 0} \frac{\epsilon_{k', \sigma'}^\dagger M \epsilon_{k', \sigma'}}{\omega_{k', \sigma'}} \\
+  &= \sum_{k, \sigma > 0} \frac{\epsilon_{k, \sigma}^\dagger M \epsilon_{k, \sigma}}{\omega_{k, \sigma}}.
+\end{align}
+よって，
+\begin{align}
+  \sum_{k, \sigma > 0} \frac{\epsilon_{k, \sigma}^\dagger M \epsilon_{k, \sigma}}{\omega_{k, \sigma}} 
+  &= \frac{1}{2} \sum_{k, \sigma} \frac{\epsilon_{k, \sigma}^\dagger M \epsilon_{k, \sigma}}{\omega_{k, \sigma}} \\
+  &= \frac{1}{2} \sum_{k, \sigma} \frac{\epsilon_j^*(k, \sigma) M_{ji} \epsilon_i(k, \sigma)}{\omega_{k, \sigma}} \\
+  &= \frac{1}{2} \sum_{k, j, i} M_{ji} \sum_{\sigma} \frac{\epsilon_j^*(k, \sigma) \epsilon_i(k, \sigma)}{\omega_{k, \sigma}} = 0.
+\end{align}
+を得る．したがって，
+\begin{align}
+  \sum_{\bm{k},\sigma} l_{\bm{k},\sigma}^{z} = \sum_{\bm{k}, \sigma > 0} \frac{\epsilon_{k, \sigma}^\dagger M \epsilon_{k, \sigma}}{\omega_{k, \sigma}} = 0
+\end{align}
+これにより，\refe{angular-temperature}の第1項が0であることが示された．
+以上より，フォノンの角運動量は十分大きな温度では消失する．これは，フォノンの角運動量が熱により励起されたとしても，逆向きの角運動量が存在するため，
+全体としてのフォノンの角運動量が消失していると解釈できる．
+
+\paragraph*{参考文献}
+\url{https://doi.org/10.1103/PhysRevLett.112.085503}
 
 \section{熱勾配とフォノンの角運動量}
+前節では，有限の温度ではフォノンの角運動量が消失することがわかった．しかし，熱勾配が存在するとき，つまり，非平衡のとき，フォノンの角運動量が有限の値を取ることがある．
+ここでは，熱勾配が存在するときのフォノンの角運動量について考える．まず，Boltzmann理論より非平衡のときの分布関数は次のようになる．
+\begin{align}
+  f_{\bm{k},\sigma} = f_0(\omega_\sigma(\bm{k})) - \tau v_{\sigma,i}(\bm{k}) \pdv{f_0}{T}\pdv{T}{x_i} \label{distribution}
+\end{align}
+となる．$f_0$はBose分布関数，$v$は群速度，$\tau$は緩和時間である．
+これを用いると，\refe{angular-phonon}は
+\begin{align}
+  J_z^{\r{ph}} &= \sum_{\bm{k}}\sum_{\sigma} l_{\bm{k},\sigma}^z \qty(f_0(\omega_{\bm{k},\sigma}) - \tau v_{\sigma,i}(\bm{k}) \pdv{f_0}{T}\pdv{T}{x_i} + \frac{1}{2}) \\
+  &= -\tau \sum_{\bm{k}}\sum_{\sigma} l_{\sigma,i} v_{\sigma,i} \pdv{f_0}{T}\pdv{T}{x_i}\\
+  &\equiv \alpha_{ij}\pdv{T}{x_j}
+\end{align}
+となる．
+
+$\alpha_{ij}$は系の対称性に依存している．例えば，系がchilarityをもつときやウルツ鉱型構造の時，対称性が破れ$J$が0とはならない．
+これは，$k>0$と$k<0$で励起される角運動量の大きさが異なるためだと解釈できる．
+以上，対称性の小さい系に熱勾配を加えると，フォノンの角運動量が存在することがわかった．
+\paragraph*{参考文献}
+\url{https://doi.org/10.1103/PhysRevLett.121.175301}
 
 \end{document}
