@@ -1,0 +1,613 @@
+\documentclass{report}
+\input{head.tex}
+\begin{document}
+  \maketitle
+  \tableofcontents
+  \chapter{調和振動子モデルより求めるフォノン比熱}
+    \section{古典的な調和振動子モデル}
+      \subsection{1次元1種電子}
+          $N$個の質量$m$の電子の運動がバネ定数を$K$とした1次元の調和振動子モデルのように書けたとする．
+          これは，Lenard-Jonesポテンシァルを2次近似したときに対応する．
+          $j$番目の電子の運動方程式は，
+          \begin{align}
+            m \dv[2]{u_j}{t} = K(u_{j + 1} - u_j) - K(u_j - u_{j - 1}) \label{1d-1electron-newton-eq}
+          \end{align}
+          のようになる．
+          この方程式の解が，
+          \begin{align}
+            u_j = \exp\qty(i(kja - \omega t)) \label{1d-solution}
+          \end{align}
+          を満たすとする．\refe{1d-solution}を\refe{1d-1electron-newton-eq}に代入すると，
+          \begin{align}
+            m\omega^2 &= K(2 - 2\cos ka) \\ 
+            \Leftrightarrow \omega &= \sqrt{\frac{4K}{m}}\abs{\sin \frac{ka}{2}} \label{1d-dispersion-relation}
+          \end{align}
+          となる．ただし，$\omega$は時間周波数であるから$\omega < 0$は物理的に意味を持たない．
+          また，$k$は空間周波数であるから，原子間隔より短い波長は物理的に意味を持たないため，$k \leq \pi/2$である．
+      \subsection{1次元2種原子}
+        略
+    \section{量子化された調和振動子モデル}
+      \subsection{量子化の手続き}
+        ハミルトニアンのFourier変換などを行うことにより，
+        \begin{align}
+          C &= \pdv{U}{T} \\ 
+          &= \pdv{T}\qty[\sum_s\sum_{\bm{k}}\frac{\hbar\omega_{\bm{k}, s}}{\exp\qty(\frac{\hbar\omega_{\bm{k}, s}}{\kb T}) - 1}] \label{phonon-c}
+        \end{align}
+        を得る．
+      \subsection{高温近似(Dulong-Petit)の結果}
+        $T$が高温の領域では，
+        \begin{align}
+          \exp\qty(\frac{\hbar\omega_{\bm{k}, s}}{\kb T}) \simeq 1 + \frac{\hbar\omega_{\bm{k}, s}}{\kb T}
+        \end{align}
+        なる関係式が成立するから，これを\refe{phonon-c}に代入して，
+        \begin{align}
+          C &= \pdv{T}\qty[\sum_s\sum_{\bm{k}}\frac{\hbar\omega_{\bm{k}, s}}{\frac{\hbar\omega_{\bm{k}, s}}{\kb T}}] \\ 
+          &= \pdv{T}\sum_s\sum_{\bm{k}}\kb T \\ 
+          &= 3N\kb
+        \end{align}
+        を得る．
+      \subsection{Einsteinモデル}
+        $T$が高温でないとについても考察を行いたい．
+        Einsteinモデルでは，分散関係が，
+        \begin{align}
+          \omega_{\bm{k}, s} = \omega
+        \end{align}
+        を満たすとする．
+        このとき，\refe{phonon-c}は，
+        \begin{align}
+          C &= \pdv{T}\qty[\sum_s\sum_{\bm{k}}\frac{\hbar\omega}{\exp\qty(\frac{\hbar\omega}{\kb T}) - 1}] \\ 
+          &= \pdv{T}\qty[\frac{3N\hbar\omega}{\exp\qty(\frac{\hbar\omega}{\kb T}) - 1}] \\
+          &= 3N\kb\qty(\frac{\hbar\omega}{\kb T})^2\frac{\exp\qty(\frac{\hbar\omega}{\kb T})}{\qty[\exp\qty(\frac{\hbar\omega}{\kb T}) - 1]^2} 
+        \end{align}
+        ここで，
+        \begin{align}
+          \Theta_E = \frac{\hbar\omega}{\kb}
+        \end{align}
+        とすると，
+        \begin{align}
+          C = 3N\kb\qty(\frac{\Theta_E}{T})^2\frac{\exp\qty(\frac{\Theta_E}{T})}{\qty[\exp\qty(\frac{\Theta_E}{T}) - 1]^2}
+        \end{align}
+        を得る．
+      \subsection{Debyeモデル}
+        Debyeモデルでは，分散関係が，
+        \begin{align}
+          \omega_{\bm{k}, s} = v\abs{\bm{k}}\ \text{かつ}\ \abs{\bm{k}} \leq k_{\r{D}}
+        \end{align}
+        となるときを考える．なお$k_{\r{D}}$は，総粒子数が$N$となるように設定しているから，
+        \begin{align}
+          N = \int_{0}^{k_{\r{D}}} \frac{V}{(2\pi)^3}\dd{\bm{k}}
+        \end{align}
+        である．これを解くと，
+        \begin{align}
+          k_{\r{D}} = \qty(\frac{6\pi^2N}{V})^{1/3}
+        \end{align}
+        を得る．
+        Debyeモデルでの比熱は，\refe{phonon-c}より，
+        \begin{align}
+          C &= \pdv{T}\qty[\sum_{s}\sum_{\bm{k}}\frac{\hbar v\abs{\bm{k}}}{\exp\qty(\frac{\hbar v\abs{\bm{k}}}{\kb T}) - 1}] \\
+          &= \pdv{T}\qty[3\int_{0}^{\abs{\bm{k}} = k_{\r{D}}} \frac{\hbar v k }{\exp\qty(\frac{\hbar v k }{\kb T}) - 1} \frac{V}{(2\pi)^2}\dd{\bm{k}}] \\
+          &= \frac{3V\kb}{(2\pi)^2} \int_{0}^{\abs{\bm{k}} = k_{\r{D}}} \qty(\frac{\hbar vk}{\kb T})^2 \frac{\exp\qty(\frac{\hbar v k}{\kb T})}{\qty[\exp\qty(\frac{\hbar v k}{\kb T}) - 1]^2} \dd{\bm{k}} \label{c-Debye}
+        \end{align}
+        ここで，
+        \begin{align}
+          x = \frac{\hbar v k}{\kb T}
+        \end{align}
+        なる変数変換を行うと，\refe{c-Debye}は，
+        \begin{align}
+          \frac{3V\kb}{(2\pi)^2}\qty(\frac{\kb T}{\hbar v})^3 \int_{0}^{\abs{\bm{k}} = k_{\r{D}}} \frac{x^4\e^x}{\qty[\e^x - 1]^2} \dd{x}
+        \end{align}
+        となる．
+        Debye温度$\Theta_{\r{D}}$を，
+        \begin{align}
+          \Theta_{\r{D}} = \frac{\hbar v k_{\r{D}}}{\kb}
+        \end{align}
+        と定義すると，
+        \begin{align}
+          C = 9N\kb\qty(\frac{T}{\Theta_{\r{D}}})^3\int_{0}^{\Theta_{\r{D}}/T} \frac{x^4e^x}{\qty(\e^x - 1)^2} \dd{x}
+        \end{align}
+        となる．
+        % 温度によって具体的な函数形が変わることを書く．
+  \chapter{自由電子モデルより求める電子比熱}
+    \section{絶対零度での系のエネルギー}
+      時間に依存しないSchr\"odinger方程式は，
+      \begin{align}
+        \qty[-\frac{\hbar^2}{2m}\laplacian + V(\bm{r})]\psi(\bm{r}) = E\psi(\bm{r})
+      \end{align}
+      と書ける．これを変数分離を用いて解くと，
+      \begin{align}
+        \psi(\bm{r}) &= \frac{1}{\sqrt{V}}\exp(i\bm{k}\cdot\bm{r}) \\ 
+        E &= \frac{\hbar^2\abs{\bm{k}}^2}{2m}
+      \end{align}
+      となる．系全体の電子の数$N$は
+      \begin{align}
+        N &= \frac{4\pi}{3}k_{\r{F}}^3   \qty(\frac{2\pi}{L})^{-3} \times 2 \\ 
+        &= \frac{k_{\r{F}}^3}{3\pi^2}V \\ 
+        &= \frac{V}{3\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}E_{\r{F}}^{3/2} \label{electron-number}
+      \end{align}
+      である．なお，$\Ef$は$\bm{k}_{\r{F}}$のときのエネルギーで，Fermiエネルギーである．電子密度$n$は，
+      \begin{align}
+        n &= \frac{N}{V} \\ 
+        &= \frac{k_{\r{F}}^3}{3\pi^2} \label{electron-density}
+      \end{align}
+      となる．
+      系全体のエネルギー$E_{\r{tot}}$は，エネルギーが最大となるときの波数の大きさをFermi波数$k_{\r{F}}$として，
+      \begin{align}
+        E_{\r{tot}} &= \sum_{\bm{k}}\frac{\hbar^2\abs{\bm{k}}^2}{2m} \\
+        &= \frac{V}{(2\pi)^3}\int_{0}^{k_{\r{F}}} \frac{\hbar^2\abs{\bm{k}}^2}{2m} \dd{\bm{k}}\\
+        &= \int_{0}^{k_{\r{F}}} \frac{\hbar^2k^2}{2m} \frac{V}{(2\pi)^3}4\pi k^2 \dd{k} \\
+        &= \frac{\hbar^2 V}{10\pi^2m}k_{\r{F}}^5 \label{electron-energy}
+      \end{align}
+      となる．言うまでもなく，\refe{electron-energy}は定数であるため，比熱は$0$である．
+    \section{室温での系のエネルギーと比熱}
+      \subsection{Sommerfeld展開}
+        室温では，$D(E)$は状態密度，$f(E, T)$はFermi-Dirac分布関数を用いて，系全体のエネルギー$E_{\r{tot}}$は，
+        \begin{align}
+          E_{\r{tot}} = \int_{0}^{\infty} D(E) E f(E) \dd{E} \label{electron-energy-2}
+        \end{align}
+        と書ける．なお，$D(E)$は，$n$次元空間においては，状態数$J(E)$を用いて，
+        \begin{align}
+          D(E) \coloneqq \pdv{J}{E} \\
+        \end{align}
+        と定義され，
+        \begin{align}
+          J(E) &= \frac{(\text{$n$次元空間のFermi球の体積})}{\frac{(2\pi)^n}{\text{$n$次元空間の体積}}} \times 2 \\ 
+          E &= \frac{\hbar \abs{\bm{k}}^2}{2m}
+        \end{align}
+        を用いて計算できる．さて，$E_{\r{tot}}$に戻ろう．
+        3次元空間では， 
+        \begin{align}
+          D = \frac{V}{2\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}E^{1/2}
+        \end{align}
+        と求まる．求まった$D$を\refe{electron-energy-2}に代入すると
+        \begin{align}
+          E_{\r{tot}} &= \frac{V}{2\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}\int_{0}^{\infty} E^{3/2}f(E) \dd{E} \\ 
+          &= \frac{V}{2\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}\int_{0}^{\infty} \frac{E^{3/2}}{\exp\qty(\frac{E - \mu}{\kb T}) + 1} \dd{E} \label{electron-energy-3}
+        \end{align}
+        となる．\refe{electron-energy-3}において，$E^{3/2}$の原始函数を$G(E)$とすると，部分積分により，
+        \begin{align}
+          \text{\refe{electron-energy-3}の積分} &= \qty[G(E)f(E, T)]_{0}^{\infty} - \int_{0}^{\infty} G(E)\dv{f}{E} \dd{E} \\
+          &= \frac{1}{\kb T}\int_{0}^{\infty} G(E)\frac{\exp\qty(\frac{E- \mu}{\kb T})}{\qty{\exp\qty(\frac{E - \mu}{\kb T}) + 1}^2} \dd{E}
+        \end{align}
+        となる．$\dv{f}{E}$は$E \simeq \mu$の周りでのみ大きな値を持つため，$G(E)$を$E \simeq \mu$の周りでTaylor展開すると，
+        \begin{align}
+          &= \frac{1}{\kb T}\int_{0}^{\infty} \sum_{n = 0}^{\infty} \frac{1}{n!}\left.\dv[n]{G}{E}\right|_{E = \mu}(E - \mu)^n \frac{\exp\qty(\frac{E - \mu}{\kb T})}{\qty{\exp\qty(\frac{E - \mu}{\kb T}) + 1}^2} \dd{E} \\ 
+          &= \frac{1}{\kb T}\sum_{n = 0}^{\infty} \frac{1}{n!}\left.\dv[n]{G}{E}\right|_{E = \mu}\int_{0}^{\infty}(E - \mu)^n \frac{\exp\qty(\frac{E - \mu}{\kb T})}{\qty{\exp\qty(\frac{E - \mu}{\kb T}) + 1}^2} \dd{E} \label{electron-energy-4}
+        \end{align}
+        なお，無限和と積分の入れ替えは成立するものとしてよい．
+        さて，\refe{electron-energy-4}において，
+        \begin{align}
+          \frac{E - \mu}{\kb T} = x
+        \end{align}
+        なる変数変換を行うと，
+        \begin{align}
+          &= \sum_{n = 0}^{\infty}\frac{1}{n!}\left.\dv[n]{G}{E}\right|_{E = \mu} (\kb T)^n \int_{-\mu/T}^{\infty}\frac{x^n\e^x}{(\e^x + 1)^2} \dd{x} \label{electron-energy-5} \\ 
+          &= \sum_{n = 0}^{\infty}\frac{1}{n!}\left.\dv[n]{G}{E}\right|_{E = \mu} (\kb T)^n \int_{-\infty}^{\infty}\frac{x^n\e^x}{(\e^x + 1)^2} \dd{x} \label{electron-energy-6}
+        \end{align}
+        \refe{electron-energy-5}から\refe{electron-energy-6}への式変形では$-\mu/T$が非常に小さいため，積分範囲の下端を$-\infty$に変更した．
+        \refe{electron-energy-6}の積分を実行するために，
+        \begin{align}
+          \int_{-\infty}^{\infty} \frac{\e^x}{(\e^x + 1)^2} \dd{x} &= 1 \\ 
+          \int_{-\infty}^{\infty} \frac{x^2 \e^x}{(\e^x + 1)^2} \dd{x} &= \frac{\pi^2}{3} \\ 
+          \int_{-\infty}^{\infty} \frac{x^4 \e^x}{(\e^x + 1)^2} \dd{x} &= \frac{7 \pi^4}{15}
+        \end{align}
+        は既知のものとする．また，$\dv{f}{E}$は偶函数に近似するので，$n$が
+        このとき，\refe{electron-energy-6}を$(\kb T)$の2次まで展開して，\refe{electron-energy-3}での係数も考慮すると，
+        \begin{align}
+          E_{\r{tot}} \simeq \frac{V}{2\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}\qty(\frac{2}{5}\mu^{5/2} + \frac{\pi^2}{4}\qty(\kb T)^2\mu^{1/2}) \label{electron-energy-7}
+        \end{align}
+        と求まる．
+      \subsection{化学ポテンシァルの計算}
+        \refe{electron-energy-7}は$\mu$に依存する．
+        これをFermiエネルギー$\Ef$を用いて書き直したい．
+        総粒子に関する方程式，
+        \begin{align}
+          N &= \int_{0}^{\infty} D(E)f(E) \dd{E} \label{total-electron-3} \\ 
+          &= \frac{V}{2\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2} \int_{0}^{\infty} E^{1/2}\frac{1}{\exp\qty(\frac{E - \mu}{\kb T}) + 1} \dd{E} \label{total-electron}
+        \end{align}
+        を用いて考える．\refe{total-electron}において，$E^{1/2}$の原始函数を$G(E)$とすると，途中の式展開は$E_{\r{tot}}$の計算のときに行った\refe{electron-energy-6}のようなSommerfeld展開と同様の計算を行えばよい．
+        今回は展開を2次で打ち切ると，
+        \begin{align}
+          &= \frac{V}{2\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2} \sum_{n = 0}^{\infty}\frac{1}{n!}\left.\dv[n]{G}{E}\right|_{E = \mu} (\kb T)^n \int_{-\infty}^{\infty}\frac{x^n\e^x}{(\e^x + 1)^2} \dd{x} \\ 
+          &\simeq \frac{V}{2\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2} \qty(\frac{2}{3}\mu^{3/2} + \frac{\pi^2}{12}\qty(\kb T)^2\mu^{-1/2}) \label{total-electron-2}
+        \end{align}
+        となる．\refe{total-electron-3}の右辺は，\refe{electron-number}が成立するから，
+        \begin{align}
+          \frac{V}{3\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2} \Ef^{3/2} = \frac{V}{2\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2} \qty(\frac{2}{3}\mu^{3/2} + \frac{\pi^2}{12}\qty(\kb T)^2\mu^{-1/2}) \label{total-electron-4}
+        \end{align}
+        を$\mu$について解けばよい．\refe{total-electron-4}は，
+        \begin{align}
+          \frac{\Ef^{3/2}}{1 + \frac{\pi^2}{8}\qty(\frac{\kb T}{\Ef})^2\qty(\frac{\Ef}{\mu})^2} = \mu^{3/2}
+        \end{align}
+        であり，$\Ef \simeq \mu$かつ，$\frac{\kb T}{\Ef} \ll 1$であるから，分母を1次近似して，
+        \begin{align}
+          \mu = \Ef\qty[1 - \frac{\pi^2}{12}\qty(\frac{\kb T}{\Ef})^2] \label{chemical-potential}
+        \end{align}
+        を得る．\refe{chemical-potential}を\refe{electron-energy-7}に代入して，$(\kb T)$の2次まで展開すると，
+        \begin{align}
+          E_{\r{tot}} &= \frac{V}{2\pi^2}\qty(\frac{2\pi}{\hbar^2})^{3/2}\qty[\frac{2}{5}\Ef^{5/2}\qty(1 - \frac{\pi^2}{12}\qty(\frac{\kb}{T})^2)^{5/2} + \frac{\pi^2}{4}\Ef^{1/2}(\kb T)^2\qty(1 - \frac{\pi^2}{12}\qty(\frac{\kb}{T})^2)^{-1/2}] \\ 
+          &= \frac{V}{2\pi^2}\qty(\frac{2\pi}{\hbar^2})^{3/2}\qty(\frac{2}{5}\Ef^{5/2} + \frac{\pi^2}{6}\Ef^{1/2}(\kb T)^2) \label{electron-energy-8}
+        \end{align}
+        となる．よって比熱は，
+        \begin{align}
+          C &= \pdv{E_{\r{tot}}}{T} \\
+          &= \frac{V}{6}\qty(\frac{2m}{\hbar^2})^{3/2}\kb^2 \Ef^{1/2}
+        \end{align}
+        と求まる．
+  \chapter{熱の現象論的解釈}
+    略
+  \chapter{Boltzmann方程式より求める電気伝導}
+    \section{Boltzmann方程式}
+      3次元中の電子について考察を行う．
+      電子の運動方程式と，de Bloglieの関係式を用いると，
+      \begin{align}
+        \dv{\bm{p}}{t} &= -e\bm{E} \label{newton-eq} \\
+        \bm{p} &= \hbar\bm{k} \label{de-broglie}
+      \end{align}
+      である．
+      \refe{newton-eq}と\refe{de-broglie}を用いると，
+      \begin{align}
+        \dv{\bm{k}}{t} &= -\frac{e\bm{E}}{\hbar} \label{de-broglie-newton} \\ 
+        \bm{v} &= \frac{\hbar\bm{k}}{m^*}
+      \end{align}
+      を得る．
+      また，電子の分散関係は，3次元自由電子を考えているから，
+      \begin{align}
+        E(\bm{k}) = \frac{\hbar \abs{\bm{k}}^2}{2m^*} \label{dispersion-relation}
+      \end{align}
+      である．
+      3電子を$6$次元位相空間において考えると，電子の密度は分布函数$g(\bm{r}, \hbar\bm{k}, t)$で書ける．
+      つまり，全粒子数を$N$，体積を$V$とすると，
+      \begin{align}
+        \frac{N}{V} = \int g(\bm{r}, \hbar\bm{k}, t)\dd{\bm{r}}\dd{\bm{k}}\dd{t} \label{density}
+      \end{align}
+      である．なお，ある温度$T$で固定したときのFermi-Dirac分布関数は，
+      \begin{align}
+        N &= \int f(E(\bm{k}), T)\dd{E} \\
+        &= \int f(E(\bm{k}),T) \frac{V}{(2\pi)^3} \dd{\bm{k}} \label{fermi-dirac}
+      \end{align}
+      を満たす．
+      分布函数$g$の外場$\bm{E}$による時間発展を考える．$\bm{r}$と$\bm{k}$は$t$を変数に持つ函数であることに注意すると，分布函数の全微分は，
+      \begin{align}
+        \dd{g} &= \pdv{g}{t}\dd{t} + \pdv{g}{\bm{r}}\cdot \dd{\bm{r}} + \pdv{g}{\bm{k}}\cdot \dd{\bm{k}} \label{boltzmann-total-diff} \\ 
+        &= \pdv{g}{t}\dd{t} + \pdv{g}{\bm{r}}\cdot \pdv{\bm{r}}{t}\dd{t} + \pdv{g}{\bm{k}}\cdot \pdv{\bm{k}}{t}\dd{t} \\ 
+        &= \pdv{g}{t}\dd{t} + \pdv{g}{\bm{r}}\cdot \bm{v}_{g}\dd{t} + \pdv{g}{\bm{k}}\cdot \frac{\bm{F}}{\hbar}\dd{t} 
+      \end{align}
+      となる．ここで，外場が定常状態であり，電子は空間に一様に分布することを仮定すると，
+      \begin{align}
+        \pdv{g}{t} = 0, \pdv{g}{\bm{r}} = 0
+      \end{align}
+      となるから，\refe{boltzmann-total-diff}は，
+      \begin{align}
+        \dd{g} &= \pdv{g}{\bm{k}}\dd{\bm{k}} \\ 
+        &= \pdv{g}{E}\pdv{E}{\bm{k}}\pdv{\bm{k}}{t}\dd{t} \\
+        &= \pdv{g}{\bm{k}}\frac{\hbar^2\bm{k}}{m^*}\qty(-\frac{e\bm{E}}{\hbar})\dd{t} \label{boltzmann-total-diff-2}
+      \end{align}
+      となる．途中の式変形で，\refe{de-broglie-newton}と，\refe{dispersion-relation}を用いた．
+      ここで，分布函数の時間発展が，平衡状態の分布函数$g_0$からの微小変化であると仮定すると，分布函数は変化を打ち消す方向に変化することから，
+      \begin{align}
+        \dv{g}{t} = -\frac{g - g_0}{\tau} \label{boltzmann-time-evolution}
+      \end{align}
+      と書ける．\refe{boltzmann-time-evolution}を\refe{boltzmann-total-diff-2}に代入して，
+      \begin{align}
+        g = g_0 + \frac{e\hbar\tau}{m^*}\bm{E}\cdot \bm{k}\pdv{g}{E}
+      \end{align}
+      を得る．
+      $g$は実質的に$\bm{k}$のみの函数であるから，\refe{fermi-dirac}を用いて，
+      \begin{align}
+        g = \frac{f}{(2\pi)^3} \label{g-f}
+      \end{align}
+      となる．
+    \section{電流密度の計算}
+      さて，得られた分布函数を用いて，電流密度を求める．電流密度$\bm{j}$は，スピンを考慮することにより，
+      \begin{align}
+        \bm{j} &= -2e\int g(\bm{r}, \hbar\bm{k}, t)\bm{v}\dd{\bm{k}} \\ 
+        &= -2e\int \qty(g_0 + \frac{e\tau\hbar}{m^*} \bm{E}\cdot\bm{k}\pdv{g}{E})\bm{v}\dd{\bm{k}} \label{current-density}
+      \end{align}
+      平衡状態では，$\bm{v}$は等方的であるから，積分の第1項は0である．\refe{g-f}を用いて，\refe{current-density}の第2項を計算すると，
+      \begin{align}
+        -\frac{2e^2\tau\hbar}{(2\pi)^3m*} \int \bm{E}\cdot \bm{k}\pdv{f}{E}\bm{v}\dd{\bm{k}}
+      \end{align}
+      となる．かかった電場が$x$方向のみであるとき，
+      \begin{align}
+        j_x &= -\frac{2e^2\tau\hbar}{(2\pi)^3m^*} \int E_xk_x\pdv{f}{E}v_x\dd{\bm{k}} \\ 
+        &= -\frac{e^2\tau\hbar}{4\pi^3m^*}E_x\int k_x\pdv{f}{E}v_x\dd{\bm{k}} \label{current-density-x}
+      \end{align}
+      となる．\refe{dispersion-relation}を用いて，\refe{current-density-x}を計算する．
+      Fermi球の体積の微小変化と，\refe{dispersion-relation}を用いると，
+      \begin{align}
+        \dd{\bm{k}} &= 4\pi k^2\dd{k} \\
+        \dd{E} &= \frac{\hbar^2k}{m^*}\dd{k}
+      \end{align}
+      である．これを\refe{current-density-x}に代入して，
+      \begin{align}
+        j_x = -\frac{2 e^2\tau\sqrt{2m^*}}{3\hbar^3\pi^2}\int_{0}^{\infty} \pdv{f}{E}E^{3/2}\dd{E}
+      \end{align}
+      となる．$\pdv{f}{E}$は，$f$がFermi-Dirac分布関数であることから，デルタ函数を用いて近似できて，
+      \begin{align}
+        \pdv{f}{E} = -\delta(E - E_{\r{F}})
+      \end{align}
+      とすると，\refe{electron-density}を用いて，
+      \begin{align}
+        j_x &= \frac{2 e^2\tau\sqrt{2m^*}}{3\hbar^3\pi^2}E_{\r{F}}^{3/2} \\ 
+        &= \frac{2 e^2\tau\sqrt{2m^*}}{3\hbar^3\pi^2}\qty(\frac{\hbar^2k_{\r{F}}^2}{2m^*})^{3/2} \\
+        &= \frac{ne^2\tau}{m^*}
+      \end{align}
+      と計算できる．これは，平均緩和時間を$\tau$としたときのDrudeモデルの電気伝導度$\sigma$と一致する．
+  \chapter{ほとんど自由な電子モデルより求める分散関係}
+    \section{Sch\"odinger方程式}
+      結晶中に$N$個の電子，$L$個の原子核があるとする．
+      電子の位置ベクトルを$\bm{r}_i$，原子核の位置ベクトルを$\bm{u}_k$と定義する．
+      電子の位置ベクトルとスピンの上下$\sigma_i$をまとめて$\xi_i = (\bm{r}_i, \sigma_i)$とする．
+      Sch\"odinger方程式は，
+      \begin{align}
+        \hat{H}\Psi\qty(\qty{\xi_i}, \qty{u_k}) = E\Psi\qty(\qty{\xi_i}, \qty{u_k})
+      \end{align}
+      となる．
+      電子は一様に$-e < 0$の電荷を持っていて，$k$番目の原子核は$Z_k$の電荷を持っているとする．
+      この系のハミルトニアンは，
+      \begin{align}
+        \hat{H} = \sum_{i}\qty(-\frac{\hbar^2}{2m}\laplacian_{\bm{r}_i})
+        + \sum_{k}\qty(-\frac{\hbar^2}{2m}\laplacian_{\bm{r}_k})
+        + \sum_{i, k}\frac{Z_k e^2}{4\pi\epsilon_0\abs{\bm{r}_i - \bm{u}_k}} 
+        + \sum_{i < j}\frac{e^2}{4\pi\epsilon_0\abs{\bm{r}_i - \bm{r}_j}}
+        + \sum_{k < l}\frac{Z_kZ_l}{4\pi\epsilon_0\abs{\bm{u}_k - \bm{u}_l}}
+      \end{align}
+      である．原子核は電子核に比べて非常に重いため，右辺の第2項は無視できる．
+      また，原子核間のCoulombポテンシァルは，系全体のエネルギーを定数分だけ変えるだけであるから，それが0になるようにエネルギーの原点を取る．
+      今から議論するハミルトニアンは，
+      \begin{align}
+        \hat{H} = \sum_{i}\qty(-\frac{\hbar^2}{2m}\laplacian_{\bm{r}_i})
+        + \sum_{i, k}\frac{Z_k e^2}{4\pi\epsilon_0\abs{\bm{r}_i - \bm{u}_k}}
+        + \sum_{i < j}\frac{e^2}{4\pi\epsilon_0\abs{\bm{r}_i - \bm{r}_j}} \label{hamiltonian}
+      \end{align}
+      となる．これはつまり，ハミルトニアンが原子核の位置ベクトルに対して作用しないので，Sch\"odinger方程式は，
+      \begin{align}
+        \hat{H}\Psi\qty(\qty{\xi_i}) = E\Psi\qty(\qty{\xi_i})
+      \end{align}
+      となる．
+      電子のフェルミオン的性質を考えれば，個々の波動函数を$\psi_i(\xi_j)$とすると，全体の波動函数$\Psi$は，
+      \begin{align}
+        \Psi\qty(\qty{\xi_i}) &= \frac{1}{\sqrt{N!}}\det
+        \begin{pmatrix}
+          \psi_1(\xi_1) & \psi_1(\xi_2) & \cdots & \psi_1(\xi_N) \\
+          \psi_2(\xi_2) & \psi_2(\xi_2) & \cdots & \psi_2(\xi_N) \\
+          \vdots & \vdots & \ddots & \vdots \\
+          \psi_N(\xi_1) & \psi_N(\xi_2) & \cdots & \psi_N(\xi_N)
+        \end{pmatrix}\\ 
+        &= \frac{1}{\sqrt{N!}}\sum_{s\in\sigma(N)} \r{sgn}(s) \prod_{i = 1}^{N}\psi_{s(i)}(\xi_i)
+      \end{align}
+      と書ける．
+      \refe{hamiltonian}の右辺の第1項と第2項をまとめて$\hat{A}_i$，第3項を$\hat{B}_{ij}$とする．
+      エネルギーの平均値を計算する．
+      \begin{align}
+        \ev{H} &= \sum_{i}\ev{\hat{A}_i} + \sum_{i < j}\ev{\hat{B}_{ij}} \\
+        &= \sum_{i}\bra{\psi_i}\hat{A}_i\ket{\psi_i} 
+        + \sum_{i < j}\bra{\psi_i}\bra{\psi_j}\hat{B}_{ij}\ket{\psi_i}\ket{\psi_j} - \sum_{i < j}\bra{\psi_i}\bra{\psi_j}\hat{B}_{ij}\ket{\psi_j}\ket{\psi_i} \label{energy-expectation}
+      \end{align}
+      となる．ここで，$\braket{\psi_i}{\psi_j} = \delta^j_i$となることを用いた．
+      $\braket{\psi_i}{\psi_i} = 1$なる束縛条件で，$\ev{H}$の極値をLangrangeの未定乗数法を用いて計算する．
+      ラグランジアン$L$を
+      \begin{align}
+        L = \ev{H} - \sum_i(\lambda_i\braket{\psi_i}{\psi_i} - 1)\label{lagrange}
+      \end{align}
+      とする．
+      $\bra{\psi_i}$が微小変化して，$\bra{\psi_i} + \bra{\delta\psi_i}$となったとき，\refe{lagrange}は，
+      \begin{align}
+        0 = \sum_{i}\bra{\delta\psi_i}\hat{A}_i\ket{\psi_i}
+        + \sum_{i < j}\bra{\delta\psi_i}\bra{\psi_j}\hat{B}_{ij}\ket{\psi_i}\ket{\psi_j} - \sum_{i < j}\bra{\delta\psi_i}\bra{\psi_j}\hat{B}_{ij}\ket{\psi_j}\ket{\psi_i} - \sum_{i}\lambda_i\braket{\delta\psi_i}{\psi_i} \\ 
+        \Leftrightarrow
+        \lambda_i\ket{\psi_i} = \hat{A}_i\ket{\psi_i} + \qty{\sum_{j}\bra{\psi_j}\hat{B}_{ij}\ket{\psi_j}}\ket{\psi_j} - \qty{\sum_{j}\bra{\psi_j}\hat{B}_{ij}\ket{\psi_i}}\ket{\psi_i}
+      \end{align}
+      となる．右辺の第1項における$\hat{A}_i$の第2項以降と，右辺の第2項，第3項をまとめて$V$とすると，
+      \begin{align}
+        \qty(-\frac{\hbar^2}{2m}\laplacian + V)\ket{\psi_i} = \lambda_i\ket{\psi_i} \label{schrodinger-eq}
+      \end{align}
+      と書ける．つまり，今回考えた系では，$N$電子の波動函数は，1電子のSch\"odinger方程式を満たす．
+    \section{Blochの定理を用いたバンド計算}
+      $V$を既知として，\refe{schrodinger-eq}の固有値，固有函数を計算する．
+      結晶中の波動函数はBlochの定理を満足する．
+      つまり，
+      \begin{align}
+        \psi(\bm{r} + \bm{R}) = \exp\qty(\i \bm{k}\cdot \bm{R})\psi(\bm{r})\label{bloch}
+      \end{align}
+      である．ただし$\bm{R}$は基本並進ベクトルである．
+      \refe{bloch}は別の表式をすることができて，
+      \begin{align}
+        \psi_{\bm{k}}(\bm{r}) = \exp\qty(\i \bm{k}\cdot \bm{r})u_{\bm{k}}(\bm{r})\ \text{かつ}\ u_{\bm{k}}(\bm{r} + \bm{R}) = u_{\bm{k}}(\bm{r}) \label{bloch-2}
+      \end{align}
+      もしくは，
+      \begin{align}
+        \psi_{\bm{k}}(\bm{r}) = \sum_{\bm{g}}c_{\bm{k}}(\bm{g})\exp\qty(\i \bm{g}\cdot \bm{r})
+      \end{align}
+      と書くこともできる．なお，$\bm{g}$は逆格子ベクトルである．
+      \refe{schrodinger-eq}について，ポテンシァルと波動函数の具体的な表式を議論する．
+      今回は\refe{bloch-2}の表式を用いる．
+      ポテンシァル$V$と$u$の離散Fourier変換を，
+      \begin{align}
+        V(\bm{r}) = \sum_{\bm{g}_1}\tilde{V}_{\bm{g}_1}\exp\qty(\i \bm{g}_1\cdot \bm{r}) \label{potential-fourier} \\
+        u_{\bm{k}}(\bm{r}) = \frac{1}{\sqrt{V}}\sum_{\bm{g}_2}C_{\bm{g}_2}\exp\qty(\i \bm{g}_2\cdot \bm{r}) \label{u-fourier}
+      \end{align}
+      と定義する．$\bm{g}, \bm{g}_1, \bm{g}_2$は逆格子ベクトルである．
+      なお，
+      \begin{align}
+        \delta_{\bm{g}_a}^{\bm{g}_b} = \frac{1}{V}\int \exp\qty(\i \bm{g}_{\r{A}}\cdot \bm{r})\exp\qty(-\i \bm{g}_{\r{B}}\cdot \bm{r})\dd{\bm{r}} \label{delta}
+      \end{align}
+      となるように規格化されていることに注意する．
+      \refe{potential-fourier}と\refe{u-fourier}を\refe{schrodinger-eq}に代入すると，
+      \begin{align}
+        \qty(-\frac{\hbar^2}{2m} \laplacian + \sum_{\bm{g}_1} \tilde{V}_{\bm{g}_1} \exp\qty(\i \bm{g}_1 \cdot \bm{r}))\exp(\i \bm{k}\cdot\bm{r})\frac{1}{\sqrt{V}}\sum_{\bm{g}_2} C_{\bm{g}_2}\exp\qty(\i \bm{g}_2\cdot\bm{r}) = \frac{E}{\sqrt{V}}\sum_{\bm{g}_2}C_{\bm{g}_2}\exp\qty(\i \bm{g}_2\cdot\bm{r})\exp\qty(\i \bm{k}\cdot\bm{r}) \\ 
+        \Leftrightarrow \frac{\hbar^2}{2m}\frac{1}{\sqrt{V}}\sum_{\bm{g}_2}C_{\bm{g}_2}\qty(\bm{g}_2 + \bm{k})^2 \exp\qty(\i \qty(\bm{g}_2 + \bm{k})\cdot\bm{r})
+        + \frac{1}{\sqrt{V}}\sum_{\bm{g}_1}\sum_{\bm{g}_2}\tilde{V}_{\bm{g}_1}C_{\bm{g}_2}\exp\qty(\i (\bm{g}_2 + \bm{k})\cdot \bm{r}) 
+        = E\sum_{\bm{g}_2}C_{\bm{g}_2}\exp\qty(\i \qty(\bm{g}_2 + \bm{k})\cdot\bm{r}) \label{schrodinger-fourier} 
+      \end{align}
+      となる．\refe{schrodinger-fourier}に$V\exp\qty(-\i (\bm{g} + \bm{k})\cdot \bm{r})$をかけて，$\bm{r}$について積分すると，
+      \begin{align}
+        \forall \bm{g}\ \qty[\frac{\hbar^2}{2m}\qty(\bm{g} + \bm{k})^2 - E] C_{\bm{g}} + \sum_{\bm{g}_1}\tilde{V}_{\bm{g}_1}C_{\bm{g} - \bm{g}_1} = 0 \label{schrodinger-fourier-2}
+      \end{align}
+      を得る．
+    \section{2波近似}
+      $\psi$の函数系に制限を課して，\refe{schrodinger-fourier-2}の固有値と固有函数を考える．
+      $u_{\bm{k}}$の展開係数$C_{\bm{g}_2}$が$C_{\bm{0}}$と$C_{\bm{g}_m}$のみ非零である状況を考える．
+      $V$が1種類の正弦波と定数の和で書けたときを考える．
+      % つまり，
+      % % \begin{align}
+      % %   V(\bm{r}) &= \sum_{\bm{g}}\tilde{V}_{\bm{g}}\exp\qty(\i \bm{g}\cdot \bm{r}) \\ 
+      % %   &= \tilde{V}_{\bm{0}} + \tilde{V}_{\bm{g}_m}\exp\qty(\i \bm{g}_m\cdot \bm{r}) + \tilde{V}_{-\bm{g}_m}\exp\qty(-\i \bm{g}_m\cdot \bm{r}) \\ 
+      % %   &= V_0 + 2V_m\cos(\bm{g}_m\cdot \bm{r})
+      % % \end{align}
+      % なる状況を考える．
+      このとき，\refe{schrodinger-fourier-2}は，
+      \begin{align}
+        & \begin{dcases}
+          \qty[\frac{\hbar^2}{2m}\qty(\bm{0} + \bm{k})^2 - E]C_{\bm{0}} + \sum_{\bm{g}_1}\tilde{V}_{\bm{g}_1}C_{-\bm{g}_1} = 0 \\
+          \qty[\frac{\hbar^2}{2m}\qty(\bm{g} + \bm{k})^2 - E]C_{\bm{g}_m} + \sum_{\bm{g}_1}\tilde{V}_{\bm{g}_1}C_{-\bm{g}_1} = 0
+        \end{dcases} \\ 
+        & \Leftrightarrow
+        \begin{dcases}
+          \qty[\frac{\hbar^2}{2m}\bm{k}^2 - E]C_{\bm{0}} + \tilde{V}_{\bm{0}}C_{\bm{0}} + \tilde{V}_{-\bm{g}_m}C_{\bm{g}_m} = 0 \\
+          \qty[\frac{\hbar^2}{2m}\qty(\bm{g}_m + \bm{k})^2 - E]C_{\bm{g}_m} + \tilde{V}_{\bm{g}_m}C_{\bm{0}} + \tilde{V}_{\bm{0}}C_{\bm{g}_m} = 0
+        \end{dcases} \\ 
+        & \Leftrightarrow
+        \begin{pmatrix}
+          \qty(\frac{\hbar^2\bm{k}^2}{2m} - E) + \tilde{V}_{\bm{0}} & \tilde{V}_{-\bm{g}_m} \\
+          \tilde{V}_{\bm{g}_m} & \qty(\frac{\hbar^2\qty(\bm{g}_m + \bm{k})^2}{2m} - E) + \tilde{V}_{\bm{0}}
+        \end{pmatrix}
+        \begin{pmatrix}
+          C_{\bm{0}} \\ 
+          C_{\bm{g}_m}
+        \end{pmatrix}
+        = 
+        \begin{pmatrix}
+          0 \\ 
+          0 
+        \end{pmatrix} \label{schrodinger-matrix}
+      \end{align}
+      となる．\refe{schrodinger-matrix}において，$C_{\bm{0}} = C_{\bm{g}_m} = 0$でない，非自明な解が存在するためには，行列式が0になる必要がある．
+      つまり，
+      \begin{align}
+        \qty(-E + \tilde{V}_{\bm{0}})^2 + \frac{\hbar^2}{2m}\qty[\qty(\bm{g}_m + \bm{k})^2 + \bm{k}]\qty(-E + \tilde{V}_{\bm{0}}) + \qty(\frac{\hbar^2}{2m})^2\bm{k}^2\qty(\bm{g}_m + \bm{k})^2 - \tilde{V}_{\bm{g}_m}\tilde{V}_{-\bm{g}_m} = 0
+      \end{align}
+      となる．これを，
+      \begin{align}
+        \bm{k} = -\frac{\bm{g}_m}{2}
+      \end{align}
+      の元で解くと，エネルギー固有値は，
+      \begin{align}
+        E_{\pm} = \tilde{V}_{\bm{0}} + \frac{\hbar^2}{8m}\bm{g}_m^2 \pm \abs{V_{\bm{g}_m}} \label{energy}
+      \end{align}
+      となる．\refe{energy}を\refe{schrodinger-matrix}に代入すると，
+      \begin{align}
+        \begin{pmatrix}
+          \mp \abs{\tilde{V}_{\bm{g}_m}} & \tilde{V}_{-\bm{g}_m} \\
+          \tilde{V}_{\bm{g}_m} & \mp \abs{\tilde{V}_{\bm{g}_m}}
+        \end{pmatrix}
+        \begin{pmatrix}
+          C_{\bm{0}} \\ 
+          C_{\bm{g}_m}
+        \end{pmatrix}
+        = \begin{pmatrix}
+          0 \\ 
+          0
+        \end{pmatrix}
+      \end{align}
+      となる．ここで，$\tilde{V}_{\bm{g}_m}$が負の実数であるとすると，$C_{\bm{0}}$と$C_{\bm{g}_m}$の関係が，
+      \begin{align}
+        C_{\bm{0}} = \mp C_{\bm{g}_m}
+      \end{align}
+      と求まり，\refe{u-fourier}と\refe{bloch-2}を用いると，
+      \begin{align}
+        &\begin{dcases}
+          \psi^{+}(\bm{r}) \propto \cos \frac{\bm{g}_m\cdot\bm{r}}{2} \\ 
+          \psi^{-}(\bm{r}) \propto \sin \frac{\bm{g}_m\cdot\bm{r}}{2}
+        \end{dcases}\label{wave-function}
+      \end{align}
+      ここで，\refe{energy}の複号と，\refe{wave-function}の複号は反転していることに注意する．以上の手続きにより，
+      $N$個の電子，$L$個の原子核が存在するときのエネルギー固有値と固有函数を求めることができた．
+    \section{有効質量近似}
+  \chapter{強束縛近似より求める分散関係}
+    \section{Blochの定理から出発する強束縛近似}
+      結晶全体に広がる電子について考察する．
+      全体の波動函数$\psi(\bm{r})$は，$R_i$での個々の波動函数$\phi(\bm{r} - \bm{R}_i)$の線型結合で書けるとすれば，
+      \begin{align}
+        \psi(\bm{r}) = \sum_{i}C_i\phi(\bm{r} - \bm{R}_i)
+      \end{align}
+      である．$\psi$が$\bm{R}$だけ並進ベクトルによって平行移動することを考える．
+      \begin{align}
+        \psi(\bm{r} + \bm{R}) &= \sum_{i}C_i\phi(\bm{r} + \bm{R} - \bm{R}_i) \\
+        &= \sum_{i'}C_{i'}\phi(\bm{r} - \bm{R}_{i'})
+      \end{align}
+      となる．ここで，$\bm{R} = \bm{R}_i - \bm{R}_{i'}$とした．
+      $\psi$はBlochの定理を満たすから，\refe{bloch}の表現を用いて，
+      \begin{align}
+        \psi(\bm{r}) = \frac{1}{\sqrt{N}}\sum_{i}\exp(\i \bm{k}\cdot \bm{R}_i)\phi(\bm{r} - \bm{R}_i) \label{bloch-psi}
+      \end{align}
+      と書ける．
+      いま，系は，電子間相互作用がないときに摂動が加わった状態だと考えられるから，
+      孤立系でのハミルトニアンを$\hat{H}_0$，摂動を$\hat{H}_{\r{int}}$として，系のハミルトニアン$\hat{H}$は，
+      \begin{align}
+        \hat{H} = \hat{H}_0 + \hat{H}_{\r{int}}
+      \end{align}
+      とかける．系のエネルギー期待値を計算する．
+      孤立系でのエネルギー期待値は，$\ev{H_0} = E_0$として，摂動エネルギー期待値$\ev{H_{\r{int}}}$は，\refe{bloch-psi}を用いながら，
+      \begin{align}
+        \ev{H_{\r{int}}} &= \int \psi^*(\bm{r})\hat{H}_{\r{int}}\psi(\bm{r})\dd{\bm{r}} \\ 
+        &= \frac{1}{N} \int \qty{\sum_i \exp\qty(-\i\bm{k}\cdot\bm{R}_i)}\hat{H}_{\r{int}}\qty{\sum_j \exp\qty(\i\bm{k}\cdot\bm{R}_j)}\dd{\bm{r}} \\
+        &= \frac{1}{N}\sum_i\sum_j \exp\qty{-\i\bm{k}\cdot(\bm{R}_i - \bm{R}_j)}\int \phi^*(\bm{r} - \bm{R}_i)\hat{H}_{\r{int}}\phi(\bm{r} - \bm{R}_j)\dd{\bm{r}} 
+      \end{align}
+      ここで，$\bm{r}_{ij} = \bm{R}_i - \bm{R}_j$として，$\bm{r}' = \bm{r} - \bm{R}_j$と定義すると，
+      \begin{align}
+        &= \frac{1}{N}\sum_i\sum_j \exp\qty{-\i\bm{k}\cdot\bm{r}_{ij}}\int \phi^*(\bm{r}' - \bm{r}_{ij})\hat{H}_{\r{int}}\phi(\bm{r}')\dd{\bm{r}'} \label{energy-expectation-2} \\ 
+        &= \sum_i \exp\qty{-\i\bm{k}\cdot\bm{r}_{ii}}\int \phi^*(\bm{r} - \bm{r}_{ii})\hat{H}_{\r{int}}\phi(\bm{r})\dd{\bm{r}} \label{energy-expectation-3}
+      \end{align}
+      となる．\refe{energy-expectation-2}において，異なる$j$に関する和は$N$倍した．
+      \refe{energy-expectation-3}において，$\bm{r}_{ii} = \bm{0}$と，$\bm{r}_{ii} \in \r{NN}$(NN: Nearest Neighbour)についてのみ考えればよい近似をする．
+      このとき，\refe{energy-expectation-3}において，
+      \begin{align}
+        -\alpha = \int \phi^*(\bm{r})\hat{H}_{\r{int}}\phi(\bm{r})\dd{\bm{r}} \\ 
+        -\gamma = \int \phi^*(\bm{r} - \bm{r}_{ii})\hat{H}_{\r{int}}\phi(\bm{r})\dd{\bm{r}}
+      \end{align}
+      とすると，\refe{energy-expectation-3}は，
+      \begin{align}
+        \ev{H_{\r{int}}} = -\alpha -\gamma\sum_{\bm{r}_{ii} \in \r{NN}} \exp\qty{-\i\bm{k}\cdot\bm{r}_{ii}}
+      \end{align}
+      と求まる．特に，一次元に等間隔に並んだ格子では，
+      \begin{align}
+        \ev{H_{\r{int}}} &= -\alpha - \gamma\qty(\exp\qty(-\i k_xa) + \exp\qty(\i k_xa)) \\ 
+        &= -\alpha - 2\gamma\cos(k_xa)
+      \end{align}
+      となる．
+    \section{波動函数をサイト函数で展開する強束縛近似}
+  \chapter{半導体物性}
+    \section{真性半導体}
+    \section{P型半導体}
+      \subsection{定性的な考察}
+      \subsection{定量的な考察}
+    \section{N型半導体}
+      \subsection{定性的な考察}
+      \subsection{定量的な考察}
+  \appendix
+  \chapter{数学公式}
+    ガンマ函数$\Gamma$は，
+    \begin{align}
+      \Gamma(s) = \int_{0}^{\infty}t^{s - 1}\exp(-t)\dd{t}
+    \end{align}
+    であり，とくに$n\in \mathbb{N}$に対して，
+    \begin{align}
+      \Gamma(n) = (n - 1)!
+    \end{align}
+    である．リーマンゼータ函数$\zeta$は，
+    \begin{align}
+      \zeta(s) = \sum_{n = 1}^{\infty}\frac{1}{n^s}
+    \end{align}
+    である．特に，
+    \begin{align}
+      \zeta(0) &= -\frac{1}{2} \\ 
+      \zeta(2) &= \frac{\pi^2}{6} \\ 
+      \zeta(4) &= \frac{\pi^4}{90}
+    \end{align}
+    が成立して，
+    \begin{align}
+      \int_{0}^{\infty} \frac{x^{s - 1}}{\e^x - 1} \dd{x} = \zeta(s)\Gamma(s) 
+    \end{align}
+    が成立する．
+\end{document}
