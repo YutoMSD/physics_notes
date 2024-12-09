@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="harry_arbrebleu" />
+  <meta name="dcterms.date" content="2024-08-02" />
+  <title>物性物理II</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">物性物理II</h1>
+<p class="author"><code>harry_arbrebleu</code></p>
+<p class="date">2024-08-02</p>
+</header>
+<h1
+id="調和振動子モデルより求めるフォノン比熱">調和振動子モデルより求めるフォノン比熱</h1>
+<h2 id="古典的な調和振動子モデル">古典的な調和振動子モデル</h2>
+<h3 id="次元1種電子">1次元1種電子</h3>
+<p><span class="math inline"><em>N</em></span>個の質量<span
+class="math inline"><em>m</em></span>の電子の運動がバネ定数を<span
+class="math inline"><em>K</em></span>とした1次元の調和振動子モデルのように書けたとする．
+これは，Lenard-Jonesポテンシァルを2次近似したときに対応する． <span
+class="math inline"><em>j</em></span>番目の電子の運動方程式は， <span
+class="math display">$$\begin{aligned}
+            m \dv[2]{u_j}{t} = K(u_{j + 1} - u_j) - K(u_j - u_{j - 1})
+\label{1d-1electron-newton-eq}
+          
+\end{aligned}$$</span> のようになる． この方程式の解が， <span
+class="math display">$$\begin{aligned}
+            u_j = \exp\qty(i(kja - \omega t)) \label{1d-solution}
+          
+\end{aligned}$$</span> を満たすとする．<strong>式<a href="#1d-solution"
+data-reference-type="eqref"
+data-reference="1d-solution">[1d-solution]</a></strong>を<strong>式<a
+href="#1d-1electron-newton-eq" data-reference-type="eqref"
+data-reference="1d-1electron-newton-eq">[1d-1electron-newton-eq]</a></strong>に代入すると，
+<span class="math display">$$\begin{aligned}
+            m\omega^2 &amp;= K(2 - 2\cos ka) \\
+            \Leftrightarrow \omega &amp;= \sqrt{\frac{4K}{m}}\abs{\sin
+\frac{ka}{2}} \label{1d-dispersion-relation}
+          
+\end{aligned}$$</span> となる．ただし，<span
+class="math inline"><em>ω</em></span>は時間周波数であるから<span
+class="math inline"><em>ω</em> &lt; 0</span>は物理的に意味を持たない．
+また，<span
+class="math inline"><em>k</em></span>は空間周波数であるから，原子間隔より短い波長は物理的に意味を持たないため，<span
+class="math inline"><em>k</em> ≤ <em>π</em>/2</span>である．</p>
+<h3 id="次元2種原子">1次元2種原子</h3>
+<p>略</p>
+<h2 id="量子化された調和振動子モデル">量子化された調和振動子モデル</h2>
+<h3 id="量子化の手続き">量子化の手続き</h3>
+<p>ハミルトニアンのFourier変換などを行うことにより， <span
+class="math display">$$\begin{aligned}
+          C &amp;= \pdv{U}{T} \\
+          &amp;=
+\pdv{T}\qty[\sum_s\sum_{\bm{k}}\frac{\hbar\omega_{\bm{k},
+s}}{\exp\qty(\frac{\hbar\omega_{\bm{k}, s}}{k_{\mathrm{B}}T}) - 1}]
+\label{phonon-c}
+        
+\end{aligned}$$</span> を得る．</p>
+<h3 id="高温近似dulong-petitの結果">高温近似(Dulong-Petit)の結果</h3>
+<p><span class="math inline"><em>T</em></span>が高温の領域では， <span
+class="math display">$$\begin{aligned}
+          \exp\qty(\frac{\hbar\omega_{\bm{k}, s}}{k_{\mathrm{B}}T})
+\simeq 1 + \frac{\hbar\omega_{\bm{k}, s}}{k_{\mathrm{B}}T}
+        
+\end{aligned}$$</span> なる関係式が成立するから，これを<strong>式<a
+href="#phonon-c" data-reference-type="eqref"
+data-reference="phonon-c">[phonon-c]</a></strong>に代入して， <span
+class="math display">$$\begin{aligned}
+          C &amp;=
+\pdv{T}\qty[\sum_s\sum_{\bm{k}}\frac{\hbar\omega_{\bm{k},
+s}}{\frac{\hbar\omega_{\bm{k}, s}}{k_{\mathrm{B}}T}}] \\
+          &amp;= \pdv{T}\sum_s\sum_{\bm{k}}k_{\mathrm{B}}T \\
+          &amp;= 3Nk_{\mathrm{B}}
+        
+\end{aligned}$$</span> を得る．</p>
+<h3 id="einsteinモデル">Einsteinモデル</h3>
+<p><span
+class="math inline"><em>T</em></span>が高温でないとについても考察を行いたい．
+Einsteinモデルでは，分散関係が， <span
+class="math display">$$\begin{aligned}
+          \omega_{\bm{k}, s} = \omega
+        
+\end{aligned}$$</span> を満たすとする． このとき，<strong>式<a
+href="#phonon-c" data-reference-type="eqref"
+data-reference="phonon-c">[phonon-c]</a></strong>は， <span
+class="math display">$$\begin{aligned}
+          C &amp;=
+\pdv{T}\qty[\sum_s\sum_{\bm{k}}\frac{\hbar\omega}{\exp\qty(\frac{\hbar\omega}{k_{\mathrm{B}}T})
+- 1}] \\
+          &amp;=
+\pdv{T}\qty[\frac{3N\hbar\omega}{\exp\qty(\frac{\hbar\omega}{k_{\mathrm{B}}T})
+- 1}] \\
+          &amp;=
+3Nk_{\mathrm{B}}\qty(\frac{\hbar\omega}{k_{\mathrm{B}}T})^2\frac{\exp\qty(\frac{\hbar\omega}{k_{\mathrm{B}}T})}{\qty[\exp\qty(\frac{\hbar\omega}{k_{\mathrm{B}}T})
+- 1]^2}
+        
+\end{aligned}$$</span> ここで， <span
+class="math display">$$\begin{aligned}
+          \Theta_E = \frac{\hbar\omega}{k_{\mathrm{B}}}
+        
+\end{aligned}$$</span> とすると， <span
+class="math display">$$\begin{aligned}
+          C =
+3Nk_{\mathrm{B}}\qty(\frac{\Theta_E}{T})^2\frac{\exp\qty(\frac{\Theta_E}{T})}{\qty[\exp\qty(\frac{\Theta_E}{T})
+- 1]^2}
+        
+\end{aligned}$$</span> を得る．</p>
+<h3 id="debyeモデル">Debyeモデル</h3>
+<p>Debyeモデルでは，分散関係が， <span
+class="math display">$$\begin{aligned}
+          \omega_{\bm{k}, s} = v\abs{\bm{k}}\ \text{かつ}\ \abs{\bm{k}}
+\leq k_{\mathrm{D}}
+        
+\end{aligned}$$</span> となるときを考える．なお<span
+class="math inline"><em>k</em><sub>D</sub></span>は，総粒子数が<span
+class="math inline"><em>N</em></span>となるように設定しているから，
+<span class="math display">$$\begin{aligned}
+          N = \int_{0}^{k_{\mathrm{D}}} \frac{V}{(2\pi)^3}\dd{\bm{k}}
+        
+\end{aligned}$$</span> である．これを解くと， <span
+class="math display">$$\begin{aligned}
+          k_{\mathrm{D}} = \qty(\frac{6\pi^2N}{V})^{1/3}
+        
+\end{aligned}$$</span> を得る． Debyeモデルでの比熱は，<strong>式<a
+href="#phonon-c" data-reference-type="eqref"
+data-reference="phonon-c">[phonon-c]</a></strong>より， <span
+class="math display">$$\begin{aligned}
+          C &amp;= \pdv{T}\qty[\sum_{s}\sum_{\bm{k}}\frac{\hbar
+v\abs{\bm{k}}}{\exp\qty(\frac{\hbar v\abs{\bm{k}}}{k_{\mathrm{B}}T}) -
+1}] \\
+          &amp;= \pdv{T}\qty[3\int_{0}^{\abs{\bm{k}} = k_{\mathrm{D}}}
+\frac{\hbar v k }{\exp\qty(\frac{\hbar v k }{k_{\mathrm{B}}T}) - 1}
+\frac{V}{(2\pi)^2}\dd{\bm{k}}] \\
+          &amp;= \frac{3Vk_{\mathrm{B}}}{(2\pi)^2}
+\int_{0}^{\abs{\bm{k}} = k_{\mathrm{D}}} \qty(\frac{\hbar
+vk}{k_{\mathrm{B}}T})^2 \frac{\exp\qty(\frac{\hbar v
+k}{k_{\mathrm{B}}T})}{\qty[\exp\qty(\frac{\hbar v k}{k_{\mathrm{B}}T}) -
+1]^2} \dd{\bm{k}} \label{c-Debye}
+        
+\end{aligned}$$</span> ここで， <span
+class="math display">$$\begin{aligned}
+          x = \frac{\hbar v k}{k_{\mathrm{B}}T}
+        
+\end{aligned}$$</span> なる変数変換を行うと，<strong>式<a
+href="#c-Debye" data-reference-type="eqref"
+data-reference="c-Debye">[c-Debye]</a></strong>は， <span
+class="math display">$$\begin{aligned}
+          \frac{3Vk_{\mathrm{B}}}{(2\pi)^2}\qty(\frac{k_{\mathrm{B}}T}{\hbar
+v})^3 \int_{0}^{\abs{\bm{k}} = k_{\mathrm{D}}}
+\frac{x^4\mathrm{e}^x}{\qty[\mathrm{e}^x - 1]^2} \dd{x}
+        
+\end{aligned}$$</span> となる． Debye温度<span
+class="math inline"><em>Θ</em><sub>D</sub></span>を， <span
+class="math display">$$\begin{aligned}
+          \Theta_{\mathrm{D}} = \frac{\hbar v
+k_{\mathrm{D}}}{k_{\mathrm{B}}}
+        
+\end{aligned}$$</span> と定義すると， <span
+class="math display">$$\begin{aligned}
+          C =
+9Nk_{\mathrm{B}}\qty(\frac{T}{\Theta_{\mathrm{D}}})^3\int_{0}^{\Theta_{\mathrm{D}}/T}
+\frac{x^4e^x}{\qty(\mathrm{e}^x - 1)^2} \dd{x}
+        
+\end{aligned}$$</span> となる．</p>
+<h1
+id="自由電子モデルより求める電子比熱">自由電子モデルより求める電子比熱</h1>
+<h2 id="絶対零度での系のエネルギー">絶対零度での系のエネルギー</h2>
+<p>時間に依存しないSchrödinger方程式は， <span
+class="math display">$$\begin{aligned}
+        \qty[-\frac{\hbar^2}{2m}\Delta+ V(\bm{r})]\psi(\bm{r}) =
+E\psi(\bm{r})
+      
+\end{aligned}$$</span> と書ける．これを変数分離を用いて解くと， <span
+class="math display">$$\begin{aligned}
+        \psi(\bm{r}) &amp;= \frac{1}{\sqrt{V}}\exp(i\bm{k}\cdot\bm{r})
+\\
+        E &amp;= \frac{\hbar^2\abs{\bm{k}}^2}{2m}
+      
+\end{aligned}$$</span> となる．系全体の電子の数<span
+class="math inline"><em>N</em></span>は <span
+class="math display">$$\begin{aligned}
+        N &amp;=
+\frac{4\pi}{3}k_{\mathrm{F}}^3   \qty(\frac{2\pi}{L})^{-3} \times 2 \\
+        &amp;= \frac{k_{\mathrm{F}}^3}{3\pi^2}V \\
+        &amp;=
+\frac{V}{3\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}E_{\mathrm{F}}^{3/2}
+\label{electron-number}
+      
+\end{aligned}$$</span> である．なお，<span
+class="math inline"><em>E</em><sub>F</sub></span>は<span
+class="math inline"><strong>k</strong><sub>F</sub></span>のときのエネルギーで，Fermiエネルギーである．電子密度<span
+class="math inline"><em>n</em></span>は， <span
+class="math display">$$\begin{aligned}
+        n &amp;= \frac{N}{V} \\
+        &amp;= \frac{k_{\mathrm{F}}^3}{3\pi^2} \label{electron-density}
+      
+\end{aligned}$$</span> となる． 系全体のエネルギー<span
+class="math inline"><em>E</em><sub>tot</sub></span>は，エネルギーが最大となるときの波数の大きさをFermi波数<span
+class="math inline"><em>k</em><sub>F</sub></span>として， <span
+class="math display">$$\begin{aligned}
+        E_{\mathrm{tot}} &amp;=
+\sum_{\bm{k}}\frac{\hbar^2\abs{\bm{k}}^2}{2m} \\
+        &amp;= \frac{V}{(2\pi)^3}\int_{0}^{k_{\mathrm{F}}}
+\frac{\hbar^2\abs{\bm{k}}^2}{2m} \dd{\bm{k}}\\
+        &amp;= \int_{0}^{k_{\mathrm{F}}} \frac{\hbar^2k^2}{2m}
+\frac{V}{(2\pi)^3}4\pi k^2 \dd{k} \\
+        &amp;= \frac{\hbar^2 V}{10\pi^2m}k_{\mathrm{F}}^5
+\label{electron-energy}
+      
+\end{aligned}$$</span> となる．言うまでもなく，<strong>式<a
+href="#electron-energy" data-reference-type="eqref"
+data-reference="electron-energy">[electron-energy]</a></strong>は定数であるため，比熱は<span
+class="math inline">0</span>である．</p>
+<h2 id="室温での系のエネルギーと比熱">室温での系のエネルギーと比熱</h2>
+<h3 id="sommerfeld展開">Sommerfeld展開</h3>
+<p>室温では，<span
+class="math inline"><em>D</em>(<em>E</em>)</span>は状態密度，<span
+class="math inline"><em>f</em>(<em>E</em>, <em>T</em>)</span>はFermi-Dirac分布関数を用いて，系全体のエネルギー<span
+class="math inline"><em>E</em><sub>tot</sub></span>は， <span
+class="math display">$$\begin{aligned}
+          E_{\mathrm{tot}} = \int_{0}^{\infty} D(E) E f(E) \dd{E}
+\label{electron-energy-2}
+        
+\end{aligned}$$</span> と書ける．なお，<span
+class="math inline"><em>D</em>(<em>E</em>)</span>は，<span
+class="math inline"><em>n</em></span>次元空間においては，状態数<span
+class="math inline"><em>J</em>(<em>E</em>)</span>を用いて， <span
+class="math display">$$\begin{aligned}
+          D(E) \coloneqq \pdv{J}{E} \\
+        
+\end{aligned}$$</span> と定義され， <span
+class="math display">$$\begin{aligned}
+          J(E) &amp;=
+\frac{(\text{$n$次元空間のFermi球の体積})}{\frac{(2\pi)^n}{\text{$n$次元空間の体積}}}
+\times 2 \\
+          E &amp;= \frac{\hbar \abs{\bm{k}}^2}{2m}
+        
+\end{aligned}$$</span> を用いて計算できる．さて，<span
+class="math inline"><em>E</em><sub>tot</sub></span>に戻ろう．
+3次元空間では， <span class="math display">$$\begin{aligned}
+          D = \frac{V}{2\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}E^{1/2}
+        
+\end{aligned}$$</span> と求まる．求まった<span
+class="math inline"><em>D</em></span>を<strong>式<a
+href="#electron-energy-2" data-reference-type="eqref"
+data-reference="electron-energy-2">[electron-energy-2]</a></strong>に代入すると
+<span class="math display">$$\begin{aligned}
+          E_{\mathrm{tot}} &amp;=
+\frac{V}{2\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}\int_{0}^{\infty}
+E^{3/2}f(E) \dd{E} \\
+          &amp;=
+\frac{V}{2\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}\int_{0}^{\infty}
+\frac{E^{3/2}}{\exp\qty(\frac{E - \mu}{k_{\mathrm{B}}T}) + 1} \dd{E}
+\label{electron-energy-3}
+        
+\end{aligned}$$</span> となる．<strong>式<a href="#electron-energy-3"
+data-reference-type="eqref"
+data-reference="electron-energy-3">[electron-energy-3]</a></strong>において，<span
+class="math inline"><em>E</em><sup>3/2</sup></span>の原始函数を<span
+class="math inline"><em>G</em>(<em>E</em>)</span>とすると，部分積分により，
+<span class="math display">$$\begin{aligned}
+          \text{\textbf{式\eqref{electron-energy-3}}の積分} &amp;=
+\qty[G(E)f(E, T)]_{0}^{\infty} - \int_{0}^{\infty} G(E)\dv{f}{E} \dd{E}
+\\
+          &amp;= \frac{1}{k_{\mathrm{B}}T}\int_{0}^{\infty}
+G(E)\frac{\exp\qty(\frac{E-
+\mu}{k_{\mathrm{B}}T})}{\qty{\exp\qty(\frac{E - \mu}{k_{\mathrm{B}}T}) +
+1}^2} \dd{E}
+        
+\end{aligned}$$</span> となる．<span
+class="math inline">$\dv{f}{E}$</span>は<span
+class="math inline"><em>E</em> ≃ <em>μ</em></span>の周りでのみ大きな値を持つため，<span
+class="math inline"><em>G</em>(<em>E</em>)</span>を<span
+class="math inline"><em>E</em> ≃ <em>μ</em></span>の周りでTaylor展開すると，
+<span class="math display">$$\begin{aligned}
+          &amp;= \frac{1}{k_{\mathrm{B}}T}\int_{0}^{\infty} \sum_{n =
+0}^{\infty} \frac{1}{n!}\left.\dv[n]{G}{E}\right|_{E = \mu}(E - \mu)^n
+\frac{\exp\qty(\frac{E - \mu}{k_{\mathrm{B}}T})}{\qty{\exp\qty(\frac{E -
+\mu}{k_{\mathrm{B}}T}) + 1}^2} \dd{E} \\
+          &amp;= \frac{1}{k_{\mathrm{B}}T}\sum_{n = 0}^{\infty}
+\frac{1}{n!}\left.\dv[n]{G}{E}\right|_{E = \mu}\int_{0}^{\infty}(E -
+\mu)^n \frac{\exp\qty(\frac{E -
+\mu}{k_{\mathrm{B}}T})}{\qty{\exp\qty(\frac{E - \mu}{k_{\mathrm{B}}T}) +
+1}^2} \dd{E} \label{electron-energy-4}
+        
+\end{aligned}$$</span>
+なお，無限和と積分の入れ替えは成立するものとしてよい．
+さて，<strong>式<a href="#electron-energy-4" data-reference-type="eqref"
+data-reference="electron-energy-4">[electron-energy-4]</a></strong>において，
+<span class="math display">$$\begin{aligned}
+          \frac{E - \mu}{k_{\mathrm{B}}T} = x
+        
+\end{aligned}$$</span> なる変数変換を行うと， <span
+class="math display">$$\begin{aligned}
+          &amp;= \sum_{n =
+0}^{\infty}\frac{1}{n!}\left.\dv[n]{G}{E}\right|_{E = \mu}
+(k_{\mathrm{B}}T)^n
+\int_{-\mu/T}^{\infty}\frac{x^n\mathrm{e}^x}{(\mathrm{e}^x + 1)^2}
+\dd{x} \label{electron-energy-5} \\
+          &amp;= \sum_{n =
+0}^{\infty}\frac{1}{n!}\left.\dv[n]{G}{E}\right|_{E = \mu}
+(k_{\mathrm{B}}T)^n
+\int_{-\infty}^{\infty}\frac{x^n\mathrm{e}^x}{(\mathrm{e}^x + 1)^2}
+\dd{x} \label{electron-energy-6}
+        
+\end{aligned}$$</span> <strong>式<a href="#electron-energy-5"
+data-reference-type="eqref"
+data-reference="electron-energy-5">[electron-energy-5]</a></strong>から<strong>式<a
+href="#electron-energy-6" data-reference-type="eqref"
+data-reference="electron-energy-6">[electron-energy-6]</a></strong>への式変形では<span
+class="math inline">−<em>μ</em>/<em>T</em></span>が非常に小さいため，積分範囲の下端を<span
+class="math inline">−∞</span>に変更した． <strong>式<a
+href="#electron-energy-6" data-reference-type="eqref"
+data-reference="electron-energy-6">[electron-energy-6]</a></strong>の積分を実行するために，
+<span class="math display">$$\begin{aligned}
+          \int_{-\infty}^{\infty} \frac{\mathrm{e}^x}{(\mathrm{e}^x +
+1)^2} \dd{x} &amp;= 1 \\
+          \int_{-\infty}^{\infty} \frac{x^2 \mathrm{e}^x}{(\mathrm{e}^x
++ 1)^2} \dd{x} &amp;= \frac{\pi^2}{3} \\
+          \int_{-\infty}^{\infty} \frac{x^4 \mathrm{e}^x}{(\mathrm{e}^x
++ 1)^2} \dd{x} &amp;= \frac{7 \pi^4}{15}
+        
+\end{aligned}$$</span> は既知のものとする．また，<span
+class="math inline">$\dv{f}{E}$</span>は偶函数に近似するので，<span
+class="math inline"><em>n</em></span>が このとき，<strong>式<a
+href="#electron-energy-6" data-reference-type="eqref"
+data-reference="electron-energy-6">[electron-energy-6]</a></strong>を<span
+class="math inline">(<em>k</em><sub>B</sub><em>T</em>)</span>の2次まで展開して，<strong>式<a
+href="#electron-energy-3" data-reference-type="eqref"
+data-reference="electron-energy-3">[electron-energy-3]</a></strong>での係数も考慮すると，
+<span class="math display">$$\begin{aligned}
+          E_{\mathrm{tot}} \simeq
+\frac{V}{2\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}\qty(\frac{2}{5}\mu^{5/2}
++ \frac{\pi^2}{4}\qty(k_{\mathrm{B}}T)^2\mu^{1/2})
+\label{electron-energy-7}
+        
+\end{aligned}$$</span> と求まる．</p>
+<h3 id="化学ポテンシァルの計算">化学ポテンシァルの計算</h3>
+<p><strong>式<a href="#electron-energy-7" data-reference-type="eqref"
+data-reference="electron-energy-7">[electron-energy-7]</a></strong>は<span
+class="math inline"><em>μ</em></span>に依存する．
+これをFermiエネルギー<span
+class="math inline"><em>E</em><sub>F</sub></span>を用いて書き直したい．
+総粒子に関する方程式， <span class="math display">$$\begin{aligned}
+          N &amp;= \int_{0}^{\infty} D(E)f(E) \dd{E}
+\label{total-electron-3} \\
+          &amp;= \frac{V}{2\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}
+\int_{0}^{\infty} E^{1/2}\frac{1}{\exp\qty(\frac{E -
+\mu}{k_{\mathrm{B}}T}) + 1} \dd{E} \label{total-electron}
+        
+\end{aligned}$$</span> を用いて考える．<strong>式<a
+href="#total-electron" data-reference-type="eqref"
+data-reference="total-electron">[total-electron]</a></strong>において，<span
+class="math inline"><em>E</em><sup>1/2</sup></span>の原始函数を<span
+class="math inline"><em>G</em>(<em>E</em>)</span>とすると，途中の式展開は<span
+class="math inline"><em>E</em><sub>tot</sub></span>の計算のときに行った<strong>式<a
+href="#electron-energy-6" data-reference-type="eqref"
+data-reference="electron-energy-6">[electron-energy-6]</a></strong>のようなSommerfeld展開と同様の計算を行えばよい．
+今回は展開を2次で打ち切ると， <span
+class="math display">$$\begin{aligned}
+          &amp;= \frac{V}{2\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2} \sum_{n
+= 0}^{\infty}\frac{1}{n!}\left.\dv[n]{G}{E}\right|_{E = \mu}
+(k_{\mathrm{B}}T)^n
+\int_{-\infty}^{\infty}\frac{x^n\mathrm{e}^x}{(\mathrm{e}^x + 1)^2}
+\dd{x} \\
+          &amp;\simeq \frac{V}{2\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}
+\qty(\frac{2}{3}\mu^{3/2} +
+\frac{\pi^2}{12}\qty(k_{\mathrm{B}}T)^2\mu^{-1/2})
+\label{total-electron-2}
+        
+\end{aligned}$$</span> となる．<strong>式<a href="#total-electron-3"
+data-reference-type="eqref"
+data-reference="total-electron-3">[total-electron-3]</a></strong>の右辺は，<strong>式<a
+href="#electron-number" data-reference-type="eqref"
+data-reference="electron-number">[electron-number]</a></strong>が成立するから，
+<span class="math display">$$\begin{aligned}
+          \frac{V}{3\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}
+E_{\mathrm{F}}^{3/2} = \frac{V}{2\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}
+\qty(\frac{2}{3}\mu^{3/2} +
+\frac{\pi^2}{12}\qty(k_{\mathrm{B}}T)^2\mu^{-1/2})
+\label{total-electron-4}
+        
+\end{aligned}$$</span> を<span
+class="math inline"><em>μ</em></span>について解けばよい．<strong>式<a
+href="#total-electron-4" data-reference-type="eqref"
+data-reference="total-electron-4">[total-electron-4]</a></strong>は，
+<span class="math display">$$\begin{aligned}
+          \frac{E_{\mathrm{F}}^{3/2}}{1 +
+\frac{\pi^2}{8}\qty(\frac{k_{\mathrm{B}}T}{E_{\mathrm{F}}})^2\qty(\frac{E_{\mathrm{F}}}{\mu})^2}
+= \mu^{3/2}
+        
+\end{aligned}$$</span> であり，<span
+class="math inline"><em>E</em><sub>F</sub> ≃ <em>μ</em></span>かつ，<span
+class="math inline">$\frac{k_{\mathrm{B}}T}{E_{\mathrm{F}}} \ll
+1$</span>であるから，分母を1次近似して， <span
+class="math display">$$\begin{aligned}
+          \mu = E_{\mathrm{F}}\qty[1 -
+\frac{\pi^2}{12}\qty(\frac{k_{\mathrm{B}}T}{E_{\mathrm{F}}})^2]
+\label{chemical-potential}
+        
+\end{aligned}$$</span> を得る．<strong>式<a href="#chemical-potential"
+data-reference-type="eqref"
+data-reference="chemical-potential">[chemical-potential]</a></strong>を<strong>式<a
+href="#electron-energy-7" data-reference-type="eqref"
+data-reference="electron-energy-7">[electron-energy-7]</a></strong>に代入して，<span
+class="math inline">(<em>k</em><sub>B</sub><em>T</em>)</span>の2次まで展開すると，
+<span class="math display">$$\begin{aligned}
+          E_{\mathrm{tot}} &amp;=
+\frac{V}{2\pi^2}\qty(\frac{2\pi}{\hbar^2})^{3/2}\qty[\frac{2}{5}E_{\mathrm{F}}^{5/2}\qty(1
+- \frac{\pi^2}{12}\qty(\frac{k_{\mathrm{B}}}{T})^2)^{5/2} +
+\frac{\pi^2}{4}E_{\mathrm{F}}^{1/2}(k_{\mathrm{B}}T)^2\qty(1 -
+\frac{\pi^2}{12}\qty(\frac{k_{\mathrm{B}}}{T})^2)^{-1/2}] \\
+          &amp;=
+\frac{V}{2\pi^2}\qty(\frac{2\pi}{\hbar^2})^{3/2}\qty(\frac{2}{5}E_{\mathrm{F}}^{5/2}
++ \frac{\pi^2}{6}E_{\mathrm{F}}^{1/2}(k_{\mathrm{B}}T)^2)
+\label{electron-energy-8}
+        
+\end{aligned}$$</span> となる．よって比熱は， <span
+class="math display">$$\begin{aligned}
+          C &amp;= \pdv{E_{\mathrm{tot}}}{T} \\
+          &amp;=
+\frac{V}{6}\qty(\frac{2m}{\hbar^2})^{3/2}k_{\mathrm{B}}^2
+E_{\mathrm{F}}^{1/2}
+        
+\end{aligned}$$</span> と求まる．</p>
+<h1 id="熱の現象論的解釈">熱の現象論的解釈</h1>
+<p>略</p>
+<h1
+id="boltzmann方程式より求める電気伝導">Boltzmann方程式より求める電気伝導</h1>
+<h2 id="boltzmann方程式">Boltzmann方程式</h2>
+<p>3次元中の電子について考察を行う． 電子の運動方程式と，de
+Bloglieの関係式を用いると， <span class="math display">$$\begin{aligned}
+        \dv{\bm{p}}{t} &amp;= -e\bm{E} \label{newton-eq} \\
+        \bm{p} &amp;= \hbar\bm{k} \label{de-broglie}
+      
+\end{aligned}$$</span> である． <strong>式<a href="#newton-eq"
+data-reference-type="eqref"
+data-reference="newton-eq">[newton-eq]</a></strong>と<strong>式<a
+href="#de-broglie" data-reference-type="eqref"
+data-reference="de-broglie">[de-broglie]</a></strong>を用いると， <span
+class="math display">$$\begin{aligned}
+        \dv{\bm{k}}{t} &amp;= -\frac{e\bm{E}}{\hbar}
+\label{de-broglie-newton} \\
+        \bm{v} &amp;= \frac{\hbar\bm{k}}{m^*}
+      
+\end{aligned}$$</span> を得る．
+また，電子の分散関係は，3次元自由電子を考えているから， <span
+class="math display">$$\begin{aligned}
+        E(\bm{k}) = \frac{\hbar \abs{\bm{k}}^2}{2m^*}
+\label{dispersion-relation}
+      
+\end{aligned}$$</span> である． 3電子を<span
+class="math inline">6</span>次元位相空間において考えると，電子の密度は分布函数<span
+class="math inline"><em>g</em>(<strong>r</strong>, ℏ<strong>k</strong>, <em>t</em>)</span>で書ける．
+つまり，全粒子数を<span
+class="math inline"><em>N</em></span>，体積を<span
+class="math inline"><em>V</em></span>とすると， <span
+class="math display">$$\begin{aligned}
+        \frac{N}{V} = \int g(\bm{r}, \hbar\bm{k},
+t)\dd{\bm{r}}\dd{\bm{k}}\dd{t} \label{density}
+      
+\end{aligned}$$</span> である．なお，ある温度<span
+class="math inline"><em>T</em></span>で固定したときのFermi-Dirac分布関数は，
+<span class="math display">$$\begin{aligned}
+        N &amp;= \int f(E(\bm{k}), T)\dd{E} \\
+        &amp;= \int f(E(\bm{k}),T) \frac{V}{(2\pi)^3} \dd{\bm{k}}
+\label{fermi-dirac}
+      
+\end{aligned}$$</span> を満たす． 分布函数<span
+class="math inline"><em>g</em></span>の外場<span
+class="math inline"><strong>E</strong></span>による時間発展を考える．<span
+class="math inline"><strong>r</strong></span>と<span
+class="math inline"><strong>k</strong></span>は<span
+class="math inline"><em>t</em></span>を変数に持つ函数であることに注意すると，分布函数の全微分は，
+<span class="math display">$$\begin{aligned}
+        \dd{g} &amp;= \pdv{g}{t}\dd{t} + \pdv{g}{\bm{r}}\cdot
+\dd{\bm{r}} + \pdv{g}{\bm{k}}\cdot \dd{\bm{k}}
+\label{boltzmann-total-diff} \\
+        &amp;= \pdv{g}{t}\dd{t} + \pdv{g}{\bm{r}}\cdot
+\pdv{\bm{r}}{t}\dd{t} + \pdv{g}{\bm{k}}\cdot \pdv{\bm{k}}{t}\dd{t} \\
+        &amp;= \pdv{g}{t}\dd{t} + \pdv{g}{\bm{r}}\cdot \bm{v}_{g}\dd{t}
++ \pdv{g}{\bm{k}}\cdot \frac{\bm{F}}{\hbar}\dd{t}
+      
+\end{aligned}$$</span>
+となる．ここで，外場が定常状態であり，電子は空間に一様に分布することを仮定すると，
+<span class="math display">$$\begin{aligned}
+        \pdv{g}{t} = 0, \pdv{g}{\bm{r}} = 0
+      
+\end{aligned}$$</span> となるから，<strong>式<a
+href="#boltzmann-total-diff" data-reference-type="eqref"
+data-reference="boltzmann-total-diff">[boltzmann-total-diff]</a></strong>は，
+<span class="math display">$$\begin{aligned}
+        \dd{g} &amp;= \pdv{g}{\bm{k}}\dd{\bm{k}} \\
+        &amp;= \pdv{g}{E}\pdv{E}{\bm{k}}\pdv{\bm{k}}{t}\dd{t} \\
+        &amp;=
+\pdv{g}{\bm{k}}\frac{\hbar^2\bm{k}}{m^*}\qty(-\frac{e\bm{E}}{\hbar})\dd{t}
+\label{boltzmann-total-diff-2}
+      
+\end{aligned}$$</span> となる．途中の式変形で，<strong>式<a
+href="#de-broglie-newton" data-reference-type="eqref"
+data-reference="de-broglie-newton">[de-broglie-newton]</a></strong>と，<strong>式<a
+href="#dispersion-relation" data-reference-type="eqref"
+data-reference="dispersion-relation">[dispersion-relation]</a></strong>を用いた．
+ここで，分布函数の時間発展が，平衡状態の分布函数<span
+class="math inline"><em>g</em><sub>0</sub></span>からの微小変化であると仮定すると，分布函数は変化を打ち消す方向に変化することから，
+<span class="math display">$$\begin{aligned}
+        \dv{g}{t} = -\frac{g - g_0}{\tau}
+\label{boltzmann-time-evolution}
+      
+\end{aligned}$$</span> と書ける．<strong>式<a
+href="#boltzmann-time-evolution" data-reference-type="eqref"
+data-reference="boltzmann-time-evolution">[boltzmann-time-evolution]</a></strong>を<strong>式<a
+href="#boltzmann-total-diff-2" data-reference-type="eqref"
+data-reference="boltzmann-total-diff-2">[boltzmann-total-diff-2]</a></strong>に代入して，
+<span class="math display">$$\begin{aligned}
+        g = g_0 + \frac{e\hbar\tau}{m^*}\bm{E}\cdot \bm{k}\pdv{g}{E}
+      
+\end{aligned}$$</span> を得る． <span
+class="math inline"><em>g</em></span>は実質的に<span
+class="math inline"><strong>k</strong></span>のみの函数であるから，<strong>式<a
+href="#fermi-dirac" data-reference-type="eqref"
+data-reference="fermi-dirac">[fermi-dirac]</a></strong>を用いて， <span
+class="math display">$$\begin{aligned}
+        g = \frac{f}{(2\pi)^3} \label{g-f}
+      
+\end{aligned}$$</span> となる．</p>
+<h2 id="電流密度の計算">電流密度の計算</h2>
+<p>さて，得られた分布函数を用いて，電流密度を求める．電流密度<span
+class="math inline"><strong>j</strong></span>は，スピンを考慮することにより，
+<span class="math display">$$\begin{aligned}
+        \bm{j} &amp;= -2e\int g(\bm{r}, \hbar\bm{k}, t)\bm{v}\dd{\bm{k}}
+\\
+        &amp;= -2e\int \qty(g_0 + \frac{e\tau\hbar}{m^*}
+\bm{E}\cdot\bm{k}\pdv{g}{E})\bm{v}\dd{\bm{k}} \label{current-density}
+      
+\end{aligned}$$</span> 平衡状態では，<span
+class="math inline"><strong>v</strong></span>は等方的であるから，積分の第1項は0である．<strong>式<a
+href="#g-f" data-reference-type="eqref"
+data-reference="g-f">[g-f]</a></strong>を用いて，<strong>式<a
+href="#current-density" data-reference-type="eqref"
+data-reference="current-density">[current-density]</a></strong>の第2項を計算すると，
+<span class="math display">$$\begin{aligned}
+        -\frac{2e^2\tau\hbar}{(2\pi)^3m*} \int \bm{E}\cdot
+\bm{k}\pdv{f}{E}\bm{v}\dd{\bm{k}}
+      
+\end{aligned}$$</span> となる．かかった電場が<span
+class="math inline"><em>x</em></span>方向のみであるとき， <span
+class="math display">$$\begin{aligned}
+        j_x &amp;= -\frac{2e^2\tau\hbar}{(2\pi)^3m^*} \int
+E_xk_x\pdv{f}{E}v_x\dd{\bm{k}} \\
+        &amp;= -\frac{e^2\tau\hbar}{4\pi^3m^*}E_x\int
+k_x\pdv{f}{E}v_x\dd{\bm{k}} \label{current-density-x}
+      
+\end{aligned}$$</span> となる．<strong>式<a href="#dispersion-relation"
+data-reference-type="eqref"
+data-reference="dispersion-relation">[dispersion-relation]</a></strong>を用いて，<strong>式<a
+href="#current-density-x" data-reference-type="eqref"
+data-reference="current-density-x">[current-density-x]</a></strong>を計算する．
+Fermi球の体積の微小変化と，<strong>式<a href="#dispersion-relation"
+data-reference-type="eqref"
+data-reference="dispersion-relation">[dispersion-relation]</a></strong>を用いると，
+<span class="math display">$$\begin{aligned}
+        \dd{\bm{k}} &amp;= 4\pi k^2\dd{k} \\
+        \dd{E} &amp;= \frac{\hbar^2k}{m^*}\dd{k}
+      
+\end{aligned}$$</span> である．これを<strong>式<a
+href="#current-density-x" data-reference-type="eqref"
+data-reference="current-density-x">[current-density-x]</a></strong>に代入して，
+<span class="math display">$$\begin{aligned}
+        j_x = -\frac{2
+e^2\tau\sqrt{2m^*}}{3\hbar^3\pi^2}\int_{0}^{\infty}
+\pdv{f}{E}E^{3/2}\dd{E}
+      
+\end{aligned}$$</span> となる．<span
+class="math inline">$\pdv{f}{E}$</span>は，<span
+class="math inline"><em>f</em></span>がFermi-Dirac分布関数であることから，デルタ函数を用いて近似できて，
+<span class="math display">$$\begin{aligned}
+        \pdv{f}{E} = -\delta(E - E_{\mathrm{F}})
+      
+\end{aligned}$$</span> とすると，<strong>式<a href="#electron-density"
+data-reference-type="eqref"
+data-reference="electron-density">[electron-density]</a></strong>を用いて，
+<span class="math display">$$\begin{aligned}
+        j_x &amp;= \frac{2
+e^2\tau\sqrt{2m^*}}{3\hbar^3\pi^2}E_{\mathrm{F}}^{3/2} \\
+        &amp;= \frac{2
+e^2\tau\sqrt{2m^*}}{3\hbar^3\pi^2}\qty(\frac{\hbar^2k_{\mathrm{F}}^2}{2m^*})^{3/2}
+\\
+        &amp;= \frac{ne^2\tau}{m^*}
+      
+\end{aligned}$$</span> と計算できる．これは，平均緩和時間を<span
+class="math inline"><em>τ</em></span>としたときのDrudeモデルの電気伝導度<span
+class="math inline"><em>σ</em></span>と一致する．</p>
+<h1
+id="ほとんど自由な電子モデルより求める分散関係">ほとんど自由な電子モデルより求める分散関係</h1>
+<h2 id="schödinger方程式">Schödinger方程式</h2>
+<p>結晶中に<span class="math inline"><em>N</em></span>個の電子，<span
+class="math inline"><em>L</em></span>個の原子核があるとする．
+電子の位置ベクトルを<span
+class="math inline"><strong>r</strong><sub><em>i</em></sub></span>，原子核の位置ベクトルを<span
+class="math inline"><strong>u</strong><sub><em>k</em></sub></span>と定義する．
+電子の位置ベクトルとスピンの上下<span
+class="math inline"><em>σ</em><sub><em>i</em></sub></span>をまとめて<span
+class="math inline"><em>ξ</em><sub><em>i</em></sub> = (<strong>r</strong><sub><em>i</em></sub>, <em>σ</em><sub><em>i</em></sub>)</span>とする．
+Schödinger方程式は， <span class="math display">$$\begin{aligned}
+        \overhat{H}\Psi\qty(\qty{\xi_i}, \qty{u_k}) =
+E\Psi\qty(\qty{\xi_i}, \qty{u_k})
+      
+\end{aligned}$$</span> となる． 電子は一様に<span
+class="math inline">−<em>e</em> &lt; 0</span>の電荷を持っていて，<span
+class="math inline"><em>k</em></span>番目の原子核は<span
+class="math inline"><em>Z</em><sub><em>k</em></sub></span>の電荷を持っているとする．
+この系のハミルトニアンは， <span class="math display">$$\begin{aligned}
+        \overhat{H} = \sum_{i}\qty(-\frac{\hbar^2}{2m}\Delta_{\bm{r}_i})
+        + \sum_{k}\qty(-\frac{\hbar^2}{2m}\Delta_{\bm{r}_k})
+        + \sum_{i, k}\frac{Z_k e^2}{4\pi\epsilon_0\abs{\bm{r}_i -
+\bm{u}_k}}
+        + \sum_{i &lt; j}\frac{e^2}{4\pi\epsilon_0\abs{\bm{r}_i -
+\bm{r}_j}}
+        + \sum_{k &lt; l}\frac{Z_kZ_l}{4\pi\epsilon_0\abs{\bm{u}_k -
+\bm{u}_l}}
+      
+\end{aligned}$$</span>
+である．原子核は電子核に比べて非常に重いため，右辺の第2項は無視できる．
+また，原子核間のCoulombポテンシァルは，系全体のエネルギーを定数分だけ変えるだけであるから，それが0になるようにエネルギーの原点を取る．
+今から議論するハミルトニアンは， <span
+class="math display">$$\begin{aligned}
+        \overhat{H} = \sum_{i}\qty(-\frac{\hbar^2}{2m}\Delta_{\bm{r}_i})
+        + \sum_{i, k}\frac{Z_k e^2}{4\pi\epsilon_0\abs{\bm{r}_i -
+\bm{u}_k}}
+        + \sum_{i &lt; j}\frac{e^2}{4\pi\epsilon_0\abs{\bm{r}_i -
+\bm{r}_j}} \label{hamiltonian}
+      
+\end{aligned}$$</span>
+となる．これはつまり，ハミルトニアンが原子核の位置ベクトルに対して作用しないので，Schödinger方程式は，
+<span class="math display">$$\begin{aligned}
+        \overhat{H}\Psi\qty(\qty{\xi_i}) = E\Psi\qty(\qty{\xi_i})
+      
+\end{aligned}$$</span> となる．
+電子のフェルミオン的性質を考えれば，個々の波動函数を<span
+class="math inline"><em>ψ</em><sub><em>i</em></sub>(<em>ξ</em><sub><em>j</em></sub>)</span>とすると，全体の波動函数<span
+class="math inline"><em>Ψ</em></span>は， <span
+class="math display">$$\begin{aligned}
+        \Psi\qty(\qty{\xi_i}) &amp;= \frac{1}{\sqrt{N!}}\det
+        \begin{pmatrix}
+          \psi_1(\xi_1) &amp; \psi_1(\xi_2) &amp; \cdots &amp;
+\psi_1(\xi_N) \\
+          \psi_2(\xi_2) &amp; \psi_2(\xi_2) &amp; \cdots &amp;
+\psi_2(\xi_N) \\
+          \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+          \psi_N(\xi_1) &amp; \psi_N(\xi_2) &amp; \cdots &amp;
+\psi_N(\xi_N)
+        \end{pmatrix}\\
+        &amp;= \frac{1}{\sqrt{N!}}\sum_{s\in\sigma(N)} \mathrm{sgn}(s)
+\prod_{i = 1}^{N}\psi_{s(i)}(\xi_i)
+      
+\end{aligned}$$</span> と書ける． <strong>式<a href="#hamiltonian"
+data-reference-type="eqref"
+data-reference="hamiltonian">[hamiltonian]</a></strong>の右辺の第1項と第2項をまとめて<span
+class="math inline">$\overhat{A}_i$</span>，第3項を<span
+class="math inline">$\overhat{B}_{ij}$</span>とする．
+エネルギーの平均値を計算する． <span
+class="math display">$$\begin{aligned}
+        \ev{H} &amp;= \sum_{i}\ev{\overhat{A}_i} + \sum_{i &lt;
+j}\ev{\overhat{B}_{ij}} \\
+        &amp;= \sum_{i}\bra{\psi_i}\overhat{A}_i\ket{\psi_i}
+        + \sum_{i &lt;
+j}\bra{\psi_i}\bra{\psi_j}\overhat{B}_{ij}\ket{\psi_i}\ket{\psi_j} -
+\sum_{i &lt;
+j}\bra{\psi_i}\bra{\psi_j}\overhat{B}_{ij}\ket{\psi_j}\ket{\psi_i}
+\label{energy-expectation}
+      
+\end{aligned}$$</span> となる．ここで，<span
+class="math inline">$\braket{\psi_i}{\psi_j} =
+\delta^j_i$</span>となることを用いた． <span
+class="math inline">$\braket{\psi_i}{\psi_i} =
+1$</span>なる束縛条件で，<span
+class="math inline">$\ev{H}$</span>の極値をLangrangeの未定乗数法を用いて計算する．
+ラグランジアン<span class="math inline"><em>L</em></span>を <span
+class="math display">$$\begin{aligned}
+        L = \ev{H} - \sum_i(\lambda_i\braket{\psi_i}{\psi_i} -
+1)\label{lagrange}
+      
+\end{aligned}$$</span> とする． <span
+class="math inline">$\bra{\psi_i}$</span>が微小変化して，<span
+class="math inline">$\bra{\psi_i} +
+\bra{\delta\psi_i}$</span>となったとき，<strong>式<a href="#lagrange"
+data-reference-type="eqref"
+data-reference="lagrange">[lagrange]</a></strong>は， <span
+class="math display">$$\begin{aligned}
+        0 = \sum_{i}\bra{\delta\psi_i}\overhat{A}_i\ket{\psi_i}
+        + \sum_{i &lt;
+j}\bra{\delta\psi_i}\bra{\psi_j}\overhat{B}_{ij}\ket{\psi_i}\ket{\psi_j}
+- \sum_{i &lt;
+j}\bra{\delta\psi_i}\bra{\psi_j}\overhat{B}_{ij}\ket{\psi_j}\ket{\psi_i}
+- \sum_{i}\lambda_i\braket{\delta\psi_i}{\psi_i} \\
+        \Leftrightarrow
+        \lambda_i\ket{\psi_i} = \overhat{A}_i\ket{\psi_i} +
+\qty{\sum_{j}\bra{\psi_j}\overhat{B}_{ij}\ket{\psi_j}}\ket{\psi_j} -
+\qty{\sum_{j}\bra{\psi_j}\overhat{B}_{ij}\ket{\psi_i}}\ket{\psi_i}
+      
+\end{aligned}$$</span> となる．右辺の第1項における<span
+class="math inline">$\overhat{A}_i$</span>の第2項以降と，右辺の第2項，第3項をまとめて<span
+class="math inline"><em>V</em></span>とすると， <span
+class="math display">$$\begin{aligned}
+        \qty(-\frac{\hbar^2}{2m}\Delta+ V)\ket{\psi_i} =
+\lambda_i\ket{\psi_i} \label{schrodinger-eq}
+      
+\end{aligned}$$</span> と書ける．つまり，今回考えた系では，<span
+class="math inline"><em>N</em></span>電子の波動函数は，1電子のSchödinger方程式を満たす．</p>
+<h2
+id="blochの定理を用いたバンド計算">Blochの定理を用いたバンド計算</h2>
+<p><span class="math inline"><em>V</em></span>を既知として，<strong>式<a
+href="#schrodinger-eq" data-reference-type="eqref"
+data-reference="schrodinger-eq">[schrodinger-eq]</a></strong>の固有値，固有函数を計算する．
+結晶中の波動函数はBlochの定理を満足する． つまり， <span
+class="math display">$$\begin{aligned}
+        \psi(\bm{r} + \bm{R}) = \exp\qty(\mathrm{i}\bm{k}\cdot
+\bm{R})\psi(\bm{r})\label{bloch}
+      
+\end{aligned}$$</span> である．ただし<span
+class="math inline"><strong>R</strong></span>は基本並進ベクトルである．
+<strong>式<a href="#bloch" data-reference-type="eqref"
+data-reference="bloch">[bloch]</a></strong>は別の表式をすることができて，
+<span class="math display">$$\begin{aligned}
+        \psi_{\bm{k}}(\bm{r}) = \exp\qty(\mathrm{i}\bm{k}\cdot
+\bm{r})u_{\bm{k}}(\bm{r})\ \text{かつ}\ u_{\bm{k}}(\bm{r} + \bm{R}) =
+u_{\bm{k}}(\bm{r}) \label{bloch-2}
+      
+\end{aligned}$$</span> もしくは， <span
+class="math display">$$\begin{aligned}
+        \psi_{\bm{k}}(\bm{r}) =
+\sum_{\bm{g}}c_{\bm{k}}(\bm{g})\exp\qty(\mathrm{i}\bm{g}\cdot \bm{r})
+      
+\end{aligned}$$</span> と書くこともできる．なお，<span
+class="math inline"><strong>g</strong></span>は逆格子ベクトルである．
+<strong>式<a href="#schrodinger-eq" data-reference-type="eqref"
+data-reference="schrodinger-eq">[schrodinger-eq]</a></strong>について，ポテンシァルと波動函数の具体的な表式を議論する．
+今回は<strong>式<a href="#bloch-2" data-reference-type="eqref"
+data-reference="bloch-2">[bloch-2]</a></strong>の表式を用いる．
+ポテンシァル<span class="math inline"><em>V</em></span>と<span
+class="math inline"><em>u</em></span>の離散Fourier変換を， <span
+class="math display">$$\begin{aligned}
+        V(\bm{r}) =
+\sum_{\bm{g}_1}\tilde{V}_{\bm{g}_1}\exp\qty(\mathrm{i}\bm{g}_1\cdot
+\bm{r}) \label{potential-fourier} \\
+        u_{\bm{k}}(\bm{r}) =
+\frac{1}{\sqrt{V}}\sum_{\bm{g}_2}C_{\bm{g}_2}\exp\qty(\mathrm{i}\bm{g}_2\cdot
+\bm{r}) \label{u-fourier}
+      
+\end{aligned}$$</span> と定義する．<span
+class="math inline"><strong>g</strong>, <strong>g</strong><sub>1</sub>, <strong>g</strong><sub>2</sub></span>は逆格子ベクトルである．
+なお， <span class="math display">$$\begin{aligned}
+        \delta_{\bm{g}_a}^{\bm{g}_b} = \frac{1}{V}\int
+\exp\qty(\mathrm{i}\bm{g}_{\mathrm{A}}\cdot
+\bm{r})\exp\qty(-\mathrm{i}\bm{g}_{\mathrm{B}}\cdot \bm{r})\dd{\bm{r}}
+\label{delta}
+      
+\end{aligned}$$</span> となるように規格化されていることに注意する．
+<strong>式<a href="#potential-fourier" data-reference-type="eqref"
+data-reference="potential-fourier">[potential-fourier]</a></strong>と<strong>式<a
+href="#u-fourier" data-reference-type="eqref"
+data-reference="u-fourier">[u-fourier]</a></strong>を<strong>式<a
+href="#schrodinger-eq" data-reference-type="eqref"
+data-reference="schrodinger-eq">[schrodinger-eq]</a></strong>に代入すると，
+<span class="math display">$$\begin{aligned}
+        \qty(-\frac{\hbar^2}{2m} \Delta+ \sum_{\bm{g}_1}
+\tilde{V}_{\bm{g}_1} \exp\qty(\mathrm{i}\bm{g}_1 \cdot
+\bm{r}))\exp(\mathrm{i}\bm{k}\cdot\bm{r})\frac{1}{\sqrt{V}}\sum_{\bm{g}_2}
+C_{\bm{g}_2}\exp\qty(\mathrm{i}\bm{g}_2\cdot\bm{r}) =
+\frac{E}{\sqrt{V}}\sum_{\bm{g}_2}C_{\bm{g}_2}\exp\qty(\mathrm{i}\bm{g}_2\cdot\bm{r})\exp\qty(\mathrm{i}\bm{k}\cdot\bm{r})
+\\
+        \Leftrightarrow
+\frac{\hbar^2}{2m}\frac{1}{\sqrt{V}}\sum_{\bm{g}_2}C_{\bm{g}_2}\qty(\bm{g}_2
++ \bm{k})^2 \exp\qty(\mathrm{i}\qty(\bm{g}_2 + \bm{k})\cdot\bm{r})
+        +
+\frac{1}{\sqrt{V}}\sum_{\bm{g}_1}\sum_{\bm{g}_2}\tilde{V}_{\bm{g}_1}C_{\bm{g}_2}\exp\qty(\mathrm{i}(\bm{g}_2
++ \bm{k})\cdot \bm{r})
+        = E\sum_{\bm{g}_2}C_{\bm{g}_2}\exp\qty(\mathrm{i}\qty(\bm{g}_2 +
+\bm{k})\cdot\bm{r}) \label{schrodinger-fourier}
+      
+\end{aligned}$$</span> となる．<strong>式<a href="#schrodinger-fourier"
+data-reference-type="eqref"
+data-reference="schrodinger-fourier">[schrodinger-fourier]</a></strong>に<span
+class="math inline">$V\exp\qty(-\mathrm{i}(\bm{g} + \bm{k})\cdot
+\bm{r})$</span>をかけて，<span
+class="math inline"><strong>r</strong></span>について積分すると， <span
+class="math display">$$\begin{aligned}
+        \forall \bm{g}\ \qty[\frac{\hbar^2}{2m}\qty(\bm{g} + \bm{k})^2 -
+E] C_{\bm{g}} + \sum_{\bm{g}_1}\tilde{V}_{\bm{g}_1}C_{\bm{g} - \bm{g}_1}
+= 0 \label{schrodinger-fourier-2}
+      
+\end{aligned}$$</span> を得る．</p>
+<h2 id="波近似">2波近似</h2>
+<p><span
+class="math inline"><em>ψ</em></span>の函数系に制限を課して，<strong>式<a
+href="#schrodinger-fourier-2" data-reference-type="eqref"
+data-reference="schrodinger-fourier-2">[schrodinger-fourier-2]</a></strong>の固有値と固有函数を考える．
+<span
+class="math inline"><em>u</em><sub><strong>k</strong></sub></span>の展開係数<span
+class="math inline"><em>C</em><sub><strong>g</strong><sub>2</sub></sub></span>が<span
+class="math inline"><em>C</em><sub><strong>0</strong></sub></span>と<span
+class="math inline"><em>C</em><sub><strong>g</strong><sub><em>m</em></sub></sub></span>のみ非零である状況を考える．
+<span
+class="math inline"><em>V</em></span>が1種類の正弦波と定数の和で書けたときを考える．
+このとき，<strong>式<a href="#schrodinger-fourier-2"
+data-reference-type="eqref"
+data-reference="schrodinger-fourier-2">[schrodinger-fourier-2]</a></strong>は，
+<span class="math display">$$\begin{aligned}
+        &amp; \begin{dcases}
+          \qty[\frac{\hbar^2}{2m}\qty(\bm{0} + \bm{k})^2 - E]C_{\bm{0}}
++ \sum_{\bm{g}_1}\tilde{V}_{\bm{g}_1}C_{-\bm{g}_1} = 0 \\
+          \qty[\frac{\hbar^2}{2m}\qty(\bm{g} + \bm{k})^2 -
+E]C_{\bm{g}_m} + \sum_{\bm{g}_1}\tilde{V}_{\bm{g}_1}C_{-\bm{g}_1} = 0
+        \end{dcases} \\
+        &amp; \Leftrightarrow
+        \begin{dcases}
+          \qty[\frac{\hbar^2}{2m}\bm{k}^2 - E]C_{\bm{0}} +
+\tilde{V}_{\bm{0}}C_{\bm{0}} + \tilde{V}_{-\bm{g}_m}C_{\bm{g}_m} = 0 \\
+          \qty[\frac{\hbar^2}{2m}\qty(\bm{g}_m + \bm{k})^2 -
+E]C_{\bm{g}_m} + \tilde{V}_{\bm{g}_m}C_{\bm{0}} +
+\tilde{V}_{\bm{0}}C_{\bm{g}_m} = 0
+        \end{dcases} \\
+        &amp; \Leftrightarrow
+        \begin{pmatrix}
+          \qty(\frac{\hbar^2\bm{k}^2}{2m} - E) + \tilde{V}_{\bm{0}}
+&amp; \tilde{V}_{-\bm{g}_m} \\
+          \tilde{V}_{\bm{g}_m} &amp; \qty(\frac{\hbar^2\qty(\bm{g}_m +
+\bm{k})^2}{2m} - E) + \tilde{V}_{\bm{0}}
+        \end{pmatrix}
+        \begin{pmatrix}
+          C_{\bm{0}} \\
+          C_{\bm{g}_m}
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+          0 \\
+          0
+        \end{pmatrix} \label{schrodinger-matrix}
+      
+\end{aligned}$$</span> となる．<strong>式<a href="#schrodinger-matrix"
+data-reference-type="eqref"
+data-reference="schrodinger-matrix">[schrodinger-matrix]</a></strong>において，<span
+class="math inline"><em>C</em><sub><strong>0</strong></sub> = <em>C</em><sub><strong>g</strong><sub><em>m</em></sub></sub> = 0</span>でない，非自明な解が存在するためには，行列式が0になる必要がある．
+つまり， <span class="math display">$$\begin{aligned}
+        \qty(-E + \tilde{V}_{\bm{0}})^2 +
+\frac{\hbar^2}{2m}\qty[\qty(\bm{g}_m + \bm{k})^2 + \bm{k}]\qty(-E +
+\tilde{V}_{\bm{0}}) + \qty(\frac{\hbar^2}{2m})^2\bm{k}^2\qty(\bm{g}_m +
+\bm{k})^2 - \tilde{V}_{\bm{g}_m}\tilde{V}_{-\bm{g}_m} = 0
+      
+\end{aligned}$$</span> となる．これを， <span
+class="math display">$$\begin{aligned}
+        \bm{k} = -\frac{\bm{g}_m}{2}
+      
+\end{aligned}$$</span> の元で解くと，エネルギー固有値は， <span
+class="math display">$$\begin{aligned}
+        E_{\pm} = \tilde{V}_{\bm{0}} + \frac{\hbar^2}{8m}\bm{g}_m^2 \pm
+\abs{V_{\bm{g}_m}} \label{energy}
+      
+\end{aligned}$$</span> となる．<strong>式<a href="#energy"
+data-reference-type="eqref"
+data-reference="energy">[energy]</a></strong>を<strong>式<a
+href="#schrodinger-matrix" data-reference-type="eqref"
+data-reference="schrodinger-matrix">[schrodinger-matrix]</a></strong>に代入すると，
+<span class="math display">$$\begin{aligned}
+        \begin{pmatrix}
+          \mp \abs{\tilde{V}_{\bm{g}_m}} &amp; \tilde{V}_{-\bm{g}_m} \\
+          \tilde{V}_{\bm{g}_m} &amp; \mp \abs{\tilde{V}_{\bm{g}_m}}
+        \end{pmatrix}
+        \begin{pmatrix}
+          C_{\bm{0}} \\
+          C_{\bm{g}_m}
+        \end{pmatrix}
+        = \begin{pmatrix}
+          0 \\
+          0
+        \end{pmatrix}
+      
+\end{aligned}$$</span> となる．ここで，<span
+class="math inline"><em>Ṽ</em><sub><strong>g</strong><sub><em>m</em></sub></sub></span>が負の実数であるとすると，<span
+class="math inline"><em>C</em><sub><strong>0</strong></sub></span>と<span
+class="math inline"><em>C</em><sub><strong>g</strong><sub><em>m</em></sub></sub></span>の関係が，
+<span class="math display">$$\begin{aligned}
+        C_{\bm{0}} = \mp C_{\bm{g}_m}
+      
+\end{aligned}$$</span> と求まり，<strong>式<a href="#u-fourier"
+data-reference-type="eqref"
+data-reference="u-fourier">[u-fourier]</a></strong>と<strong>式<a
+href="#bloch-2" data-reference-type="eqref"
+data-reference="bloch-2">[bloch-2]</a></strong>を用いると， <span
+class="math display">$$\begin{aligned}
+        &amp;\begin{dcases}
+          \psi^{+}(\bm{r}) \propto \cos \frac{\bm{g}_m\cdot\bm{r}}{2} \\
+          \psi^{-}(\bm{r}) \propto \sin \frac{\bm{g}_m\cdot\bm{r}}{2}
+        \end{dcases}\label{wave-function}
+      
+\end{aligned}$$</span> ここで，<strong>式<a href="#energy"
+data-reference-type="eqref"
+data-reference="energy">[energy]</a></strong>の複号と，<strong>式<a
+href="#wave-function" data-reference-type="eqref"
+data-reference="wave-function">[wave-function]</a></strong>の複号は反転していることに注意する．以上の手続きにより，
+<span class="math inline"><em>N</em></span>個の電子，<span
+class="math inline"><em>L</em></span>個の原子核が存在するときのエネルギー固有値と固有函数を求めることができた．</p>
+<h2 id="有効質量近似">有効質量近似</h2>
+<h1 id="強束縛近似より求める分散関係">強束縛近似より求める分散関係</h1>
+<h2
+id="blochの定理から出発する強束縛近似">Blochの定理から出発する強束縛近似</h2>
+<p>結晶全体に広がる電子について考察する． 全体の波動函数<span
+class="math inline"><em>ψ</em>(<strong>r</strong>)</span>は，<span
+class="math inline"><em>R</em><sub><em>i</em></sub></span>での個々の波動函数<span
+class="math inline"><em>φ</em>(<strong>r</strong> − <strong>R</strong><sub><em>i</em></sub>)</span>の線型結合で書けるとすれば，
+<span class="math display">$$\begin{aligned}
+        \psi(\bm{r}) = \sum_{i}C_i\varphi(\bm{r} - \bm{R}_i)
+      
+\end{aligned}$$</span> である．<span
+class="math inline"><em>ψ</em></span>が<span
+class="math inline"><strong>R</strong></span>だけ並進ベクトルによって平行移動することを考える．
+<span class="math display">$$\begin{aligned}
+        \psi(\bm{r} + \bm{R}) &amp;= \sum_{i}C_i\varphi(\bm{r} + \bm{R}
+- \bm{R}_i) \\
+        &amp;= \sum_{i'}C_{i'}\varphi(\bm{r} - \bm{R}_{i'})
+      
+\end{aligned}$$</span> となる．ここで，<span
+class="math inline"><strong>R</strong> = <strong>R</strong><sub><em>i</em></sub> − <strong>R</strong><sub><em>i</em>′</sub></span>とした．
+<span
+class="math inline"><em>ψ</em></span>はBlochの定理を満たすから，<strong>式<a
+href="#bloch" data-reference-type="eqref"
+data-reference="bloch">[bloch]</a></strong>の表現を用いて， <span
+class="math display">$$\begin{aligned}
+        \psi(\bm{r}) =
+\frac{1}{\sqrt{N}}\sum_{i}\exp(\mathrm{i}\bm{k}\cdot
+\bm{R}_i)\varphi(\bm{r} - \bm{R}_i) \label{bloch-psi}
+      
+\end{aligned}$$</span> と書ける．
+いま，系は，電子間相互作用がないときに摂動が加わった状態だと考えられるから，
+孤立系でのハミルトニアンを<span
+class="math inline">$\overhat{H}_0$</span>，摂動を<span
+class="math inline">$\overhat{H}_{\mathrm{int}}$</span>として，系のハミルトニアン<span
+class="math inline">$\overhat{H}$</span>は， <span
+class="math display">$$\begin{aligned}
+        \overhat{H} = \overhat{H}_0 + \overhat{H}_{\mathrm{int}}
+      
+\end{aligned}$$</span> とかける．系のエネルギー期待値を計算する．
+孤立系でのエネルギー期待値は，<span class="math inline">$\ev{H_0} =
+E_0$</span>として，摂動エネルギー期待値<span
+class="math inline">$\ev{H_{\mathrm{int}}}$</span>は，<strong>式<a
+href="#bloch-psi" data-reference-type="eqref"
+data-reference="bloch-psi">[bloch-psi]</a></strong>を用いながら， <span
+class="math display">$$\begin{aligned}
+        \ev{H_{\mathrm{int}}} &amp;= \int
+\psi^*(\bm{r})\overhat{H}_{\mathrm{int}}\psi(\bm{r})\dd{\bm{r}} \\
+        &amp;= \frac{1}{N} \int \qty{\sum_i
+\exp\qty(-\mathrm{i}\bm{k}\cdot\bm{R}_i)}\overhat{H}_{\mathrm{int}}\qty{\sum_j
+\exp\qty(\mathrm{i}\bm{k}\cdot\bm{R}_j)}\dd{\bm{r}} \\
+        &amp;= \frac{1}{N}\sum_i\sum_j
+\exp\qty{-\mathrm{i}\bm{k}\cdot(\bm{R}_i - \bm{R}_j)}\int
+\varphi^*(\bm{r} - \bm{R}_i)\overhat{H}_{\mathrm{int}}\varphi(\bm{r} -
+\bm{R}_j)\dd{\bm{r}}
+      
+\end{aligned}$$</span> ここで，<span
+class="math inline"><strong>r</strong><sub><em>i</em><em>j</em></sub> = <strong>R</strong><sub><em>i</em></sub> − <strong>R</strong><sub><em>j</em></sub></span>として，<span
+class="math inline"><strong>r</strong>′ = <strong>r</strong> − <strong>R</strong><sub><em>j</em></sub></span>と定義すると，
+<span class="math display">$$\begin{aligned}
+        &amp;= \frac{1}{N}\sum_i\sum_j
+\exp\qty{-\mathrm{i}\bm{k}\cdot\bm{r}_{ij}}\int \varphi^*(\bm{r}' -
+\bm{r}_{ij})\overhat{H}_{\mathrm{int}}\varphi(\bm{r}')\dd{\bm{r}'}
+\label{energy-expectation-2} \\
+        &amp;= \sum_i \exp\qty{-\mathrm{i}\bm{k}\cdot\bm{r}_{ii}}\int
+\varphi^*(\bm{r} -
+\bm{r}_{ii})\overhat{H}_{\mathrm{int}}\varphi(\bm{r})\dd{\bm{r}}
+\label{energy-expectation-3}
+      
+\end{aligned}$$</span> となる．<strong>式<a href="#energy-expectation-2"
+data-reference-type="eqref"
+data-reference="energy-expectation-2">[energy-expectation-2]</a></strong>において，異なる<span
+class="math inline"><em>j</em></span>に関する和は<span
+class="math inline"><em>N</em></span>倍した． <strong>式<a
+href="#energy-expectation-3" data-reference-type="eqref"
+data-reference="energy-expectation-3">[energy-expectation-3]</a></strong>において，<span
+class="math inline"><strong>r</strong><sub><em>i</em><em>i</em></sub> = <strong>0</strong></span>と，<span
+class="math inline"><strong>r</strong><sub><em>i</em><em>i</em></sub> ∈ NN</span>(NN:
+Nearest Neighbour)についてのみ考えればよい近似をする．
+このとき，<strong>式<a href="#energy-expectation-3"
+data-reference-type="eqref"
+data-reference="energy-expectation-3">[energy-expectation-3]</a></strong>において，
+<span class="math display">$$\begin{aligned}
+        -\alpha = \int
+\varphi^*(\bm{r})\overhat{H}_{\mathrm{int}}\varphi(\bm{r})\dd{\bm{r}} \\
+        -\gamma = \int \varphi^*(\bm{r} -
+\bm{r}_{ii})\overhat{H}_{\mathrm{int}}\varphi(\bm{r})\dd{\bm{r}}
+      
+\end{aligned}$$</span> とすると，<strong>式<a
+href="#energy-expectation-3" data-reference-type="eqref"
+data-reference="energy-expectation-3">[energy-expectation-3]</a></strong>は，
+<span class="math display">$$\begin{aligned}
+        \ev{H_{\mathrm{int}}} = -\alpha -\gamma\sum_{\bm{r}_{ii} \in
+\mathrm{NN}} \exp\qty{-\mathrm{i}\bm{k}\cdot\bm{r}_{ii}}
+      
+\end{aligned}$$</span> と求まる．特に，一次元に等間隔に並んだ格子では，
+<span class="math display">$$\begin{aligned}
+        \ev{H_{\mathrm{int}}} &amp;= -\alpha -
+\gamma\qty(\exp\qty(-\mathrm{i}k_xa) + \exp\qty(\mathrm{i}k_xa)) \\
+        &amp;= -\alpha - 2\gamma\cos(k_xa)
+      
+\end{aligned}$$</span> となる．</p>
+<h2
+id="波動函数をサイト函数で展開する強束縛近似">波動函数をサイト函数で展開する強束縛近似</h2>
+<h1 id="半導体物性">半導体物性</h1>
+<h2 id="真性半導体">真性半導体</h2>
+<h2 id="p型半導体">P型半導体</h2>
+<h3 id="定性的な考察">定性的な考察</h3>
+<h3 id="定量的な考察">定量的な考察</h3>
+<h2 id="n型半導体">N型半導体</h2>
+<h3 id="定性的な考察-1">定性的な考察</h3>
+<h3 id="定量的な考察-1">定量的な考察</h3>
+<h1 id="数学公式">数学公式</h1>
+<p>ガンマ函数<span class="math inline"><em>Γ</em></span>は， <span
+class="math display">$$\begin{aligned}
+      \Gamma(s) = \int_{0}^{\infty}t^{s - 1}\exp(-t)\dd{t}
+    
+\end{aligned}$$</span> であり，とくに<span
+class="math inline"><em>n</em> ∈ ℕ</span>に対して， <span
+class="math display">$$\begin{aligned}
+      \Gamma(n) = (n - 1)!
+    
+\end{aligned}$$</span> である．リーマンゼータ函数<span
+class="math inline"><em>ζ</em></span>は， <span
+class="math display">$$\begin{aligned}
+      \zeta(s) = \sum_{n = 1}^{\infty}\frac{1}{n^s}
+    
+\end{aligned}$$</span> である．特に， <span
+class="math display">$$\begin{aligned}
+      \zeta(0) &amp;= -\frac{1}{2} \\
+      \zeta(2) &amp;= \frac{\pi^2}{6} \\
+      \zeta(4) &amp;= \frac{\pi^4}{90}
+    
+\end{aligned}$$</span> が成立して， <span
+class="math display">$$\begin{aligned}
+      \int_{0}^{\infty} \frac{x^{s - 1}}{\mathrm{e}^x - 1} \dd{x} =
+\zeta(s)\Gamma(s)
+    
+\end{aligned}$$</span> が成立する．</p>
+</body>
+</html>

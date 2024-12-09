@@ -1,0 +1,232 @@
+\usepackage{luatexja}
+\usepackage{amsmath, amssymb, type1cm, amsfonts, latexsym, mathtools, bm, amsthm, url, color}
+\usepackage{multirow, hyperref, longtable, dcolumn, tablefootnote, physics}
+\usepackage{tabularx, footmisc, colortbl, here, usebib, microtype}
+\usepackage{graphicx, luacode, caption, fancyhdr}
+\usepackage[top = 20truemm, bottom = 20truemm, left = 20truemm, right = 20truemm]{geometry}
+\usepackage{ascmac, fancybox, color, tabularray, subcaption}
+\usepackage{luatexja-fontspec, multicol}
+\usepackage{upgreek, colortbl, mhchem}
+\usepackage{biblatex, array, truthtable}
+\usepackage{listings, jvlisting}
+\usepackage{xcolor, siunitx, float, dcolumn}
+\sisetup{
+  table-format = 1.5, % 小数点以下の桁数を指定
+  table-number-alignment = center, % 数値の中央揃え
+}
+% \abovedisplayskip = 0pt
+% \belowdisplayskip = 0pt
+\allowdisplaybreaks
+% \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\newcolumntype{t}{!{\vrule width 0.1pt}}
+\newcolumntype{b}{!{\vrule width 1.5pt}}
+\UseTblrLibrary{amsmath, booktabs, counter, diagbox, functional, hook, html, nameref, siunitx, varwidth, zref}
+\setlength{\columnseprule}{0.4pt}
+\captionsetup[figure]{font = bf}
+\captionsetup[table]{font = bf}
+\captionsetup[lstlisting]{font = bf}
+\captionsetup[subfigure]{font = bf, labelformat = simple}
+\setcounter{secnumdepth}{5}
+\newcolumntype{d}{D{.}{.}{5}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\everymath{\displaystyle}
+\DeclareMathOperator*{\AND}{\cdot}
+\DeclareMathOperator*{\NAND}{NAND}
+% \DeclareMathOperator*{\NOT}{NOT}
+\DeclareMathOperator*{\OR}{+}
+% \let\oldbar\bar
+\renewcommand{\i}{\mathrm{i}}
+\renewcommand{\laplacian}{\Delta}
+\newcommand{\NOT}[1]{\overline{#1}}
+\renewcommand{\hat}[1]{\overhat{#1}}
+\renewcommand{\thesubfigure}{(\alph{subfigure})}
+\newcommand{\m}[3]{\multicolumn{#1}{#2}{#3}}
+\renewcommand{\r}[1]{\mathrm{#1}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Ef}{E_{\mathrm{F}}}
+\renewcommand{\c}{\si{\degreeCelsius}}
+\renewcommand{\d}{\r{d}}
+\renewcommand{\t}[1]{\texttt{#1}}
+\newcommand{\kb}{k_{\mathrm{B}}}
+\renewcommand{\phi}{\varphi}
+% \newcommand{\dv}[3]{\frac{\d #1}{\d #2}}
+% \newcommand{\pdv}[2]{\frac{\partial #1}{\partial #2}}
+% \newcommand{\qtys}[#1]{\left(#1 \right)}
+% \newcommand{\qtym}[#1]{\left\{#1\right\}}
+% \newcommand{\qtyl}[#1]{\left[#1\right]}
+\newcommand{\reff}[1]{\textbf{図\ref{#1}}}
+\newcommand{\reft}[1]{\textbf{表\ref{#1}}}
+\newcommand{\refe}[1]{\textbf{式\eqref{#1}}}
+\newcommand{\refp}[1]{\textbf{コード\ref{#1}}}
+\newcommand{\refa}[1]{\textbf{\ref{#1}}}
+\renewcommand{\lstlistingname}{コード}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\renewcommand{\footrulewidth}{0.4pt}
+\newcommand{\mar}[1]{\textcircled{\scriptsize #1}}
+\newcommand{\combination}[2]{{}_{#1} \mathrm{C}_{#2}}
+\newcommand{\thline}{\noalign{\hrule height 0.1pt}}
+\newcommand{\bhline}{\noalign{\hrule height 1.5pt}}
+\newcommand*{\myCurrentTime}{
+  \directlua{ my_current_time() }
+}
+\newcommand{\Rnum}[1]{
+  \ifnum #1 = 1
+    I
+  \fi
+  \ifnum #1 = 2
+    I\hspace{-1.2pt}I
+  \fi
+  \ifnum #1 = 3
+    I\hspace{-1.2pt}I\hspace{-1.2pt}I
+  \fi
+  \ifnum #1 = 4
+    I\hspace{-1.2pt}V
+  \fi
+  \ifnum #1 = 5
+    V
+  \fi
+  \ifnum #1 = 6
+    V\hspace{-1.2pt}I
+  \fi
+  \ifnum #1 = 7
+    V\hspace{-1.2pt}I\hspace{-1.2pt}I
+  \fi
+  \ifnum #1 = 8
+    V\hspace{-1.2pt}I\hspace{-1.2pt}I\hspace{-1.2pt}I
+  \fi
+  \ifnum #1 = 9
+    I\hspace{-1.2pt}X
+  \fi
+  \ifnum #1 = 10
+    X
+  \fi
+}
+\newcommand{\cover}{
+  \renewcommand{\arraystretch}{3}
+  \title{物理情報工学実験報告書}
+  \date{}
+  \author{}
+  \maketitle
+  \begin{table}[H]
+    \begin{flushright}
+      2024年度
+    \end{flushright}
+    \begin{center}
+      \begin{tabularx}{150mm}{|>{\centering}p{40mm}|>{\centering}p{25mm}|>{\centering}p{30mm}|>{\centering\arraybackslash}X|}
+        \hline
+        \Large{実験テーマ} & \multicolumn{3}{c|}{\Large{A1(直流安定化電源)}} \\ \hline
+        \Large{担当教員名} & \multicolumn{3}{c|}{\Large{塚田孝祐}} \\ \hline
+        \Large{実験整理番号} & \Large{002} & \Large{実験者氏名} & \Large{青木\ 陽}\\ \hline
+        \Large{共同実験者氏名} & \multicolumn{3}{c|}{} \\ \hline
+        \Large{曜日組} & \Large{火1班} & \Large{実験日} & \Large{6月25日} \\ \hline
+        \Large{実験回} & \Large{9} & \Large{報告書提出日} & \Large{\myCurrentTime}\\ \hline
+      \end{tabularx}
+    \end{center}
+  \end{table}
+  \thispagestyle{empty} 
+  \addtocounter{page}{-1}
+  \clearpage
+  \renewcommand{\arraystretch}{1.0}
+}
+\pagestyle{fancy}
+\chead{物性物理II}
+\rhead{}
+\cfoot{\thepage}
+\lhead{}
+\rfoot{\t{harry\_arbrebleu}}
+\setcounter{tocdepth}{4}
+\makeatletter
+\@addtoreset{equation}{subsection}
+\makeatother
+\begin{luacode*}
+  function my_current_time()
+    local date = os.date("*t")
+    local year = date.year
+    local month = date.month
+    local day = date.day
+    local hour = date.hour
+    local min = date.min
+    local sec = date.sec
+    local formatted_date = string.format("%d月%d日", month, day)
+    tex.sprint(formatted_date)
+  end
+\end{luacode*}
+\lstset{
+  language = Matlab, % Set the language for the code
+  basicstyle = {\ttfamily},
+  identifierstyle = {\small},
+  commentstyle = \color{red},
+  keywordstyle = \color{blue},
+  ndkeywordstyle = {\small},
+  stringstyle = \color{orange},
+  frame={tb},
+  breaklines = true,
+  columns=[l]{fullflexible},
+  xrightmargin = 5mm,
+  xleftmargin = 5mm,
+  numberstyle = {\ttfamily\scriptsize},
+  stepnumber = 1,
+  numbersep = 1mm,
+  lineskip = -0.5ex,
+  showstringspaces = false,
+  numbers = left,
+  frame = lines,
+  backgroundcolor = \color{gray!10},
+  rulecolor = \color{black!30},
+}
+
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % 背景色
+  basicstyle=\ttfamily\footnotesize, % 基本の書体スタイル
+  breakatwhitespace=false,        % 空白で行分割しない
+  breaklines=true,                % 長い行は分割する
+  captionpos=b,                   % キャプションの位置
+  commentstyle=\color{mygreen},   % コメントのスタイル
+  extendedchars=true,             % 非 ASCII 文字をサポート
+  frame=single,                   % フレームの表示
+  keywordstyle=\color{blue},      % キーワードのスタイル
+  language=[LaTeX]TeX,            % 言語を LaTeX に設定
+  numbers=left,                   % 行番号を左側に表示
+  numbersep=5pt,                  % 行番号とコードの間の距離
+  numberstyle=\tiny\color{mygray}, % 行番号のスタイル
+  rulecolor=\color{black},        % 枠線の色
+  showspaces=false,               % スペースを表示しない
+  showstringspaces=false,         % 文字列内のスペースを表示しない
+  showtabs=false,                 % タブを表示しない
+  stepnumber=1,                   % 行番号を表示する間隔
+  stringstyle=\color{mymauve},    % 文字列のスタイル
+  tabsize=2,                      % タブの幅
+  title=\lstname                  % タイトル
+}
+\lstset{
+  language = C++, % Set the language for the code
+  basicstyle = {\ttfamily},
+  identifierstyle = {\small},
+  commentstyle = \color{red},
+  keywordstyle = \color{blue},
+  ndkeywordstyle = {\small},
+  stringstyle = \color{orange},
+  frame={tb},
+  breaklines = true,
+  columns=[l]{fullflexible},
+  xrightmargin = 5mm,
+  xleftmargin = 5mm,
+  numberstyle = {\ttfamily\scriptsize},
+  stepnumber = 1,
+  numbersep = 1mm,
+  lineskip = -0.5ex,
+  showstringspaces = false,
+  numbers = left,
+  frame = lines,
+  backgroundcolor = \color{gray!10},
+  rulecolor = \color{black!30},
+}
+\title{物性物理II}
+\date{\today}
+\author{\t{harry\_arbrebleu}}
+\addbibresource{ref.bib}
+\defbibheading{bunken}[\refname]{\section*{#1}}
