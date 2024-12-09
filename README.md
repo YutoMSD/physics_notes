@@ -8,8 +8,12 @@
 
 [plasma_physics](https://github.com/YutoMSD/physics_notes/blob/main/plasma_physics/main.pdf): プラズマ物理の講義ノート．
 
-[qft_for_cmp](https://github.com/YutoMSD/physics_notes/blob/main/qft_for_cmp/main.pdf): 場の量子論(物性寄り)
+[qft]: **WIP** 坂本，場の量子論のノート
+
+[qft_for_cmp](https://github.com/YutoMSD/physics_notes/blob/main/qft_for_cmp/main.pdf): 場の量子論(物性寄り)7
+
+[quantum_optics_and_quantum_infomatics]: **WIP** 古澤，武田，量子光学と量子情報科学の自主ゼミノート
 
 [spintronics](https://github.com/YutoMSD/physics_notes/blob/main/spintronics/main.pdf): ある人のためのセミナーのためのノート．口頭がメイン．
 
-[QuantumOpticsAndQuantumInfomatics]WIP
+[special_function](https://github.com/harry-arbrebleu/special_function/blob/main/main.pdf) 特殊函数に関する備忘録
