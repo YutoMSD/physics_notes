@@ -1,46 +1,272 @@
 \documentclass{report}
 \input{../head.tex}
 \begin{document}
-  \section{プラズマとは？}
-    物質に熱を加えていくと，固体，液体，気体へと変化する．
-    気体にさらに熱を加え，原子がイオンと電子に分離する．
-    この状態を\textbf{プラズマ}という．
-    \begin{itembox}[l]{プラズマの定義}
-      プラズマとは，荷電粒子を含んだほぼ中性の粒子集団．
-    \end{itembox}
-    ここで，粒子集団とは，\textbf{電離したイオンと電子を含む気体}のことである．
-    プラズマと普通の中性気体との違いは以下のようになる．
-    \begin{enumerate}
-      \item 中性気体の相互作用は衝突を通してのみである．
-      \item プラズマは荷電粒子なので，相互作用はCoulomb力である．これは多数の粒子間で遠距離まで及ぶ．
-    \end{enumerate}
-    上記で「ほぼ中性」と述べたのは，プラズマには時間的空間的電荷の偏りがあるからである．
-    しかし，プラズマにはこの偏りを打ち消す性質(Debye遮蔽，プラズマ振動)がある．
-    ラフに言えばこうである．まず，ある正電荷の周りに電子が集まる．この領域は電子が増えるので電気的に負になる．
-    ほかの領域は電気的に正になる．電子はこの正の領域に戻っていく．
-    プラズマ物理ではエネルギーや温度が指標に使われる．
+\section{プラズマの温度}
+  プラズマの\textbf{温度}は，\textbf{密度}とともにもっとも
+  基本的かつ重要な物理量の一つである．
+  壁の温度$T$が一定の容器に．十分長い時間気体粒子を閉じ込めると
+  気体粒子は衝突を繰り返し熱平衡状態になる．
+  粒子の速度分布はMaxwell分布に従う．単位体積当たり$n$個の粒子が温度$T$で熱平衡状態に
+  あるとする．速度が$v_x$と$v_x + \dd{v_x}$の範囲にある粒子の個数は，
+  \begin{align}
+    f(v_x)\dd{v_x},\ f(v_x) = A \exp\qty(-\frac{mv_x^2}{2\kb T})
+  \end{align}
+  である．
+  $A$は規格化条件から求められる．
+  \begin{align}
+    \int_{-\infty}^{\infty} f(v_x) \dd{v_x} &= n \\
+    \Leftrightarrow \int_{-\infty}^{\infty} A \exp\qty(-\frac{mv_x^2}{2\kb T})\dd{v_x} &= n \\ 
+    \Rightarrow A &= n\sqrt{\frac{m}{2\pi \kb T}}
+  \end{align}
+  温度は速度分布の広がりを表すパラメータである．高温ほど，速度が大きい粒子が多い．
+  粒子の平均エネルギーを計算する．
+  \begin{align}
+    E_{\r{av}} = \frac{1}{n}\int_{-\infty}^{\infty} \frac{1}{2}mv_x^2f(v_x) \dd{v_x} = \frac{1}{2}\kb T
+  \end{align}
+  熱速度を
+  \begin{align}
+    v_{\r{th}} = \sqrt{\frac{2\kb T}{m}}
+  \end{align}
+  とすると，
+  \begin{align}
+    f(\pm v_{\r{th}}) = \frac{1}{\e}f(0)
+  \end{align}
+  である．
+  \par
+  3次元に拡張すると分布関数は，
+  \begin{align}
+    f(v_x, v_y, v_z) &= n\qty(\frac{m}{2\pi \kb T})^{3/2} \exp\qty[-\frac{1}{2}\frac{m(v_x^2 + v_y^2 + v_z^2)}{\kb T}]\\
+    E_{\r{av}} &= \frac{3}{2}\kb T
+  \end{align}
+  である．
+  速さ$v$に関する速度分布は
+  \begin{align}
+    F(v) = 4\pi n \qty(\frac{m}{2\pi \kb T})^{3/2} v^2 \exp\qty[-\frac{1}{2}\frac{mv^2}{\kb T}]
+  \end{align}
+  である．これは$v = v_{\r{th}}$で最大となる．また，速度ベクトルの向きに依らず，速さのみに依存する．\textbf{等方分布}である．
+  \par
+  速度あるいは速さの平均値は，温度や熱速度と共に，\textbf{速度分布を特徴づける物理量}として，今後，重要となる．
+  速度ベクトルの平均値は0である．
+  \begin{align}
+    \ev{\bm{v}} = \bm{0}
+  \end{align}
+  次に速さの平均値を計算する．
+  \begin{align}
+    \ev{v} = \frac{1}{n}\int_{0}^{\infty} v F(v) \dd{v} = \sqrt{\frac{8 \kb T}{\pi m}}
+  \end{align}
+  これは熱速度よりわずかに大きい．
+  \par
+  速度分布関数についての平均は一般的に次のようになる．ある物理量$X$を考える．$X$の平均値は
+  \begin{align}
+    \ev{X} = \frac{1}{n}\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} Xf(v_x, v_y, v_z) \dd{v_x}\dd{v_y}\dd{v_z}
+  \end{align}
+  である．特に，等方的な分布の場合，
+  \begin{align}
+    \ev{X} = \frac{1}{n} \int_{0}^{\infty} XF(v) \dd{v}
+  \end{align}
+  である．これはプラズマを流体的に扱う時に用いられる．
+  \section{電気的中性}
+    電子の個数密度を$n_e$，イオンの個数密度を$n_i$とする．イオンが1価ならば，
     \begin{align}
-      1\ \r{eV} \sim 1 \times 10^4\ \si{\degreeCelsius}
+      (-e)n_e + (+e)n_i &= 0\\
+      \Rightarrow n_e &= n_i
+    \end{align}
+    が成り立つ．$Z$価のイオンならば，
+    \begin{align}
+      (-e)n_e + (+Ze)n_i &= 0\\
+      \Rightarrow n_e &= Zn_i
+    \end{align}
+    イオンの種類が多数の場合には，
+    \begin{align}
+      \sum_{j} (Z_j e)n_j = 0
+    \end{align}
+    が成り立つ．ただし，$j$は荷電粒子の種類，例えば電子やイオンを表す．ヘリウムを例に考えてみる．
+    ヘリウムには1価イオンと2価イオンがあるので，
+    \begin{align}
+      (-e)n_e + (+e)n_{\r{He}^{+}} + (+2e)n_{\r{He}^{2+}} = 0
+    \end{align}
+    が成り立つ．
+    \par
+    以上はマクロに見た電気的中性であったが，プラズマはミクロに見ると揺らいでいる．
+    プラズマは以下の機構により\textbf{準中性}と呼ばれる．
+    まず，プラズマはランダムな熱運動をしている．
+    この熱運動により，ある瞬間には揺動電場が形成される．
+    プラズマはこの電場を打ち消すように運動する．よって，プラズマはほぼ中性であり，
+    \begin{align}
+      n_i \simeq n_e
+    \end{align}
+    が成り立つ．
+  \section{Debye遮蔽}
+    プラズマ粒子は互いにCoulomb相互作用
+    \begin{align}
+      F = \frac{1}{4\pi \epsilon_0}\frac{qq'}{r^2}
+    \end{align}
+    を及ぼしあう．このときのポテンシャルは
+    \begin{align}
+      \phi(r) = \frac{1}{4\pi \epsilon_0}\frac{q}{r}
+    \end{align}
+    であるが，これはあくまで真空中でのポテンシャルであり，プラズマの存在を加味していない．
+    プラズマによる遮蔽を考えたものとして，次の\textbf{Debyeポテンシャル}がある．
+    \begin{align}
+      \phi(r) = \frac{1}{4\pi\epsilon_0}\frac{q}{r}\exp\qty(-\frac{r}{\lambda_D})
+    \end{align}
+    $\lambda_D$をDebyeの遮蔽長，$\exp(-r/\lambda_D)$をDebyeの遮蔽ファクターという．
+    プラズマ中で正電荷の偏りができると，そこに電子が引き寄せられる．この引き寄せられた電子たちが正電荷の電場を遮蔽する．
+    \par
+    Debyeの遮蔽長は以下の式を満たす．
+    \begin{align}
+      \lambda_D = \sqrt{\frac{\epsilon_0 \kb T}{e^2 n}}
+    \end{align}
+    つまり，$T$が大きいほど，電子はランダムな熱運動をするため，正電荷の周りにとどまらず，$\lambda_D$は大きくなる．
+    一方，$n$が大きいほど電子が集まりやすいため，$\lambda_D$は小さくなる．
+    また，係数を計算すると，
+    \begin{align}
+      \lambda_D &= 7.4\times 10^3\sqrt{\frac{T\ \r{eV}}{n\ \r{m^{-3}}}}
     \end{align}
     である．
-  \section{自然界のプラズマ}
+    \par
+    Debye遮蔽と準中性条件は以下の関係にある．
+    プラズマの特徴的な大きさや長さ$L$がDebye遮蔽長$\lambda_D$より十分に大きい，つまり，
     \begin{align}
-      E = mc^2
+      L \gg \lambda_D
     \end{align}
-    $1\ \r{g}$の水素の核融合によるエネルギーは
+    のとき，空間的な電荷の偏りは無視でき，ほぼ中性とみなせる．
+    \par
+    定性的な議論は以上として，次にDebye遮蔽を導出する．出発点は\refe{poisson-eq}のPoisson方程式である．
     \begin{align}
-      6.5 \times 10^{11} \r{J}
+      \laplacian \phi(\bm{r}) = -\frac{\rho(\bm{r})}{\epsilon_0} \label{poisson-eq}
     \end{align}
-    である．
-  \section{地上に太陽を}
-    \begin{itembox}[l]{ローソン条件}
-      核融合反応が持続するために必要な温度，密度，閉じ込め時間の関係．  
-    \end{itembox}
-    \begin{itembox}[l]{ローソン図}
-      ローソン条件を満たす関係をエネルギー増倍率$Q$として，
+    ここで，1価のイオンと電子で構成されるプラズマの場合，
+    \begin{align}
+      \rho(\bm{r}) = e[n_i(\bm{r}) - n_e(\bm{r})]
+    \end{align}
+    である．モデルとして，プラズマ中で生じた電荷の偏りを試験電荷，つまり点電荷として近似する．
+    試験電荷の電荷量を$q_{\r{T}}$として，これが原点にあるとする．
+    試験電荷を含めると電荷密度は
+    \begin{align}
+      \rho(\bm{r}) = e[n_i(\bm{r}) - n_e(\bm{r})] + q_{\r{T}}\delta(\bm{r}) \label{density-charge}
+    \end{align}
+    とかける．また，
+    球対称性を仮定し，$\theta$と$\phi$依存性を捨てると，
+    ラプラシアンは
+    \begin{align}
+      \laplacian\phi = \frac{1}{r^2}\pdv{r} \qty(r^2 \pdv{\phi}{r})
+    \end{align}
+    となる．ここで，イオンの質量は電子に比較して大きく動きにくいとすると，イオンの電荷密度は試験電荷がない場合の一様な密度にほぼ等しい．
+    \begin{align}
+      n_i(r) \simeq n_0 \label{density-ion}
+    \end{align}
+    また，電子密度はBoltzmann関係式
+    \begin{align}
+      n_e(r) = n_0\exp\qty[\frac{e\phi(r)}{\kb T}] \simeq n_0\qty[1 + \frac{e\phi(r)}{\kb T}] \label{density-e}
+    \end{align}
+    を満たす．\refe{density-charge}，\refe{density-e}，\refe{density-ion}を\refe{poisson-eq}に代入すると，
+    \begin{align}
+      \frac{1}{r^2}\pdv{r}\qty(r^2\pdv{\phi}{r}) = \frac{e^2 n_0}{\epsilon_0 \kb T}\phi(r) - \frac{q_{\r{T}}}{\epsilon_0}\delta(r)
+    \end{align}
+    となる．ここで，$\frac{e^2 n_0}{\epsilon_0 \kb T} = \frac{1}{\lambda_D^2}$とおくと，$r \neq 0$で，
+    \begin{align}
+      \frac{1}{r^2}\pdv{r}\qty(r^2\pdv{\phi}{r}) = \frac{1}{\lambda_D^2}\phi(r)
+    \end{align}
+    である．上式の一般解は
+    \begin{align}
+      \phi(r) = \frac{A}{r}\exp\qty(-\frac{r}{\lambda_D}) + \frac{B}{r}\exp\qty(+\frac{r}{\lambda_D})
+    \end{align}
+    である．次に境界条件を考える．無限遠でポテンシャルが発散することは無いので
+    \begin{align}
+      B = 0
+    \end{align}
+    試験電荷の極近傍ではポテンシャルはCoulombポテンシャルと一致するはずなので
+    \begin{align}
+      \phi(0^{+}) &= \frac{q_{\r{T}}}{4\pi\epsilon_0 r}\\
+      \Rightarrow A&= \frac{q_{\r{T}}}{4\pi\epsilon_0}
+    \end{align}
+    である．以上からDebye遮蔽のポテンシャル
+    \begin{align}
+      \phi(r) = \frac{q_{\r{T}}}{4\pi\epsilon_0 r}\exp\qty(-\frac{r}{\lambda_D})
+    \end{align}
+    が得られる．
+    \section{プラズマ・パラメータ}
+      Debyeの遮蔽長を半径とする球(Debye球)を考える．
+      この球の中に含まれるプラズマ粒子の数$N_\lambda$はプラズマの密度を$n$として，
       \begin{align}
-        Q = \frac{\text{核融合出力}}{\text{加熱パワー}}
+        N_\lambda = \frac{4\pi}{3}n \lambda_D^3
       \end{align}
-      で図示したもの．
-    \end{itembox}
+      となる．
+      Debye遮蔽が有効に働くためには，Debye球内に十分多数の荷電粒子が存在しなければならない．つまり，
+      \begin{align}
+        N_\lambda \gg 1 \label{plasma-parameter}
+      \end{align}
+      という条件を満たさなければならない．よって，この$N_\lambda$をプラズマ・パラメータという．
+      一般に\refe{plasma-parameter}が満たされるとき，Debye遮蔽が有効に働き，荷電粒子からなる気体は，ほぼ中性とみなせる．したがって，$N_\lambda$は対象がプラズマである
+      ことを示す一つの指標である．
+      しかし，負電荷が正電荷に完全に束縛されてしまうと，荷電粒子から構成される期待と考えることはできない．
+      よって，Coulomb力を振り払うほどの運動エネルギーをもつことが，プラズマであるための条件となる．
+      すなわち，
+      \begin{align}
+        \frac{3}{2}k_B T \gg \frac{e^2}{4\pi\epsilon_0}\frac{1}{d}
+      \end{align}
+      が条件となる．ここで，$d$は粒子間の平均距離である．
+      上式を変形すると，
+      \begin{align}
+        \frac{\frac{3}{2}k_B T}{\frac{e^2}{4\pi\epsilon_0}\frac{1}{d}} \gg 1 \label{plasma-parameter2}
+      \end{align}
+      となる．以下に，\refe{plasma-parameter}と\refe{plasma-parameter2}が等価であること，すなわち，
+      $N_\lambda$が運動エネルギーとCoulombポテンシャルの比に対応するパラメータであることを示す．
+      まず，プラズマの密度が$n$であるから，プラズマ1つが占める体積は
+      \begin{align}
+        V = \frac{1}{n}
+      \end{align}
+      である．また，プラズマの平均距離は$d$であるから，
+      \begin{align}
+        V = d^3
+      \end{align}
+      である．よって，
+      \begin{align}
+        d \simeq n^{-1/3}
+      \end{align}
+      を得る．したがって，
+      \begin{align}
+        N_\lambda &= \frac{4\pi}{3}n \lambda_D^3\\
+        &= \frac{4\pi}{3}\frac{1}{d^3}\qty(\frac{\epsilon_0 k_B T}{e^2/d^3})^{3/2}\\
+        \Rightarrow N_\lambda &\propto \qty[\frac{(3/2)k_B T}{(e^2/4\pi\epsilon_0 d)}]^{3/2}
+      \end{align}
+      である．右辺は運動エネルギーとCoulombポテンシャルの比となっている．
+\section{プラズマ振動}
+\textbf{プラズマ振動}(plasma oscillation)は以下のような機構で発生する．\\
+まず，プラズマはランダムな熱振動をしている．
+\begin{enumerate}
+  \item そのため，電気的な中性が崩れる．
+  \item 中性が崩れたため電場が発生する．
+  \item この電場をシールドするためにプラズマ粒子が運動する．
+  \item この運動の慣性のために再び中性が崩れる．
+\end{enumerate}
+1から4を繰り返すことをプラズマ振動という．以下に，プラズマ振動の振動数，プラズマ振動数を求める．
+まず，プラズマの集団が$x$だけずれたとする．このとき，電子の平衡位置からのずれにより生じる電荷$\sigma$は
+\begin{align}
+  \sigma = 1 \times x \times ne
+\end{align}
+である．ここで，イオンは質量が大きいため動かないとした．次に，この電荷により生じる電場は
+\begin{align}
+  E = \frac{\sigma}{\epsilon_0}
+\end{align}
+である．よって，$n$個の電子の運動方程式は
+\begin{align}
+  nm_e\dv[2]{x}{t} &= n(-e)E\\
+  \Rightarrow nm_e \dv[2]{x}{t} &= -\frac{n^2e^2}{\epsilon_0}x \label{plasma-oscillation}
+\end{align}
+である．これは振動数
+\begin{align}
+  \omega_p = \sqrt{\frac{ne^2}{m_e\epsilon_0}}
+\end{align}
+とする単振動の方程式であることがわかる．この$\omega_p$をプラズマ振動数という．プラズマ振動数はプラズマの密度が大きいほど大きくなることがわかる．
+また，物理定数を代入すると，具体的に
+\begin{align}
+  \omega_p = 5.64 \times 10^{11} \sqrt{\frac{n}{10^{20}}} \ \text{radian/s}
+\end{align}
+と求まる．
+さらに，
+\begin{align}
+  f_p = \frac{\omega_p}{2\pi} = 8.98 \times 10^{10} \sqrt{\frac{n}{10^{20}}} \ \text{Hz}
+\end{align}
 \end{document}
