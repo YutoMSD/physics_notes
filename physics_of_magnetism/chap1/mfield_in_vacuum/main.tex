@@ -160,4 +160,38 @@
       \dd{\bm{H}} = \frac{1}{4\pi}\frac{I\dd{\bm{l}} \times \hat{\bm{r}}}{r^2}
     \end{align}
   \end{itembox}
+
+  円盤磁石が中心から$r$離れた位置に作る磁場は
+  \begin{align}
+    H = \frac{I}{2\pi\mu_0}\frac{m}{r^3}
+  \end{align}
+  である．一方，円電流が作るのは，
+  \begin{align}
+    H = \frac{1}{2\pi}\frac{Ia}{r^3}
+  \end{align}
+  である．よって，円電流は$\mu_0 Ia$の磁気モーメントを有する．
+
+  \begin{align}
+    \bm{H} = \frac{1}{\mu_0}\nabla \times \bm{A}
+  \end{align}
+  の$\bm{A}$をベクトルポテンシャルという．ベクトルポテンシャルの任意性を排除するために
+  \begin{align}
+    \nabla \cdot \bm{A} = 0
+  \end{align}
+  とする．これをCoulombゲージという．
+
+  磁気双極子モーメントの作るベクトルポテンシャル
+  \begin{align}
+    \bm{A}(\bm{r}) = \frac{1}{4\pi}\frac{\bm{m}\times\bm{r}}{r^3}
+  \end{align}
+  $\bm{m}$に分布があるときは
+  \begin{align}
+    \bm{A}(\bm{r}) = \frac{1}{4\pi} \int \frac{\bm{M}(\bm{r}')\times(\bm{r}-\bm{r}')}{\abs{\bm{r}-\bm{r}'}^3}\dd{V'}
+  \end{align}
+  である．
+  円電流の作るベクトルポテンシャルは
+  \begin{align}
+    \bm{A}(\bm{r}) = \frac{\mu_0}{4\pi} \int \frac{\bm{i}(\bm{r}')}{\abs{\bm{r}-\bm{r}'}}\dd{V'}
+  \end{align}
+  である．
 \end{document}
