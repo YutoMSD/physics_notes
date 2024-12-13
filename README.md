@@ -16,7 +16,7 @@
 
 [qft_for_cmp](https://github.com/YutoMSD/physics_notes/blob/main/qft_for_cmp/main.pdf): 場の量子論(物性寄り)7
 
-[quantum_optics_and_quantum_infomatics]: **WIP** 古澤，武田，量子光学と量子情報科学の自主ゼミノート
+[quantum_optics_and_quantum_infomatics](https://github.com/harry-arbrebleu/quantum-optics-and-info): 古澤，武田，量子光学と量子情報科学の自主ゼミノート
 
 [spintronics](https://github.com/YutoMSD/physics_notes/blob/main/spintronics/main.pdf): ある人のためのセミナーのためのノート．口頭がメイン．
 
