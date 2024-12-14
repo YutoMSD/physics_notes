@@ -1,4 +1,4 @@
-ノート置き場
+# ノート置き場
 
 [Aquantum](https://github.com/YutoMSD/AQuantum/blob/main/main.pdf): 応用量子物性の講義ノート．
 
@@ -12,7 +12,7 @@
 
 [plasma_physics](https://github.com/YutoMSD/physics_notes/blob/main/plasma_physics/main.pdf): プラズマ物理の講義ノート．
 
-[qft]: **WIP** 坂本，場の量子論のノート
+[qft](https://github.com/YutoMSD/physics_notes/blob/main/qft/main.pdf): 坂本，場の量子論のノート
 
 [qft_for_cmp](https://github.com/YutoMSD/physics_notes/blob/main/qft_for_cmp/main.pdf): 場の量子論(物性寄り)7
 
@@ -20,4 +20,4 @@
 
 [spintronics](https://github.com/YutoMSD/physics_notes/blob/main/spintronics/main.pdf): ある人のためのセミナーのためのノート．口頭がメイン．
 
-[special_function](https://github.com/harry-arbrebleu/special_function/blob/main/main.pdf) 特殊函数に関する備忘録
+[special_function](https://github.com/harry-arbrebleu/special_function/blob/main/main.pdf) 特殊函数に関する備忘録．
