@@ -168,59 +168,59 @@
           S_{en} = n_e n_n \ev{\sigma_{en}(v)v}
         \end{align}
         と表される．
-\subsection{光電離}
-光子のエネルギーがイオン化エネルギーより大きければ，電離が起こるようになる．
-地球の電離層はこれによりできる．特に，太陽からの紫外線が電離を引き起こす．
+    \subsection{光電離}
+      光子のエネルギーがイオン化エネルギーより大きければ，電離が起こるようになる．
+      地球の電離層はこれによりできる．特に，太陽からの紫外線が電離を引き起こす．
 
-光電離の条件は
-\begin{align}
-  A + h\nu \rightarrow A^+ + e^-
-\end{align}
-であるので，
-\begin{align}
-  h\nu \geq e V_i
-\end{align}
-を満たさなければならない．背片は光子のエネルギーで，右辺はイオン化エネルギーである．
-整理すると，
-\begin{align}
-  \lambda\ \r{eV} \leq \frac{1239.8}{V_i\ [\r{eV}]}
-\end{align}
-となる．例えばセシウムの場合$V_i = 3.98$ eVなので，$\lambda \leq 320$ nmである．
-これは紫外線の領域である．大気中では高度の高い方が短い波長，高度の低い方が長い波長の光が吸収される．
+      光電離の条件は
+      \begin{align}
+        A + h\nu \rightarrow A^+ + e^-
+      \end{align}
+      であるので，
+      \begin{align}
+        h\nu \geq e V_i
+      \end{align}
+      を満たさなければならない．背片は光子のエネルギーで，右辺はイオン化エネルギーである．
+      整理すると，
+      \begin{align}
+        \lambda\ \r{eV} \leq \frac{1239.8}{V_i\ [\r{eV}]}
+      \end{align}
+      となる．例えばセシウムの場合$V_i = 3.98$ eVなので，$\lambda \leq 320$ nmである．
+      これは紫外線の領域である．大気中では高度の高い方が短い波長，高度の低い方が長い波長の光が吸収される．
 
-ここで，大気の構造と組成について補足する．
-圧力に関する運動方程式は
-\begin{align}
-  \dv{p}{z} = -mgn
-\end{align}
-である．ここで，$p=n\kb T$なので，$T \sim \r{const.}$のとき
-\begin{align}
-  \dv{n}{z} = - \frac{mg}{\kb T}n
-\end{align}
-となる．この解は
-\begin{align}
-  n(z) = n_0 \exp\qty(-\frac{mgz}{\kb T}) = n_0 \exp\qty(-\frac{z}{H})
-\end{align}
-である．ここで，
-\begin{align}
-  H \equiv \frac{\kb T}{mg}
-\end{align}
-を\textbf{スケールハイト}(scale height)という．大気密度が$1/\e$に減衰する高度を表す．
-質量が大きいほど早く減衰し，質量が小さいほど遅く減衰する．
+      ここで，大気の構造と組成について補足する．
+      圧力に関する運動方程式は
+      \begin{align}
+        \dv{p}{z} = -mgn
+      \end{align}
+      である．ここで，$p=n\kb T$なので，$T \sim \r{const.}$のとき
+      \begin{align}
+        \dv{n}{z} = - \frac{mg}{\kb T}n
+      \end{align}
+      となる．この解は
+      \begin{align}
+        n(z) = n_0 \exp\qty(-\frac{mgz}{\kb T}) = n_0 \exp\qty(-\frac{z}{H})
+      \end{align}
+      である．ここで，
+      \begin{align}
+        H \equiv \frac{\kb T}{mg}
+      \end{align}
+      を\textbf{スケールハイト}(scale height)という．大気密度が$1/\e$に減衰する高度を表す．
+      質量が大きいほど早く減衰し，質量が小さいほど遅く減衰する．
 
-\subsection{励起過程}
-イオン化エネルギー以下でも，原子や分子の内部状態の変化を起こさせる可能性がある．これを，\textbf{励起過程}(excitation)という．
+      \subsection{励起過程}
+      イオン化エネルギー以下でも，原子や分子の内部状態の変化を起こさせる可能性がある．これを，\textbf{励起過程}(excitation)という．
 
-電子が高準位に励起されたとする．励起状態は一般に不安定であるため，より低い準位へと遷移し，結局は基底状態に戻る．
-低準位への遷移の際，エネルギーを光として放出する．$E_m$から$E_n$への遷移に伴い放出される光は
-\begin{align}
-  h\nu &= E_m - E_n\\
-  \Rightarrow \lambda\ \r{nm} &= \frac{1239.8}{E_m - E_n\ [\r{eV}]}
-\end{align}
-の波長をもつ．整理すると
-\begin{align}
-  \frac{1}{\lambda} = R_H\qty(\frac{1}{n^2} - \frac{1}{m^2})
-\end{align}
-である．$R_H$はRydberg定数で$R_H = 1.097 \times 10^7$ m$^{-1}$である．$n=1$のときをLyman系列，$n=2$のときをBalmer系列という．例えば，
-$m=2\to n=1$のとき$\lambda = 121.6$ nmで真空紫外線$L_{\r{y\alpha}}$と呼ばれる．$m=3\to n=2$のとき$\lambda = 656.3$ nmで$H_{\alpha}$線と呼ばれる．
+      電子が高準位に励起されたとする．励起状態は一般に不安定であるため，より低い準位へと遷移し，結局は基底状態に戻る．
+      低準位への遷移の際，エネルギーを光として放出する．$E_m$から$E_n$への遷移に伴い放出される光は
+      \begin{align}
+        h\nu &= E_m - E_n\\
+        \Rightarrow \lambda\ \r{nm} &= \frac{1239.8}{E_m - E_n\ [\r{eV}]}
+      \end{align}
+      の波長をもつ．整理すると
+      \begin{align}
+        \frac{1}{\lambda} = R_H\qty(\frac{1}{n^2} - \frac{1}{m^2})
+      \end{align}
+      である．$R_H$はRydberg定数で$R_H = 1.097 \times 10^7$ m$^{-1}$である．$n=1$のときをLyman系列，$n=2$のときをBalmer系列という．Balmer系列は可視領域である．例えば，
+      $m=2\to n=1$のとき$\lambda = 121.6$ nmで真空紫外線$L_{\r{y\alpha}}$と呼ばれる．$m=3\to n=2$のとき$\lambda = 656.3$ nmで$H_{\alpha}$線と呼ばれる．
 \end{document}
