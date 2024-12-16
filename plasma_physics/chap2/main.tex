@@ -85,75 +85,73 @@
         また，これらの断面積は反応断面積や電離断面積と呼ばれることもある．
       \subsubsection{平均自由行程}
         \textbf{平均自由行程}(mean free path)は，衝突と衝突の間の平均的な飛行距離である．
-        $x = 0$，面積$S$の面から，同じ速度$v$を持つ粒子Aのビームを一様に入射する．
-        $x = 0$で未衝突の粒子Aの個数を$N_{A0}$とする．
-        位置$x$での個数を$N_A(x)$とする．簡単のため粒子Bは止まっているとする．粒子Aと粒子Bの衝突断面積を$\sigma_{AB}$とすると，
-        粒子Aが$[x, x + \dd{x}]$の微小区間で粒子Bと衝突する確率は
+        位置$x = 0$，面積$S$の面から，同じ速度$v$を持つ粒子Aのビームを一様に入射する．
+        $x = 0$で未衝突の粒子Aの個数を$N_{\r{A}0}$とする．
+        位置$x$での個数を$N_{\r{A}}(x)$とする．簡単のため粒子Bは止まっているとする．
+        粒子Aと粒子Bの衝突断面積を$\sigma_{AB}$とすると，粒子Aが$[x, x + \dd{x}]$の微小区間で粒子Bと衝突する確率は
         \begin{align}
-          P_{AB} = \frac{\sigma_{AB}N_B}{S}
+          P_{\r{AB}} = \frac{\sigma_{\r{AB}}N_{\r{B}}}{S}
         \end{align}
-        である．$N_B$は$\dd{x}$に含まれる粒子Bの個数である．
-        粒子Bの密度を$n_B$とすると，
+        である．$N_\r{B}$は$\dd{x}$に含まれる粒子Bの個数である．
+        粒子Bの密度を$n_{\r{B}}$とすると，
         \begin{align}
-          N_B = n_B S \dd{x}
+          N_\r{B} = n_\r{B}\cdot S \dd{x}
         \end{align}
         である．
         よって，衝突確率は
         \begin{align}
-          P_{AB} \sim \sigma_{AB} n_B \dd{x}
+          P_{\r{AB}} \sim \sigma_{\r{AB}} n_{\r{B}} \dd{x}
         \end{align}
-        である．衝突の分だけビーム粒子の数は減ると考えると，
+        である．衝突した粒子の数だけビーム粒子の数は減ると考えると，
         \begin{align}
-          \dd{N_A} = -n_A \sigma_{AB} n_B \dd{x}
+          \dd{N_A} = -n_A \sigma_{\r{AB}} n_B \dd{x}
         \end{align}
         である．よって，
         \begin{align}
-          \frac{\dd{N_A}}{N_{A}} &= - \sigma_{AB} n_B \dd{x}\\
-          \Rightarrow N_A(x) &= N_{A0} \exp\qty(-\frac{x}{\lambda_{AB}})
+          \frac{\dd{N_{\r{A}}}}{N_{\r{A}}} &= - \sigma_{\r{AB}} n_{\r{B}} \dd{x}\\
+          \Rightarrow N_{\r{A}}(x) &= N_{\r{A0}} \exp\qty(-\frac{x}{\lambda_{\r{AB}}})
         \end{align}
         であり，平均自由行程は
         \begin{align}
-          \lambda_{AB} = \frac{1}{n_B \sigma_{AB}}
+          \lambda_{\r{AB}} = \frac{1}{n_{\r{B}} \sigma_{\r{AB}}}
         \end{align}
         となる．
+        \par
         粒子Aが距離$x$だけ自由に飛行できる確率を求める．
-        $x=0$から$x$まで衝突を受けない確率は
+        位置$0$から位置$x$まで衝突を受けない確率は
         \begin{align}
-          P_A(x) = \frac{N_A(x)}{N_{A0}} = \exp\qty(-\frac{x}{\lambda_{AB}})
+          P_{\r{A}}(x) = \frac{N_\r{A}(x)}{N_{\r{A0}}} = \exp\qty(-\frac{x}{\lambda_{\r{AB}}})
         \end{align}
-        である．$[x,x+\dd{x}]$の範囲で衝突を受ける確率は
+        である．$[x, x+\dd{x}]$の範囲で衝突を受ける確率は
         \begin{align}
-          \dd{P_A(x)} = \abs{\frac{\dd{N_A}}{N_A}} = \sigma_{AB} n_B \dd{x} = \frac{\dd{x}}{\lambda_{AB}}
+          \dd{P_{\r{A}}(x)} = \abs{\frac{\dd{N_A}}{N_A}} = \sigma_{\r{AB}} n_{\r{B}} \dd{x} = \frac{\dd{x}}{\lambda_{\r{AB}}}
         \end{align}
-        である．よって，$x$だけ自由に飛行できる確率は
+        である．よって，距離$x$だけ自由に飛行できる確率は
         \begin{align}
-          P_A\times\dd{P_A} = \exp\qty(-\frac{x}{\lambda_{AB}})\frac{\dd{x}}{\lambda_{AB}}
+          P_{\r{A}}\times\dd{P_{\r{A}}} = \exp\qty(-\frac{x}{\lambda_{\r{AB}}})\frac{\dd{x}}{\lambda_{\r{AB}}}
         \end{align}
-        である．よって，自由に飛行できる距離$x$の平均値は
+        である．自由に飛行できる距離$x$の平均値は
         \begin{align}
-          \ev{x} = \int_0^{\infty} x\exp\qty(-\frac{x}{\lambda_{AB}})\frac{\dd{x}}{\lambda_{AB}} = \lambda_{AB}
+          \ev{x} = \int_0^{\infty} x\exp\qty(-\frac{x}{\lambda_{\r{AB}}})\frac{\dd{x}}{\lambda_{\r{AB}}} = \lambda_{\r{AB}}
         \end{align}
-        である．$\lambda_{AB}$はまさしく平均移動距離を表している．
+        である．$\lambda_{\r{AB}}$はまさしく平均移動距離を表している．
       \subsubsection{衝突時間と衝突周波数}
-        衝突と衝突の間の平均的な経過時間を\textbf{衝突時間}$\tau_{AB}$という．これは平均自由行程を飛行するのに要する時間である．
+        衝突と衝突の間の平均的な経過時間を\textbf{衝突時間}$\tau_{\r{AB}}$という．これは平均自由行程を飛行するのに要する時間である．
         \begin{align}
-          \tau_{AB} = \frac{\lambda_{AB}}{v} \label{eq:collision_time}
+          \tau_{\r{AB}} = \frac{\lambda_{\r{AB}}}{v} \label{eq:collision_time}
         \end{align}
         で与えられる．また，
-        単位時間当たりの平均的な衝突回数を\textbf{衝突周波数}$\nu_{AB}$という．
+        単位時間当たりの平均的な衝突回数を\textbf{衝突周波数}$\nu_{\r{AB}}$という．
         \begin{align}
-          \mu_{AB} = \frac{1}{\tau_{AB}} = n_B \sigma_{AB} v \label{eq:collision_frequency}
+          \nu_{\r{AB}} = \frac{1}{\tau_{\r{AB}}} = n_B \sigma_{\r{AB}} v \label{eq:collision_frequency}
         \end{align}
         で与えられる．\refe{eq:collision_frequency}は粒子1個当たりの平均的な衝突回数である．粒子Aの密度を$n_A$とすると，
         単位体積単位時間当たりのイオンの生成量$S$は
         \begin{align}
-          S_{AB} = n_A n_B \sigma_{AB} v
+          S_{\r{AB}} = n_{\r{A}} n_{\r{B}} \sigma_{\r{AB}} v
         \end{align}
         である．
-
       \subsubsection{速度係数}
-        速度係数(rate coefficient)
-
         実際には，速度分布は一様ではない．衝突周波数の速度分布に関する平均値は
         \begin{align}
           \ev{v_{en}} = n_n \ev{\sigma_{en}(v)v}
@@ -162,12 +160,13 @@
         \begin{align}
           \ev{\sigma_{en}(v)} = \int_0^{\infty} \sigma_{en}(v)f(v)\dd{v}
         \end{align}
-        を\textbf{速度係数}(反応速度係数)という．単位は$\r{m^3/s}$である．
+        を\textbf{速度係数}(反応速度係数，rate coefficient)という．単位は$\r{m^3/s}$である．
         これを使うと，単位体積単位時間当たりの衝突回数は
         \begin{align}
           S_{en} = n_e n_n \ev{\sigma_{en}(v)v}
         \end{align}
         と表される．
+    \subsection{光電離}
     \subsection{光電離}
       光子のエネルギーがイオン化エネルギーより大きければ，電離が起こるようになる．
       地球の電離層はこれによりできる．特に，太陽からの紫外線が電離を引き起こす．
