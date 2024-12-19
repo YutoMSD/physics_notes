@@ -379,7 +379,81 @@ $\epsilon$は
 $\alpha_{ij}$は系の対称性に依存している．例えば，系がchilarityをもつときやウルツ鉱型構造の時，対称性が破れ$J$が0とはならない．
 これは，$k>0$と$k<0$で励起される角運動量の大きさが異なるためだと解釈できる．
 以上，対称性の小さい系に熱勾配を加えると，フォノンの角運動量が存在することがわかった．
+
 \paragraph*{参考文献}
 \url{https://doi.org/10.1103/PhysRevLett.121.175301}
 
+\section{フォノン角運動量と熱伝導率}
+フォノン角運動量が温度に対し熱伝導率と同じようにふるまうことを示す．
+
+一般に，Boltzmann方程式は\refe{boltzmann}のように書ける．
+\begin{align}
+  \pdv{f}{t} + \bm{v} \cdot (\bm{k})\nabla f + \frac{\bm{F}}{m} \cdot \nabla_{\bm{v}} f= - \qty(\pdv{f}{t})_{\r{c}} \label{boltzmann}
+\end{align}
+右辺は定緩和近似により
+\begin{align}
+  \qty(\pdv{f}{t})_{\r{c}} = \frac{f - f_0}{\tau}
+\end{align}
+とする．$\tau$は緩和時間である．また，定常状態
+\begin{align}
+  \pdv{f}{t} = 0
+\end{align}
+かつ，外力の無い状態
+\begin{align}
+  \bm{F} = 0
+\end{align}
+を考える．フォノンの平衡状態での分布関数を
+\begin{align}
+  n_0(\omega_{\bm{k},\sigma}) = \frac{1}{\e^{\beta\hbar\omega_{\bm{k},\sigma}} - 1}
+\end{align}
+とし，非平衡での分布関数を$n(\omega_{\bm{k},\sigma})$とする．
+系に温度勾配があり，かつ，平衡状態からのズレは小さいとすると，
+\begin{align}
+  &\bm{v}\cdot \nabla n_0 = -\frac{n - n_0}{\tau}\\
+  &\bm{v} \cdot \qty(\nabla T \pdv{n_0}{(\hbar \omega)}\qty(\frac{\hbar \omega}{T})) = -\frac{n - n_0}{\tau}\\
+  \therefore &n - n_0 = \tau\qty[\bm{v} \cdot \qty(- \frac{\hbar \omega}{T} \pdv{n_0}{(\hbar \omega)} \nabla T)]\\
+\end{align}
+が得られる．
+
+これをフォノンの流れ
+\begin{align}
+  J^z = \frac{1}{V} \sum_{\bm{k},\sigma} \hbar \omega_{\bm{k},\sigma} v_{\bm{k},\sigma}^z n_{\bm{k},\sigma}
+\end{align}
+に代入する．
+\begin{align}
+  J^z = \qty(-\frac{1}{VT} \sum (\hbar\omega)^2 v^2 \tau \pdv{n_0}{(\hbar\omega)}) \nabla T + \circ
+\end{align}
+となる．$j = - \kappa \nabla T$なので，
+\begin{align}
+  \kappa &= -\frac{1}{VT} \sum (\hbar\omega)^2 v^2 \tau \pdv{n_0}{(\hbar\omega)}\\
+  &= -\frac{1}{VT} \sum_{\bm{k},\sigma} \int \dd{E} E^2 v^2 \tau \pdv{n_0}{E} \delta(E - \hbar\omega_{\bm{k},\sigma})\\
+  &\equiv \frac{1}{T} \sum_{\sigma} \int \dd{E} D(E) \tau E^2 \qty(-\pdv{n_0}{E})
+\end{align}
+を得る．ここで，$D$は状態密度で，
+\begin{align}
+  D = \frac{1}{V} \sum_{\bm{k}} v^2 \delta(E - \hbar\omega_{\bm{k},\sigma})
+\end{align}
+と置いた．熱伝導率は$T$の増加と共に極大を持ち，その後減衰する形である．
+
+前節より，フォノンの角運動量は温度勾配に比例する．
+\begin{align}
+  L^z = \kappa_{\r{AM}} (-\nabla T)
+\end{align}
+となる．ここで，
+\begin{align}
+  L = \frac{1}{V} \sum l \qty(n_0 + \frac{1}{2})
+\end{align}
+の$n_0$に$n$を代入することを考える．
+\begin{align}
+  \kappa_{\r{AM}} &= \frac{1}{VT} \sum_{\bm{k},\sigma} \hbar \omega_{\bm{k},\sigma} v_{\bm{k},\sigma}^z \tau l_{\bm{k},\sigma}^z \qty(-\pdv{n_0}{(\hbar\omega)})\\
+  &= \frac{1}{T} \sum_{\sigma} \int \dd{E} \tilde{D}(E) \tau E \qty(-\pdv{n_0}{E})
+\end{align}
+が得られる．$\tilde{D}$は状態密度で，
+\begin{align}
+  \tilde{D} = \frac{1}{V} \sum_{\bm{k}} v^z \hbar l^z \delta(E - \hbar\omega_{\bm{k},\sigma})
+\end{align}
+である．よって，$\kappa_{\r{AM}}$は熱伝導率と同じように$T$の増加と共に極大を持ち，その後減衰する形を取る．
+
+\paragraph*{参考文献}
+\url{https://doi.org/10.1103/PhysRevLett.121.175301}
 \end{document}
