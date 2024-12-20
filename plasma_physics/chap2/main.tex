@@ -13,28 +13,32 @@
     \end{align}
     許される軌道半径は
     \begin{align}
-      r_n = n^2 \frac{h^2\epsilon_0}{\pi m_e e^2}
+      r_n &= n^2 \frac{h^2\epsilon_0}{\pi m_e e^2} \\ 
+      &= n^2\cdot 5.3 \times 10^{-11}\ \r{m}
     \end{align}
     $n = 1$のときの軌道半径をBohr半径と言い，$5.3 \times 10^{-11}\ \r{m}$である．
-    各軌道に対する電子の全エネルギーは
+    各軌道に対する電子の全エネルギーは，
     \begin{align}
-      E_n = -\frac{m_ee^4}{8\pi\epsilon_0^2h^2}\frac{1}{n^2}
+      E_n &= -\frac{m_ee^4}{8\pi\epsilon_0^2h^2}\frac{1}{n^2} \\ 
+      &= -\frac{1}{n^2}\cdot 13.6\ \r{eV} 
     \end{align}
-    $n=1$のとき，$-13.6\ \r{eV}$である．
-    イオン化エネルギーの定義は
+    $n = 1$のとき，$-13.6\ \r{eV}$である．
+    イオン化エネルギーの定義は，
     \begin{align}
       \Delta E = E_{\infty} - E_1 = 13.6\ \r{eV}
     \end{align}
     であるから，水素原子のイオン化エネルギーは$13.6\ \r{eV}$である．
     常温・常圧では2原子あるいはそれ以上の原子が結合して分子の状態にあることが多い．
-    この場合には，解離課程を経て原子になり，その後，電離することが多い．
+    この場合には，解離過程を経て原子になり，その後，電離することが多い．
   \section{解離過程}
     では，どのようにして電離に必要なエネルギーを与えるのだろうか．主に，電子による\textbf{衝突電離}と\textbf{光電離}がある．
-
     \subsection{衝突電離}
-    イオン化エネルギー以上のエネルギーを衝突によって与えて中性粒子を電離させる方法が衝突電離である．1個の原子を電離するには$5\ \r{eV}$から$25\ \r{eV}$のエネルギーが必要である．
-
-    衝突させる粒子としては荷電粒子が用いられる．なぜなら，電圧により容易に加速させられるからである．電子を使ったものを\textbf{電子衝突電離}(electron impact ionization)という．
+    イオン化エネルギー以上のエネルギーを衝突によって与えて中性粒子を電離させる方法が衝突電離である．
+    1個の原子を電離するにはおよそ，$5\ \r{eV}$から$25\ \r{eV}$のエネルギーが必要である．
+    \par
+    衝突させる粒子としては荷電粒子が用いられる．
+    なぜなら，電圧により容易に加速させられるからである．
+    電子を使ったものを\textbf{電子衝突電離}(electron impact ionization)という．
     電子はイオンに比べ，「種」になる電子が作りやすく，衝突によるエネルギーの授受の効率が良い，という特徴がある．
       \subsubsection{弾性衝突と非弾性衝突}
         \textbf{弾性衝突}(elastic collision)はでは，衝突前後で粒子の運動エネルギーが保存する．
@@ -49,7 +53,6 @@
         であり，$\Delta U$が粒子の内部状態変化に使われたエネルギーである．
         まとめると，弾性衝突は内部状態の変化を伴わず，粒子の軌道を変えるだけである．よって，粒子拡散や熱伝導など輸送過程で重要となる．
         一方，非弾性衝突では内部状態の変化を伴う．よって，プラズマ生成・消滅過程で重要となる．
-
       \subsubsection{衝突断面積}
         衝突過程を記述する物理量として\textbf{衝突断面積}(cross section of collision)がある．
         これは衝突のしやすさを示すパラメータである．
@@ -88,7 +91,7 @@
         位置$x = 0$，面積$S$の面から，同じ速度$v$を持つ粒子Aのビームを一様に入射する．
         $x = 0$で未衝突の粒子Aの個数を$N_{\r{A}0}$とする．
         位置$x$での個数を$N_{\r{A}}(x)$とする．簡単のため粒子Bは止まっているとする．
-        粒子Aと粒子Bの衝突断面積を$\sigma_{AB}$とすると，粒子Aが$[x, x + \dd{x}]$の微小区間で粒子Bと衝突する確率は
+        粒子Aと粒子Bの衝突断面積を$\sigma_{\r{AB}}$とすると，粒子Aが$[x, x + \dd{x}]$の微小区間で粒子Bと衝突する確率は
         \begin{align}
           P_{\r{AB}} = \frac{\sigma_{\r{AB}}N_{\r{B}}}{S}
         \end{align}
@@ -104,7 +107,7 @@
         \end{align}
         である．衝突した粒子の数だけビーム粒子の数は減ると考えると，
         \begin{align}
-          \dd{N_A} = -n_A \sigma_{\r{AB}} n_B \dd{x}
+          \dd{N_A} = -n_{\r{A}} \sigma_{\r{AB}} n_{\r{B}} \dd{x}
         \end{align}
         である．よって，
         \begin{align}
@@ -143,9 +146,9 @@
         で与えられる．また，
         単位時間当たりの平均的な衝突回数を\textbf{衝突周波数}$\nu_{\r{AB}}$という．
         \begin{align}
-          \nu_{\r{AB}} = \frac{1}{\tau_{\r{AB}}} = n_B \sigma_{\r{AB}} v \label{eq:collision_frequency}
+          \nu_{\r{AB}} = \frac{1}{\tau_{\r{AB}}} = n_{\r{B}} \sigma_{\r{AB}} v \label{eq:collision_frequency}
         \end{align}
-        で与えられる．\refe{eq:collision_frequency}は粒子1個当たりの平均的な衝突回数である．粒子Aの密度を$n_A$とすると，
+        で与えられる．\refe{eq:collision_frequency}は粒子1個当たりの平均的な衝突回数である．粒子Aの密度を$n_{\r{A}}$とすると，
         単位体積単位時間当たりのイオンの生成量$S$は
         \begin{align}
           S_{\r{AB}} = n_{\r{A}} n_{\r{B}} \sigma_{\r{AB}} v
@@ -167,34 +170,33 @@
         \end{align}
         と表される．
     \subsection{光電離}
-    \subsection{光電離}
       光子のエネルギーがイオン化エネルギーより大きければ，電離が起こるようになる．
       地球の電離層はこれによりできる．特に，太陽からの紫外線が電離を引き起こす．
-
       光電離の条件は
       \begin{align}
-        A + h\nu \rightarrow A^+ + e^-
+        \ce{A} + h\nu \rightarrow \ce{A}^+ + e^-
       \end{align}
       であるので，
       \begin{align}
         h\nu \geq e V_i
       \end{align}
-      を満たさなければならない．背片は光子のエネルギーで，右辺はイオン化エネルギーである．
+      を満たさなければならない．
+      左辺は光子のエネルギーで，右辺はイオン化エネルギーである．
       整理すると，
       \begin{align}
-        \lambda\ \r{eV} \leq \frac{1239.8}{V_i\ [\r{eV}]}
+        \lambda \leq \frac{1239.8\ \r{eV \cdot nm}}{V_i}
       \end{align}
-      となる．例えばセシウムの場合$V_i = 3.98$ eVなので，$\lambda \leq 320$ nmである．
+      となる．例えばセシウムの場合$V_i = 3.98\ \r{eV}$なので，$\lambda \leq 320\ \r{nm}$である．
       これは紫外線の領域である．大気中では高度の高い方が短い波長，高度の低い方が長い波長の光が吸収される．
-
-      ここで，大気の構造と組成について補足する．
+      \par
+      大気の構造と組成について補足する．
       圧力に関する運動方程式は
       \begin{align}
         \dv{p}{z} = -mgn
       \end{align}
-      である．ここで，$p=n\kb T$なので，$T \sim \r{const.}$のとき
+      である．ここで，$p = n\kb T$なので，$T \sim \r{const.}$のとき
       \begin{align}
-        \dv{n}{z} = - \frac{mg}{\kb T}n
+        \dv{n}{z} = -\frac{mg}{\kb T}n
       \end{align}
       となる．この解は
       \begin{align}
@@ -202,50 +204,52 @@
       \end{align}
       である．ここで，
       \begin{align}
-        H \equiv \frac{\kb T}{mg}
+        H \coloneqq \frac{\kb T}{mg}
       \end{align}
       を\textbf{スケールハイト}(scale height)という．大気密度が$1/\e$に減衰する高度を表す．
       質量が大きいほど早く減衰し，質量が小さいほど遅く減衰する．
-
     \subsection{励起過程}
       イオン化エネルギー以下でも，原子や分子の内部状態の変化を起こさせる可能性がある．これを，\textbf{励起過程}(excitation process)という．
-
+      \par
       電子が高準位に励起されたとする．励起状態は一般に不安定であるため，より低い準位へと遷移し，結局は基底状態に戻る．
       低準位への遷移の際，エネルギーを光として放出する．$E_m$から$E_n$への遷移に伴い放出される光は
       \begin{align}
         h\nu &= E_m - E_n\\
-        \Rightarrow \lambda\ \r{nm} &= \frac{1239.8}{E_m - E_n\ [\r{eV}]}
+        \Leftrightarrow \lambda &= \frac{hc}{E_m - E_n} \\ 
+        \Rightarrow \frac{\lambda}{1\ \r{nm}} &= \cfrac{1239.8\ \r{eV}}{E_m - E_n}
       \end{align}
       の波長をもつ．整理すると
       \begin{align}
-        \frac{1}{\lambda} = R_H\qty(\frac{1}{n^2} - \frac{1}{m^2})
+        \frac{1}{\lambda} = R_H \qty(\frac{1}{n^2} - \frac{1}{m^2})
       \end{align}
-      である．$R_H$はRydberg定数で$R_H = 1.097 \times 10^7$ m$^{-1}$である．$n=1$のときをLyman系列，$n=2$のときをBalmer系列という．Balmer系列は可視領域である．例えば，
-      $m=2\to n=1$のとき$\lambda = 121.6$ nmで真空紫外線$L_{\r{y\alpha}}$と呼ばれる．$m=3\to n=2$のとき$\lambda = 656.3$ nmで$H_{\alpha}$線と呼ばれる．
-
+      である．$R_H$はRydberg定数で$R_H = 1.097 \times 10^7\ \r{m^{-1}}$である．
+      $n = 1$のときをLyman系列，$n = 2$のときをBalmer系列という．
+      Balmer系列は可視領域である．
+      例えば，$m = 2 \to n = 1$のとき$\lambda = 121.6\ \r{nm}$で真空紫外線$\r{L}_{\r{y}\alpha}$と呼ばれる．
+      $m = 3 \to n = 2$のとき$\lambda = 656.3\ \r{nm}$で$\r{H}_{\alpha}$線と呼ばれる．
     \subsection{再結合過程}
       \textbf{再結合過程}(recombination process)は代表的なプラズマの消滅過程であり，正負の荷電粒子が結合して中性原子あるいは分子に戻る過程をいう．
       低温プラズマ(1 eV以下)では，空間中での再結合(\textbf{体積再結合})が重要である．
-
-      例えば，体積再結合には\textbf{放射再結合}
+      \par
+      例えば，体積再結合には\textbf{放射再結合}，
       \begin{align}
-        A^+ + e^- \rightarrow A + h\nu
+        \ce{A}^+ + e^- \rightarrow \ce{A} + h\nu
       \end{align}
-      \textbf{3体再結合}
+      と\textbf{3体再結合}，
       \begin{align}
-        A^+ + e^- + e^- \rightarrow A + e^-
+        \ce{A}^+ + e^- + e^- \rightarrow \ce{A} + e^-
       \end{align}
-      がある．2つめの$e^-$は触媒のように作用し，$A^+$と$e^-$の運動エネルギーを受け取る．また，固体表面での再結合過程である\textbf{表面再結合}がある．
-
+      がある．2つ目の$e^-$は触媒のように作用し，$\ce{A}^+$と$e^-$の運動エネルギーを受け取る．また，固体表面での再結合過程である\textbf{表面再結合}がある．
+      \par
       さらに，\textbf{荷電交換過程}という生成方法がある．
       \begin{align}
-        A^+ + B \rightarrow A + B^+
+        \ce{A}^+ + \ce{B} \rightarrow \ce{A} + \ce{B}^+
       \end{align}
-      原子Bの電子が原子Aに受け渡されると，もともとイオンだったAが中性原子となり，Bがイオンとなる．この過程では電荷の交換のみが起き，
-      A，Bの運動エネルギーは変化しない．
+      原子Bの電子が原子\ce{A}に受け渡されると，もともとイオンだった\ce{A}が中性原子となり，\ce{B}がイオンとなる．この過程では電荷の交換のみが起き，
+      \ce{A}，\ce{B}の運動エネルギーは変化しない．
       同種粒子の場合，例えば水素では
       \begin{align}
-        H^+ + H \rightarrow H + H^+
+        \ce{H}^+ + \ce{H} \rightarrow \ce{H} + \ce{H}^+
       \end{align}
       となるが，電荷の変化ではなく，イオンから中性原子への運動エネルギーの受け渡しが重要な意味をもつ．
 \end{document}
