@@ -209,9 +209,10 @@
     が条件となる．ここで，$d$は粒子間の平均距離である．
     上式を変形すると，
     \begin{align}
-      \cfrac{\cfrac{3}{2}k_B T}{\cfrac{e^2}{4\pi\epsilon_0}\cfrac{1}{d}} \gg 1 \label{plasma-parameter2}
+      \qty(\frac{3}{2}k_B T)\qty(\frac{e^2}{4\pi\epsilon_0}\cdot\frac{1}{d})^{-1} \gg 1 \label{plasma-parameter2}
     \end{align}
-    となる．以下に，\refe{plasma-parameter}と\refe{plasma-parameter2}が等価であること，すなわち，
+    となる．
+    以下に，\refe{plasma-parameter}と\refe{plasma-parameter2}が等価であること，すなわち，
     $N_\lambda$が運動エネルギーとCoulombポテンシャルの比に対応するパラメータであることを示す．
     まず，プラズマの密度が$n$であるから，プラズマ1つが占める体積は
     \begin{align}
@@ -264,7 +265,9 @@
     プラズマ振動数はプラズマの密度が大きいほど大きくなることがわかる．
     また，物理定数を代入すると，具体的に
     \begin{align}
-      \omega_p &= 5.64 \times 10^{11} \sqrt{\frac{n}{10^{20}}} \ \text{rad/s} \\ 
+      \omega_p &= \sqrt{\frac{ne^2}{m_e\epsilon_0}} \\ 
+      &= \sqrt{\frac{n\cdot \qty(1.602\times 10^{-19}\ \r{C})^2}{9.109\times 10^{-31}\ \r{kg} \cdot 8.854\times 10^{-12}\ \r{F\cdot m^{-1}}}} \\ 
+      &= 5.641 \times 10^{11} \sqrt{\frac{n}{10^{20}}} \ \r{rad\cdot s^{-1}} \\ 
       \Leftrightarrow f_p &= \frac{\omega_p}{2\pi} = 8.98 \times 10^{10} \sqrt{\frac{n}{10^{20}}} \ \text{Hz}
     \end{align}
 \end{document}
