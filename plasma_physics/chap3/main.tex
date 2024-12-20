@@ -96,8 +96,72 @@
       
       ここでは一様磁場に加えて電場や重力などが働く場合の粒子の運動や磁場が空間的に変化する場合の粒子の運動を考える．
 
-      磁場が$z$軸方向に向いているとする．前節とり粒子は$xy$平面上を円運動するのであった．ここに電場を$x$方向に加える．
-      このとき，粒子は一方では加速されもう一方では減速される．つまり，上方では$V_0+V_1$，下方では$V_0-V_1$のように異なってしまう．
-      速度が$V_0+V_1$のときは旋回半径が大きく，$V_0-V_1$のときは旋回半径が小さくなる．よって，旋回中心が
-      下方へドリフトしていく．
+      \subsubsection{$E\times B$ドリフト}
+        磁場が$z$軸方向に向いているとする．前節とり粒子は$xy$平面上を円運動するのであった．ここに電場を$x$方向に加える．
+        このとき，粒子は一方では加速されもう一方では減速される．つまり，上方では$V_0+V_1$，下方では$V_0-V_1$のように異なってしまう．
+        速度が$V_0+V_1$のときは旋回半径が大きく，$V_0-V_1$のときは旋回半径が小さくなる．よって，旋回中心が
+        下方へドリフトしていく．
+
+        このときのドリフト速度は
+        \begin{align}
+          \bm{v}_{\r{g}E} = \frac{\bm{E}\times\bm{B}}{B^2} 
+        \end{align}
+        である．以下に導出を行う．
+        
+        まず，粒子の運動方程式は
+        \begin{align}
+          m\dv{\bm{v}}{t} = q\bm{v}\times\bm{B} + q\bm{E} \label{eom-cyclotron}
+        \end{align}
+        である．この運動を旋回中心の運動と旋回中心のまわりのLarmor運動に分ける．
+        \begin{align}
+          \bm{r} &= \bm{r}_{\r{gc}} + \bm{r}_{\r{c}}\\
+          \bm{v} &= \bm{v}_{\r{gc}} + \bm{v}_{\r{c}} \label{drift-velocity}
+        \end{align}
+        \refe{drift-velocity}を\refe{eom-cyclotron}に代入すると
+        \begin{align}
+          m \dv{\bm{v}_{\r{c}}}{t} = q\bm{E} + q(\bm{v}_{\r{gc}} + \bm{v}_{\r{c}})\times\bm{B}
+        \end{align}
+        となる．ここで$\bm{v}_{\r{gc}}$が一定であることを用いた．
+        整理すると，
+        \begin{align}
+          m \dv{\bm{v}_{\r{c}}}{t} = q(\bm{v}_{\r{c}} \times \bm{B}) + q\bm{E} + q(\bm{v}_{\r{gc}}\times\bm{B})
+        \end{align}
+        である．左辺と右辺の第1項はサイクロトロン運動，右辺の第2項と第3項は旋回中心の運動を表している．
+        旋回中心の運動に注目すると，
+        \begin{align}
+          \bm{0} = q\bm{E} + q(\bm{v}_{\r{gc}}\times\bm{B})
+        \end{align}
+        この両辺を$q$で割り，$\bm{B}$を外積する．ベクトル解析の公式より
+        \begin{align}
+          B^2 \bm{v}_{\r{gc}} = -\bm{B} \times \bm{E}
+        \end{align}
+        が得られる．よって，
+        \begin{align}
+          \bm{v}_{\r{gc}} = \frac{\bm{E}\times\bm{B}}{B^2}
+        \end{align}
+        である．
+
+      \subsubsection{一般的な力によるドリフト}
+        $\bm{E}\times\bm{B}$ドリフトによる旋回中心の移動は，電場による力によって粒子が加速or減速され，そのため場所によってLarmor半径が変わることによるものであった．
+        この考え方は他の場合にも適用できる．
+
+        一般な力$\bm{F}$のときは
+        \begin{align}
+          q\bm{E} \to \bm{F}
+        \end{align}
+        とすればよく，ドリフト速度は
+        \begin{align}
+          \bm{v}_{F} = \frac{1}{q}\frac{\bm{F}\times\bm{B}}{B^2}
+        \end{align}
+        である．例えば重力の場合は
+        \begin{align}
+          \bm{v}_{F} = \frac{m}{q}\frac{\bm{g}\times\bm{B}}{B^2}
+        \end{align}
+        となる．
+
+        磁場勾配ドリフト速度は
+        \begin{align}
+          \bm{v}_{\nabla B} = \pm \frac{1}{2} v_{\perp} r_{\r{L}} \frac{\bm{B} \times \nabla B}{B^2}
+        \end{align}
+        である．
 \end{document}
