@@ -158,10 +158,157 @@
           \bm{v}_{F} = \frac{m}{q}\frac{\bm{g}\times\bm{B}}{B^2}
         \end{align}
         となる．
+      
+      \subsubsection{非一様磁場中でのドリフト}
+        \paragraph{磁場勾配ドリフト}
+          \textbf{磁場勾配ドリフト}(grad-$B$ drift motion)\index{じばこうばいどりふと@磁場勾配ドリフト}を考える．磁場が$z$方向で，磁場勾配が$x$方向にある場合を考える．
+          以下にそれを見る．
 
-        磁場勾配ドリフト速度は
+          非一様磁場中ではLorentz力の大きさが位置ごとに変化する．磁場が大きいところでは旋回半径は大きく，磁場が小さいところでは旋回半径は小さくなる．
+          よって，$\bm{B},\nabla B$の両方に垂直な方向にドリフト運動が生じる．また，イオンと電子はドリフトの縫合が逆なので電流が生じる．
+          \textbf{磁場勾配ドリフト速度}(gradient-$B$ drift velocity)\index{じばこうばいどりふとそくど@磁場勾配ドリフト速度}は
+          \begin{align}
+            \bm{v}_{\nabla B} = \pm \frac{1}{2} v_{\perp} r_{\r{L}} \frac{\bm{B} \times \nabla B}{B^2}
+          \end{align}
+          である．
+
+          以下に導出を行う．まず，粒子の運動方程式の各成分は
+          \begin{align}
+            \begin{dcases}
+              m \dv{v_x}{t} &= qv_yB\\
+              m \dv{v_y}{t} &= - v_xB\\
+              m \dv{v_z}{t} &= 0
+            \end{dcases}
+          \end{align}
+          である．ここで$y$方向について着目する．
+          \begin{align}
+            m \dv{v_y}{t} = -q v_x B
+          \end{align}
+          磁場を原点周りでTaylor展開する．
+          \begin{align}
+            \bm{B} &= \bm{B}_0 + (\bm{r} \cdot \nabla)\bm{B}\\
+            B_z &= B_0 + y\pdv{B_z}{y}
+          \end{align}
+          ここで，初期条件より
+          \begin{align}
+            v_x &= v_{\perp} \cos(\omega_{\r{c}}t)\\
+            y &= \frac{v_{\perp}}{\omega_{\r{c}}}\cos(\omega_{\r{c}}t)
+          \end{align}
+          である．よって，
+          \begin{align}
+            m \dv{v_y}{t} &= -qv_x B\\
+            &=  -q v_{\perp} \cos(\omega_{\r{c}}t) (B_0 + \frac{v_{\perp}}{\omega_{\r{c}}}\cos(\omega_{\r{c}}t)\pdv{B_z}{y})\\
+          \end{align}
+          第1項は通常のLorentz力なので，第2項に着目する．
+
+          一般的な力$\bm{F}$によるドリフトの式より，
+          \begin{align}
+            \bm{v}_{\r{gc}} &= \frac{\bm{F}\times\bm{B}}{B^2}\\
+            &= \mp \frac{1}{2} \frac{r_{\r{L}}v_{\perp}}{B} \pdv{B_z}{y}\bm{e}_x\\
+            &= \mp \frac{1}{2} \frac{v_{\perp} r_{\perp}}{B} \pdv{B_z}{y}\bm{e}_y \times \bm{e}_z\\
+            &= \mp \frac{1}{2} v_{\perp} r_{\r{L}} \frac{\bm{B} \times \nabla B}{B^2}
+          \end{align}
+          が得られる．
+
+        \paragraph{曲率ドリフト}
+          \textbf{曲率ドリフト}(curvature drift)\index{きょくどりふと@曲率ドリフト}を考える．磁力線が湾曲整定る場合には，
+          磁場勾配ドリフトに加えて，遠心力に起因する曲率ドリフトが生じる．
+
+          粒子が感じる平均的な遠心力は
+          \begin{align}
+            \bm{F}_{\r{cf}} = \frac{m v_{\parallel}^2}{R_{\r{c}}}\bm{e}_r = m v_{\parallel}^2 \frac{\bm{R}_{\r{c}}}{R_{\r{c}}^2}
+          \end{align}
+          である．よって，一般的な力によるドリフト速度の式より，曲率ドリフト速度は
+          \begin{align}
+            \bm{v}_R = \frac{mv_{\parallel}^2}{qB^2}\frac{\bm{R}_{\r{c}} \times \bm{B}}{R_{\r{c}}^2}
+          \end{align}
+          となる．
+
+          次に，磁場勾配を曲率を使って表す．
+          電流$I$のまわりには
+          \begin{align}
+            B &= \frac{\mu_0 I}{2\pi R_{\r{c}}}\\
+            \nabla B &\parallel \bm{e}_r
+          \end{align}
+          となる．よって，
+          \begin{align}
+            \frac{\nabla B}{B} = -\frac{\bm{R}_{\r{c}}}{R_{\r{c}}^2}
+          \end{align}
+          が得られる．したがって，磁場勾配ドリフトは，
+          \begin{align}
+            \bm{v}_{\nabla B} = \frac{1}{2}\frac{m}{q}v_{\perp}^2 \frac{\bm{R}_{\r{c}} \times \bm{B}}{R_{\r{c}}^2 B^2}
+          \end{align}
+          となる．
+
+          以上より，曲率ドリフトと磁場勾配ドリフトの和である\textbf{磁気ドリフト}(magnetic drift)\index{じきどりふと@磁気ドリフト}は
+          \begin{align}
+            \bm{v}_{R} + \bm{v}_{\nabla B} = \frac{1}{2}\qty(v_{\parallel}^2 + \frac{1}{2}v_{\perp}^2)\frac{\bm{R}_{\r{c}} \times \bm{B}}{R_{\r{c}}^2 B^2}
+          \end{align}
+          である．磁場勾配で表すと，
+          \begin{align}
+            \bm{v}_{R} + \bm{v}_{\nabla B} =\frac{m}{qB}\qty(v_{\parallel}^2 + \frac{1}{2}v_{\perp}^2) \frac{\bm{B} \times \nabla B}{B^2}
+          \end{align}
+          となる．しかし，上の式を見てわかるように，電子とイオンでドリフトの向きが逆である．
+          よって，荷電分離により電場が発生する．そのため，$\bm{E}\times\bm{B}$ドリフトが生じる．これは外側に向いている．したがって，プラズマ全体が損失してしまう．
+          つまり，単純なトーラス磁場では，プラズマの閉じ込めは不完全である．
+
+    \subsection{磁気鏡}
+      \subsubsection{磁気鏡とは？}
+        \textbf{磁気鏡}(magnetic mirror)\index{じきかがみ@磁気鏡}は，磁場が強いところに荷電粒子が近づくと，そこで反射される現象をいう．
+
+      \subsubsection{磁気モーメント}
+        磁気ミラー配位での粒子の運動を考えるための準備として，ここでは荷電粒子が有する磁気モーメント\index{じきもーめんと@磁気モーメント}について述べる．また，
+        磁気モーメント及びその断熱不変性は，磁気ミラー配位に限らずいろいろな磁場配位での運動を考えるうえで重要となる．
+
+        磁化$m$が長さ$L$離れて存在しているとき，磁気モーメント
         \begin{align}
-          \bm{v}_{\nabla B} = \pm \frac{1}{2} v_{\perp} r_{\r{L}} \frac{\bm{B} \times \nabla B}{B^2}
+          \mu = 2mL
+        \end{align}
+        である．
+        円電流による磁気モーメントは
+        \begin{align}
+          \mu = I \times S
+        \end{align}
+        である．
+
+        ここで，磁場$B$中の荷電粒子を考える．荷電粒子は半径$r_{\r{L}}$でサイクロトロン運動をしているので
+        \begin{align}
+          S = \pi \times r_{\r{L}}^2
+        \end{align}
+        である．また，電流は，旋回時間を$T_{\r{c}}$として
+        \begin{align}
+          I = e \times \qty(\frac{1}{T_{\r{c}}})
+        \end{align}
+        である．よって，荷電粒子のつくる磁気モーメントは
+        \begin{align}
+          \mu = IS = \frac{e\pi r_{\r{L}}^2}{T_{\r{c}}}
+        \end{align}
+        となる．さらに，
+        \begin{align}
+          r_{\r{L}} = v_{\perp} / \omega_{\r{c}},\ T_{\r{c}} = 2\pi / \omega_{\r{c}},\ \omega_{\r{c}} = eB/m
+        \end{align}
+        より，
+        \begin{align}
+          \mu = \frac{(1/2)mv_{\perp}^2}{B}
+        \end{align}
+        となる．もともとの磁場と反対方向であることに注意．反磁性である．
+
+        磁場の空間的時間的変化が緩やかなとき，磁気モーメントは保存される\footnote{\refsss{sec:conservation-of-magnetic-moment}にて述べる．}．
+
+
+
+      \subsubsection{磁気鏡による粒子反射の物理機構}
+
+      \subsubsection{磁気モーメントの保存性の証明}
+      \label{sec:conservation-of-magnetic-moment}
+        粒子の全運動エネルギーは
+        \begin{align}
+          W &= \frac{1}{2}mv_{\parallel}^2 + \frac{1}{2}mv_{\perp}^2\\
+          &= \frac{1}{2}mv_{\parallel}^2 + \mu B
+        \end{align}
+        と書ける．時間微分は
+        \begin{align}
+          \dv{W}{t} = mv_{\parallel}\dv{v_{\parallel}}{t} + \dv{\mu B}{t}
         \end{align}
         である．
 \end{document}
