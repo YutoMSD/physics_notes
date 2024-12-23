@@ -2,15 +2,11 @@
 \input{../head.tex}
 \begin{document}
   この章ではプラズマがどのような運動をするかを学ぶ．
-
   \section{はじめに}
-
     プラズマ輸送の解析には\textbf{流体モデル}(Fluid Model)\index{りゅうたいもでる@流体モデル}と\textbf{運動論的モデル}(Kinetic Model)\index{うんどうろんてきもでる@運動論的モデル}を用いる．
     前者はプラズマを連続体として扱い，巨視的なプラズマの振る舞いを記述する．後者は粒子個々の運動を解き，微視的なプラズマの振る舞いを記述する．
-    
   \section{一様磁場中での粒子の運動}
     \subsection{磁場に垂直方向の運動}
-      
       一様磁場中では電荷はサイクロトロン運動\index{さいくろとろんうんどう@サイクロトロン運動}をする．美束密度$\bm{B}$中を電荷$q$を持つ粒子が速度$\bm{v}$で運動しているとする．
       この粒子が受ける力は
       \begin{align}
@@ -21,23 +17,26 @@
         \bm{F} \cdot \bm{v} = 0
       \end{align}
       なのでLorentz力は仕事をしないことがわかる．
-
       この粒子の運動方程式は以下のようになる．
       \begin{align}
         m \dv{\bm{v}}{t} = q\bm{v}\times\bm{B}
       \end{align}
-      ここで，$\bm{B} = (0,0,B)$，$\bm{v} = (v_x,v_y,v_z)$とする．運動方程式の各成分は
+      ここで，$\bm{B} = \qty(0, 0, B)$，$\bm{v} = \qty(v_x, v_y, v_z)$とする．運動方程式の各成分は
       \begin{align}
-        m\dv{v_x}{t} &= qv_yB\\
-        m\dv{v_y}{t} &= -qv_xB\\
-        m\dv{v_z}{t} &= 0
+        \begin{dcases}
+          m\dv{v_x}{t} = qv_yB \\
+          m\dv{v_y}{t} = -qv_xB \\
+          m\dv{v_z}{t} = 0
+        \end{dcases}ww
       \end{align}
       となる．これらを整理すると，
       \begin{align}
-        &\ddot{v_x} = \frac{qB}{m}v_x \to \ddot{v_x} = - \omega_{\r{c}}^2 v_x\\
-        &\ddot{v_y} = -\frac{qB}{m}v_y \to \ddot{v_y} = \omega_{\r{c}}^2 v_y
+        &\ddot{v}_x = \frac{qB}{m}v_x \to \ddot{v}_x = - \omega_{\r{c}}^2 v_x\\
+        &\ddot{v}_y = -\frac{qB}{m}v_y \to \ddot{v}_y = \omega_{\r{c}}^2 v_y
       \end{align}
-      となる．よって，荷電粒子は$xy$平面上を\textbf{サイクロトロン周波数}(cyclotron frequency)$\omega_{\r{c}}=qB/m$\index{さいくろとろんしゅうはすう@サイクロトロン周波数}で円運動することがわかる\footnote{
+      となる．
+      よって，荷電粒子は$xy$平面上を\textbf{サイクロトロン周波数}(cyclotron frequency)$\omega_{\r{c}} = qB/m$\index{さいくろとろんしゅうはすう@サイクロトロン周波数}で
+      円運動することがわかる\footnote{
         通常，サイクロトロン周波数という場合には，電荷$q$の絶対値をとって，$\omega_{\r{c}} = |q|B/m$とすることが多い．
       }
       ．また，初期条件

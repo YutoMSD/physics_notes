@@ -4,6 +4,10 @@
 *.bcf
 *.log
 *.out
+*.idx
+*.ist
+*.ilg
+*.ind
 /plasma_physics/text/*.pdf
 *:Zone.Identifier
 /physics_of_magnetism/text/*.pdf
