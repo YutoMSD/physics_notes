@@ -4,32 +4,64 @@
   本章では，これから議論する場の量子論の準備を行う．
   場の量子論は，既存の量子力学などの物理法則あるいは方程式を\textbf{Poincar\'e変換}に対して不変な形に書き直す理論である．
   ただし，Poincar\'e変換は，Lorentz変換と時空並進変換のことである．
-  \par
-  まず，この要請から微小な時空間上の2点，$\qty(ct, x, y, z)$，$\qty(ct + \dd{t}, x + \dd{x}, y + \dd{y}, z + \dd{z})$に対して，世界長さ$\dd{s^2}$を考える．
-  \begin{align}
-    \dd{s^2} \coloneqq c\dd{t}^2 - \qty(\dd{x}^2 + \dd{y}^2 + \dd{z}^2)
-  \end{align}
-  4次元時空座標を，
-  \begin{align}
-    x^{\mu} &\coloneqq \qty(ct, x, y, z) \\ 
-    x_{\nu} &\coloneqq \qty(ct, -x, -y, -z)
-  \end{align}
-  と定義する．
-  Einsteinの縮約を使っていることに注意する．
-  計量テンソル$\eta_{\mu\nu}$を，
-  \begin{align}
-    \eta_{\mu\nu} \coloneqq \mqty(
-      1 & 0 & 0 & 0 \\ 
-      0 & -1 & 0 & 0 \\ 
-      0 & 0 & -1 & 0 \\ 
-      0 & 0 & 0 & -1
-    )
-  \end{align}
-  と定義する．
-  これらの道具を用いれば，
-  \begin{align}
-    \dd{s^2} = \eta_{\mu\nu}\dd{x^{\mu}}\dd{x^{\nu}}
-  \end{align}
-  と書ける．
-  さて，世界長さ$\dd{s}$がPoincar\'e変換に対して不変であることを示そう．
+  \section{記法}
+    まず，この要請から微小な時空間上の2点，$\qty(ct, x, y, z)$，$\qty(ct + \dd{t}, x + \dd{x}, y + \dd{y}, z + \dd{z})$に対して，世界長さ$\dd{s^2}$を考える．
+    \begin{align}
+      \dd{s^2} \coloneqq c\dd{t}^2 - \qty(\dd{x}^2 + \dd{y}^2 + \dd{z}^2)
+    \end{align}
+    4次元時空座標を，
+    \begin{align}
+      x^{\mu} &\coloneqq \qty(ct, x, y, z) \\ 
+      x_{\nu} &\coloneqq \qty(ct, -x, -y, -z)
+    \end{align}
+    と定義する．
+    Einsteinの縮約を使っていることに注意する．
+    計量テンソル$\eta_{\mu\nu}$を，
+    \begin{align}
+      \eta_{\mu\nu} \coloneqq \mqty(
+        1 & 0 & 0 & 0 \\ 
+        0 & -1 & 0 & 0 \\ 
+        0 & 0 & -1 & 0 \\ 
+        0 & 0 & 0 & -1
+      )
+    \end{align}
+    と定義する．
+    これらの道具を用いれば，
+    \begin{align}
+      x_{\mu} &= n_{\mu\nu}x^{\nu} \\ 
+      \dd{s^2} &= \eta_{\mu\nu}\dd{x^{\mu}}\dd{x^{\nu}}\label{def-of-proper-length}
+    \end{align}
+    と書ける．
+  \section{Poincar\'e変換}
+    Poincar\'e変換は，Lorentz変換のパラメータを$\Lambda_{\nu}^{\mu}$，時空並進のパラメータを$a^{\mu}$とすると，
+    \begin{align}
+      x'^{\mu} = \Lambda_{\nu}^{\mu}x^{\nu} + a^{\mu}
+    \end{align}
+    と書ける．
+    微小変位は，
+    \begin{align}
+      \dd{x'^{\mu}} &= \dd{\Lambda_{\nu}^{\mu}x^{\nu} + a^{\mu}} \\ 
+      &= \Lambda_{\nu}^{\mu}\dd{x^{\nu}}
+    \end{align}
+    と書けるから，世界長さ$\dd{s^2}$は，
+    \begin{align}
+      \dd{s'^2} &= \eta_{\rho\lambda}\dd{x'^{\rho}}\dd{x'^{\lambda}} \\ 
+      &= \eta_{\rho\lambda}\qty(\Lambda_{\nu}^{\rho}\dd{x^{\nu}})\qty(\Lambda_{\mu}^{\lambda}\dd{x^{\mu}}) \\ 
+      &= \eta_{\rho\lambda}\Lambda_{\nu}^{\rho}\Lambda_{\mu}^{\lambda}\dd{x^{\nu}}\dd{x^{\mu}}
+    \end{align}
+    となる．
+    今，Poincar\'e変換に対して方程式は不変であることが要請されているのであった．
+    \refe{def-of-proper-length}で与えられる世界長さを与える方程式もPoincar\'e変換に対して不変であるべきだから，
+    \begin{align}
+      \dd{s'^2} &= \dd{s^2} \\ 
+      \Leftrightarrow \eta_{\rho\lambda}\Lambda_{\nu}^{\rho}\Lambda_{\mu}^{\lambda}\dd{x^{\nu}}\dd{x^{\mu}} &= \eta_{\mu\nu}\dd{x^{\mu}}\dd{x^{\nu}} \\ 
+      \Leftrightarrow \eta_{\rho\lambda}\Lambda_{\nu}^{\rho}\Lambda_{\mu}^{\lambda} &= \eta_{\mu\nu} \\ 
+      \Leftrightarrow \eta_{\rho\lambda} &= \eta_{\mu\nu}\qty(\Lambda^{-1})_{\rho}^{\nu}\Lambda_{\lambda}^{\mu}
+    \end{align}
+    である．
+    ただし，
+    \begin{align}
+      \Lambda_{\nu}^{\rho}\qty(\Lambda^{-1})_{\rho}^{\nu} = 1
+    \end{align}
+    なる関係を用いた．
 \end{document}
