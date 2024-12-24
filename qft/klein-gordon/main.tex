@@ -1,0 +1,35 @@
+\documentclass{report}
+\input{../head.tex}
+\begin{document}
+  \section{Klein-Gordon方程式の「導出」}
+    以下では断りの無い限り，$c = \hbar = 1$なる自然単位系を用いる．
+    非相対論的・古典的エネルギーの関係式，
+    \begin{align}
+      E = \frac{\bm{p}^2}{2m}
+    \end{align}
+    の両辺に波動函数$\psi(t, \bm{x})$掛けて
+    \begin{align}
+      E &\to \i\pdv{t} \label{energy-to-diff}\\ 
+      \bm{p} &\to -\i\nabla \label{momentum-to-diff}
+    \end{align}
+    なる変換を行えば，
+    \begin{align}
+      \i\pdv{\psi}{t} = -\frac{1}{2m}\laplacian\psi
+    \end{align}
+    となり，Schr\"odinger方程式を得る．
+    \par
+    では相対論的なエネルギーの関係式，
+    \begin{align}
+      E^2 = \bm{p}^2 + m^2\label{relativity-energy}
+    \end{align}
+    を変換すると，どのようになるだろう．
+    自然単位系を用いているため，静止エネルギーの2乗について$m^2c^4 = m^2$となっていることに注意する．
+    \refe{relativity-energy}の両辺に波動函数$\psi(t, \bm{x})$掛けて，
+    \refe{energy-to-diff}，\refe{momentum-to-diff}を用いれば，
+    \begin{align}
+      \qty(\i\pdv{t})^2\psi &= \qty[\qty(-\i\nabla)^2 + m^2]\psi \\ 
+      -\pdv[2]{\psi}{t} &= -\laplacian\psi + m^2\psi \\ 
+      \qty(\partial_{\mu}\partial^{\mu} - m^2)\psi(t, \bm{x}) &= 0
+    \end{align}
+    が成立する．
+\end{document}

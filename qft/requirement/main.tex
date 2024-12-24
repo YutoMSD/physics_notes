@@ -5,9 +5,9 @@
   場の量子論は，既存の量子力学などの物理法則あるいは方程式を\textbf{Poincar\'e変換}に対して不変な形に書き直す理論である．
   ただし，Poincar\'e変換は，Lorentz変換と時空並進変換のことである．
   \section{記法}
-    まず，この要請から微小な時空間上の2点，$\qty(ct, x, y, z)$，$\qty(ct + \dd{t}, x + \dd{x}, y + \dd{y}, z + \dd{z})$に対して，世界長さ$\dd{s^2}$を考える．
+    まず，微小な時空間上の2点，$\qty(ct, x, y, z)$，$\qty(ct + \dd{t}, x + \dd{x}, y + \dd{y}, z + \dd{z})$に対して，世界長さ$\dd{s^2}$を考える．
     \begin{align}
-      \dd{s^2} \coloneqq c\dd{t}^2 - \qty(\dd{x}^2 + \dd{y}^2 + \dd{z}^2)
+      \dd{s^2} \coloneqq c^2\dd{t}^2 - \qty(\dd{x}^2 + \dd{y}^2 + \dd{z}^2)
     \end{align}
     4次元時空座標を，
     \begin{align}
@@ -16,22 +16,21 @@
     \end{align}
     と定義する．
     Einsteinの縮約を使っていることに注意する．
-    計量テンソル$\eta_{\mu\nu}$を，
+    計量テンソル$\eta_{\mu\nu}$，$\eta^{\mu\nu}$を，
     \begin{align}
-      \eta_{\mu\nu} \coloneqq \mqty(
-        1 & 0 & 0 & 0 \\ 
-        0 & -1 & 0 & 0 \\ 
-        0 & 0 & -1 & 0 \\ 
-        0 & 0 & 0 & -1
-      )
+      x_{\nu} &= \eta_{\mu\nu}x^{\mu} \\ 
+      x^{\nu} &= x_{\mu}\eta^{\mu\nu}
     \end{align}
-    と定義する．
-    これらの道具を用いれば，
+    となるように定義する．
+    計量テンソルを用いれば，
     \begin{align}
-      x_{\mu} &= n_{\mu\nu}x^{\nu} \\ 
-      \dd{s^2} &= \eta_{\mu\nu}\dd{x^{\mu}}\dd{x^{\nu}}\label{def-of-proper-length}
+      \dd{s^2} &= \eta_{\mu\nu}\dd{x^{\mu}}\dd{x^{\nu}} \label{def-of-proper-length} \\ 
+      &= \dd{x_{\mu}}\dd{x_{\nu}}\eta^{\mu\nu}
     \end{align}
     と書ける．
+    $\eta_{\mu\nu}$は，上付き添え字が$k$個，下付き添え字が$l$個あるものに対して，添え字を上付き添え字を$k + l - 2$個，下付き添え字を$k + l + 2$個にするものだと考えてよい．
+    なお，負の添え字の数は，添え字の上下を逆転させたものと考える．
+    同様に，$\eta^{\mu\nu}$は，上付き添え字が$k$個，下付き添え字が$l$個あるものに対して，添え字を上付き添え字を$k + l + 2$個，下付き添え字を$k + l - 2$個にするものだと考えてよい．
   \section{Poincar\'e変換}
     Poincar\'e変換は，Lorentz変換のパラメータを$\Lambda_{\nu}^{\mu}$，時空並進のパラメータを$a^{\mu}$とすると，
     \begin{align}
@@ -40,7 +39,7 @@
     と書ける．
     微小変位は，
     \begin{align}
-      \dd{x'^{\mu}} &= \dd{\Lambda_{\nu}^{\mu}x^{\nu} + a^{\mu}} \\ 
+      \dd{x'^{\mu}} &= \dd{\qty(\Lambda_{\nu}^{\mu}x^{\nu} + a^{\mu})} \\ 
       &= \Lambda_{\nu}^{\mu}\dd{x^{\nu}}
     \end{align}
     と書けるから，世界長さ$\dd{s^2}$は，
@@ -56,12 +55,47 @@
       \dd{s'^2} &= \dd{s^2} \\ 
       \Leftrightarrow \eta_{\rho\lambda}\Lambda_{\nu}^{\rho}\Lambda_{\mu}^{\lambda}\dd{x^{\nu}}\dd{x^{\mu}} &= \eta_{\mu\nu}\dd{x^{\mu}}\dd{x^{\nu}} \\ 
       \Leftrightarrow \eta_{\rho\lambda}\Lambda_{\nu}^{\rho}\Lambda_{\mu}^{\lambda} &= \eta_{\mu\nu} \\ 
-      \Leftrightarrow \eta_{\rho\lambda} &= \eta_{\mu\nu}\qty(\Lambda^{-1})_{\rho}^{\nu}\Lambda_{\lambda}^{\mu}
+      \Leftrightarrow \eta_{\rho\lambda} &= \eta_{\mu\nu}\qty(\Lambda^{-1})_{\rho}^{\nu}\qty(\Lambda^{-1})_{\lambda}^{\mu}
     \end{align}
     である．
     ただし，
     \begin{align}
-      \Lambda_{\nu}^{\rho}\qty(\Lambda^{-1})_{\rho}^{\nu} = 1
+      \Lambda_{\nu}^{\rho}\qty(\Lambda^{-1})_{\rho}^{\nu} = \qty(\Lambda^{-1})_{\rho}^{\nu}\Lambda_{\nu}^{\rho} = 1
     \end{align}
     なる関係を用いた．
+  \section{スカラー・ベクトル・テンソル}
+    本節ではスカラー・ベクトル・テンソルを定義する．
+    Lorentz変換のパラメータを$\Lambda$とする．
+    \subsection{スカラー}
+      スカラーはLorentz変換に対して不変な量である．
+      すなわち，
+      \begin{align}
+        S \mapsto S \eqqcolon S'
+      \end{align}
+      なる量である．
+    \subsection{ベクトル}
+      ベクトルは2種類あり，Lorentz変換によって時空座標を変換したときに，時空座標$x^{\mu}$と同じように変換される反変ベクトルと，
+      $x_{\mu}$と同じように変換される共変ベクトルに分けられる．
+      すなわち，
+      \begin{align}
+        A^{\mu} &\mapsto \Lambda_{\nu}^{\mu}A^{\nu} \eqqcolon A'^{\mu} \\ 
+        B_{\mu} &\mapsto B_{\nu}\qty(\Lambda^{-1})_{\mu}^{\nu} \eqqcolon B'_{\mu}
+      \end{align}
+      において，$A^{\mu}$，$A'^{\mu}$が反変ベクトル，$B_{\mu}$，$B'_{\mu}$が共変ベクトルである．
+    \subsection{テンソル}
+      テンソルは3種類あり，Lorentz変換によって時空座標を変換したときに，時空座標$x^{\mu}$を2回変換したとき同じように変換される2階の反変テンソル，
+      時空座標$x^{\mu}$を1回変換してから1回逆変換したとき同じように変換される2階の混合テンソル，
+      時空座標$x_{\mu}$を2回変換したとき同じように変換される2階の共変テンソルの3つに分けられる．
+      すなわち，
+      \begin{align}
+        T^{\mu\nu} &\mapsto \Lambda_{\rho}^{\mu}\Lambda_{\lambda}^{\nu}T^{\rho\lambda} \eqqcolon T'^{\mu\nu} \\ 
+        T_{\nu}^{\mu} &\mapsto \Lambda_{\rho}^{\mu}T_{\lambda}^{\rho}\qty(\Lambda^{-1})_{\nu}^{\lambda} \eqqcolon T'_{\nu}^{\mu} \\ 
+        T_{\nu\mu} &\mapsto T_{\lambda}^{\rho}\qty(\Lambda^{-1})_{\mu}^{\rho}\qty(\Lambda^{-1})_{\nu}^{\lambda} \eqqcolon T'_{\nu\mu}
+      \end{align}
+      の3つがある．
+      3つのテンソルの間には，
+      \begin{align}
+        T^{\mu\nu} = T_{\lambda}^{\mu}\eta^{\nu\lambda} = T_{\rho\lambda}\eta^{\mu\rho}\eta^{\nu\lambda}
+      \end{align}
+      なる関係がある．
 \end{document}
