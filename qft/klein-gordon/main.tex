@@ -10,11 +10,14 @@
     の両辺に波動函数$\psi(t, \bm{x})$掛けて
     \begin{align}
       E &\to \i\pdv{t} \label{energy-to-diff}\\ 
-      \bm{p} &\to -\i\nabla \label{momentum-to-diff}
+      \bm{p} &\to -\i\grad \label{momentum-to-diff}
     \end{align}
     なる変換を行えば，
     \begin{align}
-      \i\pdv{\psi}{t} = -\frac{1}{2m}\laplacian\psi
+      E &= \frac{\bm{p}^2}{2m} \\ 
+      \Rightarrow E\psi(t, \bm{x}) &= \frac{\bm{p}^2}{2m}\psi(t, \bm{x}) \\ 
+      \Rightarrow \i\pdv{t}\psi(t, \bm{x}) &= \frac{1}{2m}\qty(-\i\grad)^2\psi(t, \bm{x}) \\ 
+      \Rightarrow \i\pdv{t}\psi(t, \bm{x}) &= -\frac{1}{2m}\laplacian\psi
     \end{align}
     となり，Schr\"odinger方程式を得る．
     \par
@@ -27,8 +30,10 @@
     \refe{relativity-energy}の両辺に波動函数$\psi(t, \bm{x})$掛けて，
     \refe{energy-to-diff}，\refe{momentum-to-diff}を用いれば，
     \begin{align}
-      \qty(\i\pdv{t})^2\psi &= \qty[\qty(-\i\nabla)^2 + m^2]\psi \\ 
-      -\pdv[2]{\psi}{t} &= -\laplacian\psi + m^2\psi \\ 
+      E^2 &= \bm{p}^2 + m^2 \\ 
+      \Rightarrow E\psi(t, \bm{x}) &= \frac{\bm{p}^2}{2m}\psi(t, \bm{x}) + m^2\psi(t, \bm{x}) \\ 
+      \qty(\i\pdv{t})^2\psi(t, \bm{x}) &= \qty[\qty(-\i\grad)^2 + m^2]\psi(t, \bm{x}) \\ 
+      -\pdv[2]{t}\psi(t, \bm{x}) &= -\laplacian\psi(t, \bm{x}) + m^2\psi(t, \bm{x}) \\ 
       \qty(\partial_{\mu}\partial^{\mu} - m^2)\psi(t, \bm{x}) &= 0
     \end{align}
     が成立する．
