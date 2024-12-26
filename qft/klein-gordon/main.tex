@@ -2,7 +2,6 @@
 \input{../head.tex}
 \begin{document}
   \section{Klein-Gordon方程式の「導出」}
-    以下では断りの無い限り，$c = \hbar = 1$なる自然単位系を用いる．
     非相対論的・古典的エネルギーの関係式，
     \begin{align}
       E = \frac{\bm{p}^2}{2m}
@@ -27,14 +26,27 @@
     \end{align}
     を変換すると，どのようになるだろう．
     自然単位系を用いているため，静止エネルギーの2乗について$m^2c^4 = m^2$となっていることに注意する．
-    \refe{relativity-energy}の両辺に波動函数$\psi(t, \bm{x})$掛けて，
+    \refe{relativity-energy}の両辺に波動函数$\psi(x^{\mu})$掛けて，
     \refe{energy-to-diff}，\refe{momentum-to-diff}を用いれば，
     \begin{align}
       E^2 &= \bm{p}^2 + m^2 \\ 
-      \Rightarrow E\psi(t, \bm{x}) &= \frac{\bm{p}^2}{2m}\psi(t, \bm{x}) + m^2\psi(t, \bm{x}) \\ 
-      \qty(\i\pdv{t})^2\psi(t, \bm{x}) &= \qty[\qty(-\i\grad)^2 + m^2]\psi(t, \bm{x}) \\ 
-      -\pdv[2]{t}\psi(t, \bm{x}) &= -\laplacian\psi(t, \bm{x}) + m^2\psi(t, \bm{x}) \\ 
-      \qty(\partial_{\mu}\partial^{\mu} - m^2)\psi(t, \bm{x}) &= 0
+      E\psi(x^{\mu}) &= \frac{\bm{p}^2}{2m}\psi(x^{\mu}) + m^2\psi(x^{\mu}) \\ 
+      \qty(\i\pdv{t})^2\psi(x^{\mu}) &= \qty[\qty(-\i\grad)^2 + m^2]\psi(x^{\mu}) \\ 
+      -\pdv[2]{t}\psi(x^{\mu}) &= -\laplacian\psi(x^{\mu}) + m^2\psi(x^{\mu}) \\ 
+      \qty(\partial_{\mu}\partial^{\mu} - m^2)\psi(x^{\mu}) &= 0
     \end{align}
     が成立する．
+    \par
+    Klein-Gordon方程式がPoincar\'e変換に対して不変であるためには，
+    \begin{align}
+      \qty(\partial'_{\nu}\partial'^{\nu} - m^2)\psi'(x^{\mu}) &= 0 \\ 
+      \Leftrightarrow \qty(\partial_{\rho}\qty(\Lambda^{-1})_{\nu}^{\rho}\Lambda_{\rho}^{\nu}\partial^{\rho} - m^2)\psi'(x'^{\mu}) &= 0 \\ 
+      \Leftrightarrow \qty(\partial_{\rho}\partial^{\rho} - m^2)\psi'(x'^{\mu}) &= 0
+    \end{align}
+    であることより，
+    \begin{align}
+      \psi'\qty(x'^{\mu}) = \psi(x^{\mu})
+    \end{align}
+    が成立すればよい．
+    このような函数$\psi(x)$のことをスカラー函数という．
 \end{document}

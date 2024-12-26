@@ -2,17 +2,18 @@
 \input{../head.tex}
 \begin{document}
   本章では，これから議論する場の量子論の準備を行う．
+  断りの無い限り，$c = \hbar = 1$なる自然単位系を用いる．
   場の量子論は，既存の量子力学などの物理法則あるいは方程式を\textbf{Poincar\'e変換}に対して不変な形に書き直す理論である．
   ただし，Poincar\'e変換は，Lorentz変換と時空並進変換のことである．
   \section{記法}
-    まず，微小な時空間上の2点，$\qty(ct, x, y, z)$，$\qty(ct + \dd{t}, x + \dd{x}, y + \dd{y}, z + \dd{z})$に対して，世界長さ$\dd{s^2}$を考える．
+    まず，微小な時空間上の2点，$\qty(t, x, y, z)$，$\qty(t + \dd{t}, x + \dd{x}, y + \dd{y}, z + \dd{z})$に対して，世界長さ$\dd{s^2}$を考える．
     \begin{align}
-      \dd{s^2} \coloneqq c^2\dd{t}^2 - \qty(\dd{x}^2 + \dd{y}^2 + \dd{z}^2)
+      \dd{s^2} \coloneqq \dd{t}^2 - \qty(\dd{x}^2 + \dd{y}^2 + \dd{z}^2)
     \end{align}
     4次元時空座標を，
     \begin{align}
-      x^{\mu} &\coloneqq \qty(ct, x, y, z) \\ 
-      x_{\nu} &\coloneqq \qty(ct, -x, -y, -z)
+      x^{\mu} &\coloneqq \qty(t, x, y, z) \\ 
+      x_{\nu} &\coloneqq \qty(t, -x, -y, -z)
     \end{align}
     と定義する．
     Einsteinの縮約を使っていることに注意する．
@@ -31,6 +32,13 @@
     $\eta_{\mu\nu}$は，上付き添え字が$k$個，下付き添え字が$l$個あるものに対して，添え字を上付き添え字を$k + l - 2$個，下付き添え字を$k + l + 2$個にするものだと考えてよい．
     なお，負の添え字の数は，添え字の上下を逆転させたものと考える．
     同様に，$\eta^{\mu\nu}$は，上付き添え字が$k$個，下付き添え字が$l$個あるものに対して，添え字を上付き添え字を$k + l + 2$個，下付き添え字を$k + l - 2$個にするものだと考えてよい．
+    \par
+    次に，全微分は，
+    \begin{align}
+      \partial_{\nu} &\coloneqq \pdv{x^{\nu}} \\ 
+      \partial^{\nu} &\coloneqq \pdv{x_{\nu}} 
+    \end{align}
+    と定義される．
   \section{Poincar\'e変換}
     Poincar\'e変換は，Lorentz変換のパラメータを$\Lambda_{\nu}^{\mu}$，時空並進のパラメータを$a^{\mu}$とすると，
     \begin{align}
@@ -55,6 +63,7 @@
       \dd{s'^2} &= \dd{s^2} \\ 
       \Leftrightarrow \eta_{\rho\lambda}\Lambda_{\nu}^{\rho}\Lambda_{\mu}^{\lambda}\dd{x^{\nu}}\dd{x^{\mu}} &= \eta_{\mu\nu}\dd{x^{\mu}}\dd{x^{\nu}} \\ 
       \Leftrightarrow \eta_{\rho\lambda}\Lambda_{\nu}^{\rho}\Lambda_{\mu}^{\lambda} &= \eta_{\mu\nu} \\ 
+      \Leftrightarrow \eta_{\rho\lambda}\Lambda_{\mu}^{\lambda} &= \eta_{\mu\nu}\qty(\Lambda^{-1})_{\rho}^{\nu}\label{eta-lambda} \\ 
       \Leftrightarrow \eta_{\rho\lambda} &= \eta_{\mu\nu}\qty(\Lambda^{-1})_{\rho}^{\nu}\qty(\Lambda^{-1})_{\lambda}^{\mu}
     \end{align}
     である．
@@ -63,6 +72,54 @@
       \Lambda_{\nu}^{\rho}\qty(\Lambda^{-1})_{\rho}^{\nu} = \qty(\Lambda^{-1})_{\rho}^{\nu}\Lambda_{\nu}^{\rho} = 1
     \end{align}
     なる関係を用いた．
+    まとめると，$x^{\mu}$と$x_{\mu}$の変換性は\reff{transform}のようになる．
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[scale = 2]
+        \node (a) at (0, 1.2) {$x^{\mu}$};
+        \node (x) at (1.2, 1.2) {$x_{\mu}$};
+        \node (b) at (0, 0) {$x'^{\mu}$};
+        \node (y) at (1.2, 0) {$x'_{\mu}$};
+        \draw[above, ->] (a) to node {$\scriptstyle \eta$} (x);
+        \draw[right, ->] (x) to node {$\scriptstyle \Lambda^{-1}$} (y);
+        \draw[left, ->] (a) to node[swap] {$\scriptstyle \Lambda$} (b);
+        \draw[below, ->] (b) to node[swap] {$\scriptstyle \eta$} (y);
+        \end{tikzpicture}
+      \caption{$x^{\mu}$と$x_{\mu}$の変換性}\label{transform}
+    \end{figure}
+    $x^{\mu}$から$x'_{\mu}$への変換がwell-definedであることは非自明なので確かめておこう．
+    まず，$x^{\mu} \to x_{\mu} \to x'_{\mu}$のとき，
+    \begin{align}
+      x_{\mu} &= \eta_{\mu\nu}x^{\nu} \\ 
+      x'_{\mu} &= x_{\lambda}\qty(\Lambda^{-1})_{\mu}^{\lambda}
+    \end{align}
+    次に，$x^{\mu} \to x'^{\mu} \to x'_{\mu}$のとき，
+    \refe{eta-lambda}より，
+    \begin{align}
+      \eta_{\rho\lambda}\Lambda_{\nu}^{\rho} = \eta_{\rho\lambda}\qty(\Lambda^{-1})_{\mu}^{\lambda}
+    \end{align}
+    であることを用いると，
+    \begin{align}
+      x'^{\mu} &= \Lambda_{\rho}^{\mu}x^{\rho} \\ 
+      x'_{\mu} &= \eta_{\mu\nu}x'^{\nu} \\ 
+      &= \eta_{\mu\nu}\Lambda_{\rho}^{\nu}x^{\rho} \\ 
+      &= \eta_{\rho\lambda}x^{\rho}\qty(\Lambda^{-1})_{\mu}^{\lambda} \\ 
+      &= x_{\lambda}\qty(\Lambda^{-1})_{\mu}^{\lambda}
+    \end{align}
+    となり，$\eta$と$\Lambda$による変換はwell-definedであることが分かる．
+    \par
+    また，全微分について，
+    \begin{align}
+      \partial'^{\nu} &\coloneqq \pdv{x'_{\nu}} \\ 
+      &= \pdv{x_{\rho}}{x'_{\nu}}\pdv{x_{\rho}} \\ 
+      &= \qty[\qty(\Lambda^{-1})_{\rho}^{\nu}]^{-1}\partial_{\rho} \\ 
+      &= \Lambda_{\rho}^{\nu}\partial^{\rho} \\ 
+      \partial'_{\nu} &\coloneqq \pdv{x'^{\nu}} \\ 
+      &= \pdv{x^{\rho}}{x'^{\nu}}\pdv{x^{\rho}} \\ 
+      &= \qty(\Lambda_{\rho}^{\nu})^{-1}\partial_{\rho} \\ 
+      &= \partial_{\rho}\qty(\Lambda^{-1})_{\nu}^{\rho}
+    \end{align}
+    なる関係がある．Lorentz変換をPoincar\'e変換に変更しても定数の微分は0なので，同様である．
   \section{スカラー・ベクトル・テンソル}
     本節ではスカラー・ベクトル・テンソルを定義する．
     Lorentz変換のパラメータを$\Lambda$とする．
