@@ -6,6 +6,8 @@
 
 [light_matter](): 光物性
 
+[linear_response_theory]()線形応答理論．
+
 [phonon](/phonon/main.pdf): フォノンの角運動量について勉強した成果．よくわかんないところがあるのでいつか理解する．
 
 [physics_of_magnetism](/physics_of_magnetism/main.pdf): 磁気物理の講義ノート．

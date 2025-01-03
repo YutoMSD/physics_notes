@@ -1,0 +1,81 @@
+\documentclass{ltjarticle}
+\input{head.tex}
+\begin{document}
+\title{線形応答理論}
+\maketitle
+金属の外場応答について線形応答理論を用いて考える．制御の授業で言えば伝達関数を求めるようなものである．加藤著，「一歩進んだ理解を目指す物性物理学講義」，サイエンス社を参考にした．
+\section{自由電子系の外場応答}
+まずは相互作用の無い系を考える．ハミルトニアン
+\begin{align}
+  H_0 = \sum_{\bm{k},\sigma} \epsilon_{\bm{k}}c_{\bm{k}\sigma}^{\dagger}c_{\bm{k}\sigma} \label{eq:free-electron}
+\end{align}
+に時間に依存する外場
+\begin{align}
+  V(t) = -\int \dd[3]{\bm{r}} \phi(\bm{r},t)\rho(\bm{r})
+\end{align}
+を加える．$\rho$は密度演算子であり，
+\begin{align}
+  \rho(\bm{r}) = \sum_{\sigma} \psi_{\sigma}^{\dagger}(\bm{r})\psi_{\sigma}(\bm{r})
+\end{align}
+と表される．
+\begin{align}
+  H = H_0 + V
+\end{align}
+とする．密度演算子の
+の時間発展は
+\begin{align}
+  \ev{\rho(\bm{r},t)} = \ev{\e^{\i H(t-t_0) }\rho(\bm{r})\e^{-\i H (t-t_0)}}_0
+\end{align}
+である．
+この$\ev{\rho}$を外場$\phi$の1次の応答までを考える．
+
+\section{線形応答係数の導出}
+$\ev{\rho}$を相互作用表示に書き直す．
+\begin{align}
+  \begin{dcases}
+    \ev{\rho(\bm{r},t)} = \ev{U_I^{\dagger}(t)\rho_I(\bm{r},t)U_I(t)}_0\\
+    \rho_I(\bm{r},t) = \e^{\i H_0 (t-t_0)} \rho(\bm{r}) \e^{-\i H_0 (t-t_0)}\\
+    U_I(t) = \e^{\i H_0 (t-t_0)} \e^{-\i H (t-t_0)}
+  \end{dcases}
+\end{align}
+である．$U_I$の時間微分を計算すると，
+\begin{align}
+  \dv{U_I}{t} = \i \int \dd[3]{\bm{r}} \rho_I(\bm{r},t) U_I(t) \phi(\bm{r},t)
+\end{align}
+となるので，
+\begin{align}
+  U_I(t) = \hat{I} + \i \int \dd[3]{\bm{r}'} \int_{t_0}^{t} \dd{t'} \rho_I(\bm{r}',t') U_I(t') \phi(\bm{r}',t')
+\end{align}
+を得る．$U_I$の積分の中に繰り返し$U_I$を代入して近似すると，
+\begin{align}
+  U_I(t) = \hat{I} + \i \int \dd[3]{\bm{r}'} \int_{t_0}^{t} \dd{t'} \rho_I(\bm{r}',t') \phi(\bm{r}',t') + \cdots
+\end{align}
+が得られる．これを$\ev{\rho}$に代入すると，
+\begin{align}
+  \delta \ev{\rho(\bm{r},t)} = \i \int \dd[3]{\bm{r}'} \int_{t_0}^{t} \dd{t'} \ev{\qty[\rho_I(\bm{r} - \bm{r}',t-t'), \rho_I(\bm{0}, 0)]}_0\phi(\bm{r}',t')
+\end{align}
+と書ける．積分変数を$t'' = t - t',\bm{r}'' = \bm{r} - \bm{r}'$と変数変換すると，
+\begin{align}
+  \delta \ev{\rho(\bm{r},t)} &= \i \int \dd[3]{\bm{r}''} \int_{-\infty}^{\infty} \dd{t''} \chi(\bm{r}'',t'')\phi(\bm{r} - \bm{r}'',t - t'')\\
+  \chi(\bm{r},t) &= \i \theta(t) \ev{\qty[\rho_I(\bm{r},t),\rho_I(\bm{0},0)]}_0 \label{eq:combolution}
+\end{align}
+を得る．ここで$\theta(t)$はステップ関数である．
+
+\refe{eq:combolution}は畳み込み積分になっていることがわかる．よって，$\chi$は伝達関数であると類推できる．
+\refe{eq:combolution}を空間及び時間でFourier変換する．畳み込み積分の性質より
+\begin{align}
+  \delta \ev{\rho(\bm{q},\omega)} = \chi(\bm{q},\omega)\phi(\bm{q},\omega)
+\end{align}
+を得る．$\bm{q},\omega$は波数と周波数である．確かに，制御で出てきた
+\begin{align}
+  \text{出力} = \text{伝達関数} \times \text{入力}
+\end{align}
+の形となった．
+この$\chi$を線形応答係数と呼ぶ．
+
+相互作用の無い電子系\refe{eq:free-electron}での線形応答係数は計算により求まる．実際に，
+\begin{align}
+  \chi(\bm{q},\omega) = \frac{1}{V} \sum_{\bm{k}} \sum_{\sigma} \frac{n_{\bm{k} + \bm{q}}}{\omega + \epsilon_{\bm{k}} - \epsilon_{\bm{k} + \bm{q}} + \i \eta} \label{eq:lindhard}
+\end{align}
+となる．$\eta$は導出過程で導入された積分を収束させるための無限小の正の実数である．\refe{eq:lindhard}はLindhard関数と呼ばれる．
+\end{document}
