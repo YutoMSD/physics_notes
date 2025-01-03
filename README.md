@@ -6,7 +6,7 @@
 
 [light_matter](): 光物性
 
-[linear_response_theory]()線形応答理論．
+[linear_response_theory](https://github.com/YutoMSD/physics_notes/blob/main/linear_response_theory/main.pdf): 線形応答理論．
 
 [phonon](/phonon/main.pdf): フォノンの角運動量について勉強した成果．よくわかんないところがあるのでいつか理解する．
 
