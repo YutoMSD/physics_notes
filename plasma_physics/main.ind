@@ -1,5 +1,9 @@
 \begin{theindex}
 
+  \item Mirror Force, \hyperpage{21}
+
+  \indexspace
+
   \item 運動論的モデル, \hyperpage{15}
 
   \indexspace
@@ -21,10 +25,14 @@
 
   \indexspace
 
+  \item 磁気鏡, \hyperpage{19}
   \item 磁気ドリフト, \hyperpage{19}
+  \item 磁気ミラー比, \hyperpage{22}
+  \item 磁気モーメント, \hyperpage{19}
   \item 磁場勾配ドリフト, \hyperpage{18}
   \item 磁場勾配ドリフト速度, \hyperpage{18}
   \item 準中性, \hyperpage{5}
+  \item 衝突電離, \hyperpage{10}
 
   \indexspace
 
@@ -44,13 +52,25 @@
 
   \indexspace
 
+  \item 光電離, \hyperpage{10}
+
+  \indexspace
+
   \item プラズマ, \hyperpage{2}
   \item プラズマ振動数, \hyperpage{9}
   \item プラズマ・パラメータ, \hyperpage{7}
 
   \indexspace
 
+  \item Bohr半径, \hyperpage{10}
+
+  \indexspace
+
   \item Maxwell分布, \hyperpage{4}
+
+  \indexspace
+
+  \item ミラー磁場, \hyperpage{22}
 
   \indexspace
 
@@ -59,10 +79,11 @@
   \indexspace
 
   \item 粒子集団, \hyperpage{2}
-  \item 流体モデル, \hyperpage{15}
+  \item 流体モデル, \hyperpage{15}, \hyperpage{24}
 
   \indexspace
 
   \item ローソン条件, \hyperpage{3}
+  \item ロス・コーン, \hyperpage{23}
 
 \end{theindex}

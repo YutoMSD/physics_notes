@@ -1,0 +1,30 @@
+\documentclass{report}
+\input{../head}
+\begin{document}
+  \section{はじめに}
+    本章ではプラズマの\textbf{流体モデル}(Fluid Model)\index{りゅうたいもでる@流体モデル}によるモデル化を進める．
+    流体モデルは一般に以下の3つの方程式及びMaxwell方程式に基礎を置く．
+    \begin{enumerate}
+      \item 密度連続の式
+      \item 運動方程式
+      \item エネルギー方程式
+    \end{enumerate}
+    流体モデルはプラズマの集団的・巨視的な振る舞いの理解に役立つ．
+  
+  \section{密度連続の式}
+    プラズマの存在する空間内に，閉曲面$S$を考え，その体積を$V$とする．体積中の粒子の総数$N$を考える．密度を$n$とする．
+    粒子(数)密度の連続の式は
+    \begin{align}
+      \pdv{n}{t} + \div(n \bm{u}) = 0
+    \end{align}
+    である．ここで，$\bm{u}$はプラズマの流れの平均速度ベクトルである．粒子の生成あるは消滅がある場合は生成消滅項$S_i$を右辺に加える\footnote{$S_i>0$で生成．$S_i<0$で消滅．}．
+    \begin{align}
+      \pdv{n}{t} + \div(n \bm{u}) = S_i
+    \end{align}
+    また，質量密度の連続の式は
+    \begin{align}
+      \pdv{\rho}{t} + \div(\rho \bm{u}) = 0
+    \end{align}
+    である．
+
+\end{document}

@@ -253,7 +253,7 @@
 
     \subsection{磁気鏡}
       \subsubsection{磁気鏡とは？}
-        \textbf{磁気鏡}(magnetic mirror)\index{じきかがみ@磁気鏡}は，磁場が強いところに荷電粒子が近づくと，そこで反射される現象をいう．
+        \textbf{磁気鏡}(magnetic mirror)\index{じきかがみ@磁気鏡}は，磁場が強いところに荷電粒子が近づくと，そこで反射される現象をいう\footnote{地球は巨大な磁気鏡である．}．
 
       \subsubsection{磁気モーメント}
         磁気ミラー配位での粒子の運動を考えるための準備として，ここでは荷電粒子が有する磁気モーメント\index{じきもーめんと@磁気モーメント}について述べる．また，
@@ -288,7 +288,7 @@
         \end{align}
         より，
         \begin{align}
-          \mu = \frac{(1/2)mv_{\perp}^2}{B}
+          \mu = \frac{(1/2)mv_{\perp}^2}{B} \label{magnetic-moment}
         \end{align}
         となる．もともとの磁場と反対方向であることに注意．反磁性である．
 
@@ -297,17 +297,145 @@
 
 
       \subsubsection{磁気鏡による粒子反射の物理機構}
+        粒子は磁力線に沿ってLarmor旋回しながら磁場の強い領域へと運動していく．このとき，なぜ，粒子の反射が生じるのか．
+
+        円柱座標系$(r,\theta,z)$を考える．軸対称で$\pdv{B}{\theta} = 0$とする．
+        磁場の成分を$\bm{B} = (B_r,0,B_z)$とする．粒子の感じる力の$z$成分は
+        \begin{align}
+          F_z = v_{\theta}B_r
+        \end{align}
+        である．
+
+        磁束密度に関するGaussの法則より，
+        \begin{align}
+          \nabla \cdot \bm{B} = \frac{1}{r}\pdv{rB_r}{r} + \pdv{B_z}{z} = 0
+        \end{align}
+        $r=0$の近傍を考え，$\pdv{B_z}{z} = \r{const.}$とすると，
+        \begin{align}
+          rB_r \simeq -\frac{1}{2}r^2 \qty[\pdv{B_z}{z}]_{r=0}
+        \end{align}
+        磁場の$r$成分は$r$に比例する．
+        \begin{align}
+          \bm{F} = q\qty[v_\theta \bm{e}_r + (v_zB_r - v_rB_z)\bm{e}_{\theta} -v_\theta B_r \bm{e}_z]
+        \end{align}
+        であるので
+        よって，$F_z$は
+        \begin{align}
+          F_z = \frac{1}{2}qv_{\theta}r \pdv{B_z}{z} = -\mu \pdv{B_z}{z}　\label{mirror-force}
+        \end{align}
+        である．つまり，粒子は磁場勾配と反対方向の力を受ける．これにより反射が起きる．
+        ここで，以下に示すように$\frac{1}{2}qv_\theta r = -\mu$を用いた．
+        \begin{align}
+          v_\theta &=
+          \begin{dcases}
+            -v_\perp \ \r{ion} \\
+            v_\perp \ \r{electron}
+          \end{dcases}\\
+          r & \to \frac{mv_perp}{eB}\\
+          q &= 
+          \begin{dcases}
+            +e \ \r{ion} \\
+            -e \ \r{electron}
+          \end{dcases}\\
+          F_z &= -\frac{1}{2}qv_\theta r \pdv{B_z}{z} = -\frac{mv_\perp^2}{2B}\pdv{B_z}{z} = -\mu \pdv{B_z}{z}
+        \end{align}
+        となる．一般には
+        \begin{align}
+          F_\parallel = -\mu \nabla_\parallel B
+        \end{align}
+        である\footnote{$F_\parallel$はMirror Force\index{Mirror Force}と呼ばれる．}．
+        この力が，磁気鏡，すなわち磁場の強い領域での粒子の反射の物理的機構となる．
 
       \subsubsection{磁気モーメントの保存性の証明}
       \label{sec:conservation-of-magnetic-moment}
+        $\dd{\mu}/\dd{t} = 0$を示す．
+
         粒子の全運動エネルギーは
         \begin{align}
           W &= \frac{1}{2}mv_{\parallel}^2 + \frac{1}{2}mv_{\perp}^2\\
           &= \frac{1}{2}mv_{\parallel}^2 + \mu B
         \end{align}
-        と書ける．時間微分は
+        と書ける\footnote{変形には\refe{magnetic-moment}を用いた．}．時間微分は
         \begin{align}
           \dv{W}{t} = mv_{\parallel}\dv{v_{\parallel}}{t} + \dv{\mu B}{t}
         \end{align}
-        である．
+        である．磁力線方向の距離を$s$とすると，
+        \begin{align}
+          v_\parallel = \dv{s}{t}
+        \end{align}
+        だから，
+        \begin{align}
+          m \dv{v_\parallel}{t} = F_\parallel
+        \end{align}
+        である．\refe{mirror-force}より，
+        \begin{align}
+          F_\parallel = -\mu \pdv{B_z}{z}
+        \end{align}
+        である．以上より，
+        \begin{align}
+          \dv{W}{t} = -\mu \dv{B_z}{z} + \dv{\mu B}{t}
+        \end{align}
+        が得られる．さらに，2項目の微分は
+        \begin{align}
+          \dv{\mu B}{t} = B\dv{\mu}{t} + \mu \dv{B}{t}
+        \end{align}
+        だから，
+        \begin{align}
+          \dv{W}{t} = \dv{\mu}{t}B
+        \end{align}
+        となる．全エネルギーは保存されるから，
+        \begin{align}
+          \dv{W}{t} = 0 \Rightarrow \dv{\mu}{t} = 0
+        \end{align}
+        を得る．したがって，磁気モーメントは保存される\footnote{保存性を導く過程で，磁場の変化が緩やかであることを仮定した．
+        定量的には，磁場の変化の特徴的長さが，Larmor半径に比較して大きいことが必要となる．
+        \begin{align}
+          r_\r{L} \ll L = \qty[\frac{1}{B}\pdv{B}{z}]
+        \end{align}
+        }
+        \footnote{実は，磁場の時間変化がゆっくりであることも仮定している．}
+        \footnote{これらの過程は多くの場合で成り立つ．}．
+
+        以下ではミラー磁場\index{みらーじば@ミラー磁場}による補足の条件を導出する．
+        
+        再び，全エネルギーについて考えると，
+        \begin{align}
+          W = \frac{1}{2}mv_{\parallel}^2 + \mu B(z) = \r{const.}
+        \end{align}
+        と書ける．磁気鏡の長さを$2L$とする．$B(0) = B_{\r{min}},B(\pm L ) = B_{\r{max}}$である．
+        このとき，
+        \begin{align}
+          \frac{1}{2}mv_{\parallel0}^2 + \mu B_{\r{min}} = \frac{1}{2}mv_{\parallel L}^2 + \mu B_{\r{L}}
+        \end{align}
+        が成り立つ．これを整理すると，
+        \begin{align}
+          v_{\parallel L} = \sqrt{\frac{2\mu B(0)}{m}\qty[1 - \frac{B(L)}{B(0)}] + v_{\parallel 0}^2}
+        \end{align}
+        を得る．反射が起きる条件は根号の中が負であることだから，
+        \begin{align}
+          \frac{2\mu B(0)}{m}\qty[1 - \frac{B(L)}{B(0)}] + v_{\parallel 0}^2 \leq 0
+        \end{align}
+        である．ここで，$\mu = mv_{\perp0}^2/2B(0)$を用いると，
+        \begin{align}
+          \frac{v_{\parallel 0}^2}{v_\perp0^2} \leq \frac{B(L)}{B(0)} - 1
+        \end{align}
+        が反射が起きるための条件である．
+        \begin{itembox}[l]{ミラー磁場による反射条件}
+          \begin{align}
+            \frac{v_{\parallel 0}^2}{v_\perp0^2} \leq \frac{B_{\r{max}}}{B_{\r{min}}} - 1
+          \end{align}
+        \end{itembox}
+        この条件から，磁力線方向の速度成分が小さい粒子ほど，磁気鏡内に閉じ込められやすい．また，磁束密度の最大値と最小値の比を\textbf{磁気ミラー比}\index{じきみらーひ@磁気ミラー比}という．
+        \begin{itembox}[l]{磁気ミラー比}
+          \begin{align}
+            R_\r{m} = \frac{B_{\r{max}}}{B_{\r{min}}}
+          \end{align}
+        \end{itembox}
+        磁気ミラー比が大きいほど閉じ込められやすい．
+
+        逆に補足されないための条件は
+        \begin{align}
+          \frac{v_{\parallel 0}^2}{v_\perp0^2} \geq \frac{B_{\r{max}}}{B_{\r{min}}} - 1
+        \end{align}
+        である．これを$v_x,v_y,v_z$空間に図示すると，$v_x^2 + v_y^2 = v_\perp^2, v_z = v_\parallel$だから，円錐を描く．この円錐を\textbf{ロス・コーン}(Loss Cone)\index{ろすこーん@ロス・コーン}という．この円錐に含まれるような速度を持つ粒子は補足されず損失してしまう．
 \end{document}
