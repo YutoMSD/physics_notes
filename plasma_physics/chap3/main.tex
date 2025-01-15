@@ -7,7 +7,8 @@
     前者はプラズマを連続体として扱い，巨視的なプラズマの振る舞いを記述する．後者は粒子個々の運動を解き，微視的なプラズマの振る舞いを記述する．
   \section{一様磁場中での粒子の運動}
     \subsection{磁場に垂直方向の運動}
-      一様磁場中では電荷はサイクロトロン運動\index{さいくろとろんうんどう@サイクロトロン運動}をする．美束密度$\bm{B}$中を電荷$q$を持つ粒子が速度$\bm{v}$で運動しているとする．
+      一様磁場中では電荷はサイクロトロン運動\index{さいくろとろんうんどう@サイクロトロン運動}をする．
+      磁束密度$\bm{B}$中を電荷$q$を持つ粒子が速度$\bm{v}$で運動しているとする．
       この粒子が受ける力は
       \begin{align}
         \bm{F} = q\bm{v}\times\bm{B}
@@ -16,26 +17,26 @@
       \begin{align}
         \bm{F} \cdot \bm{v} = 0
       \end{align}
-      なのでLorentz力は仕事をしないことがわかる．
-      この粒子の運動方程式は以下のようになる．
+      なので，Lorentz力は仕事をしないことがわかる．
+      粒子の運動方程式は以下のようになる．
       \begin{align}
         m \dv{\bm{v}}{t} = q\bm{v}\times\bm{B}
       \end{align}
-      ここで，$\bm{B} = \qty(0, 0, B)$，$\bm{v} = \qty(v_x, v_y, v_z)$とする．運動方程式の各成分は
+      $\bm{B} = \qty(0, 0, B)$，$\bm{v} = \qty(v_x, v_y, v_z)$とする．運動方程式の各成分は
       \begin{align}
         \begin{dcases}
           m\dv{v_x}{t} = qv_yB \\
           m\dv{v_y}{t} = -qv_xB \\
           m\dv{v_z}{t} = 0
-        \end{dcases}ww
+        \end{dcases}
       \end{align}
       となる．これらを整理すると，
       \begin{align}
-        &\ddot{v}_x = \frac{qB}{m}v_x \to \ddot{v}_x = - \omega_{\r{c}}^2 v_x\\
-        &\ddot{v}_y = -\frac{qB}{m}v_y \to \ddot{v}_y = \omega_{\r{c}}^2 v_y
+        &\ddot{v}_x = \frac{qB}{m}v_x \implies \ddot{v}_x = - \omega_{\r{c}}^2 v_x\\
+        &\ddot{v}_y = -\frac{qB}{m}v_y \implies \ddot{v}_y = \omega_{\r{c}}^2 v_y
       \end{align}
       となる．
-      よって，荷電粒子は$xy$平面上を\textbf{サイクロトロン周波数}(cyclotron frequency)$\omega_{\r{c}} = qB/m$\index{さいくろとろんしゅうはすう@サイクロトロン周波数}で
+      よって，荷電粒子は$xy$平面上を\textbf{サイクロトロン周波数}(cyclotron frequency)\ $\omega_{\r{c}} = qB/m$\index{さいくろとろんしゅうはすう@サイクロトロン周波数}で
       円運動することがわかる\footnote{
         通常，サイクロトロン周波数という場合には，電荷$q$の絶対値をとって，$\omega_{\r{c}} = |q|B/m$とすることが多い．
       }
@@ -49,7 +50,7 @@
         \end{dcases}
         \ \r{at}\ t = 0
       \end{align}
-      の下で，この粒子の軌道は
+      の元で，この粒子の軌道は，
       \begin{align}
         \begin{dcases}
           x(t) = \frac{v_{\perp}}{\omega_{\r{c}}}\sin(\omega_{\r{c}}t)\\
@@ -62,14 +63,14 @@
       \end{align}
       が成り立つので，この粒子の円運動の\textbf{旋回中心}\index{せんかいちゅうしん@旋回中心}は
       \begin{align}
-        (x_g,y_g) = (0, -\frac{v_{\perp}}{\omega_{\r{c}}})
+        (x_g, y_g) = \qty(0, -\frac{v_{\perp}}{\omega_{\r{c}}})
       \end{align}
       で\textbf{旋回半径}\index{せんかいはんけい@旋回半径}は
       \begin{align}
         r_{\r{L}} = \frac{v_{\perp}}{\abs{\omega_{\r{c}}}}
       \end{align}
       である．
-
+      \par
       まとめると，電荷数$Z$の粒子のサイクロトロン周波数は
       \begin{align}
         \omega_{\r{c}j} = \frac{Z e B}{m_j}
@@ -83,37 +84,33 @@
         r_{\r{L}j} = \frac{m_j v_{{\r{th}}j}}{ZeB}
       \end{align}
       と表すことが多い．
-
       $z$軸方向には力は働かないので
       \begin{align}
-        v_{\parallel} &= \dot{v_z} = \r{const.}\\
+        v_{\parallel} &= \dot{v}_z = \r{const.}\\
         z &= z_0 + v_{\parallel}t
       \end{align}
       である．つまり，全体としてはらせん運動をしている．
-
     \subsection{ドリフト運動}
-      
       ここでは一様磁場に加えて電場や重力などが働く場合の粒子の運動や磁場が空間的に変化する場合の粒子の運動を考える．
-
       \subsubsection{$E\times B$ドリフト}
         磁場が$z$軸方向に向いているとする．前節とり粒子は$xy$平面上を円運動するのであった．ここに電場を$x$方向に加える．
         このとき，粒子は一方では加速されもう一方では減速される．つまり，上方では$V_0+V_1$，下方では$V_0-V_1$のように異なってしまう．
         速度が$V_0+V_1$のときは旋回半径が大きく，$V_0-V_1$のときは旋回半径が小さくなる．よって，旋回中心が
         下方へドリフトしていく．
-
+        \par
         このときのドリフト速度は
         \begin{align}
           \bm{v}_{\r{g}E} = \frac{\bm{E}\times\bm{B}}{B^2} 
         \end{align}
-        である．以下に導出を行う．
-        
+        である．
+        この，ドリフト速度の式は以下のように導かれる．
         まず，粒子の運動方程式は
         \begin{align}
           m\dv{\bm{v}}{t} = q\bm{v}\times\bm{B} + q\bm{E} \label{eom-cyclotron}
         \end{align}
         である．この運動を旋回中心の運動と旋回中心のまわりのLarmor運動に分ける．
         \begin{align}
-          \bm{r} &= \bm{r}_{\r{gc}} + \bm{r}_{\r{c}}\\
+          \bm{r} &= \bm{r}_{\r{gc}} + \bm{r}_{\r{c}} \\
           \bm{v} &= \bm{v}_{\r{gc}} + \bm{v}_{\r{c}} \label{drift-velocity}
         \end{align}
         \refe{drift-velocity}を\refe{eom-cyclotron}に代入すると
@@ -164,10 +161,10 @@
           以下にそれを見る．
 
           非一様磁場中ではLorentz力の大きさが位置ごとに変化する．磁場が大きいところでは旋回半径は大きく，磁場が小さいところでは旋回半径は小さくなる．
-          よって，$\bm{B},\nabla B$の両方に垂直な方向にドリフト運動が生じる．また，イオンと電子はドリフトの縫合が逆なので電流が生じる．
+          よって，$\bm{B},\grad B$の両方に垂直な方向にドリフト運動が生じる．また，イオンと電子はドリフトの縫合が逆なので電流が生じる．
           \textbf{磁場勾配ドリフト速度}(gradient-$B$ drift velocity)\index{じばこうばいどりふとそくど@磁場勾配ドリフト速度}は
           \begin{align}
-            \bm{v}_{\nabla B} = \pm \frac{1}{2} v_{\perp} r_{\r{L}} \frac{\bm{B} \times \nabla B}{B^2}
+            \bm{v}_{\grad B} = \pm \frac{1}{2} v_{\perp} r_{\r{L}} \frac{\bm{B} \times \grad B}{B^2}
           \end{align}
           である．
 
@@ -185,7 +182,7 @@
           \end{align}
           磁場を原点周りでTaylor展開する．
           \begin{align}
-            \bm{B} &= \bm{B}_0 + (\bm{r} \cdot \nabla)\bm{B}\\
+            \bm{B} &= \bm{B}_0 + (\bm{r} \cdot \grad)\bm{B}\\
             B_z &= B_0 + y\pdv{B_z}{y}
           \end{align}
           ここで，初期条件より
@@ -205,12 +202,12 @@
             \bm{v}_{\r{gc}} &= \frac{\bm{F}\times\bm{B}}{B^2}\\
             &= \mp \frac{1}{2} \frac{r_{\r{L}}v_{\perp}}{B} \pdv{B_z}{y}\bm{e}_x\\
             &= \mp \frac{1}{2} \frac{v_{\perp} r_{\perp}}{B} \pdv{B_z}{y}\bm{e}_y \times \bm{e}_z\\
-            &= \mp \frac{1}{2} v_{\perp} r_{\r{L}} \frac{\bm{B} \times \nabla B}{B^2}
+            &= \mp \frac{1}{2} v_{\perp} r_{\r{L}} \frac{\bm{B} \times \grad B}{B^2}
           \end{align}
           が得られる．
 
         \paragraph{曲率ドリフト}
-          \textbf{曲率ドリフト}(curvature drift)\index{きょくどりふと@曲率ドリフト}を考える．磁力線が湾曲整定る場合には，
+          \textbf{曲率ドリフト}(curvature drift)\index{きょくどりふと@曲率ドリフト}を考える．磁力線が湾曲している場合には，
           磁場勾配ドリフトに加えて，遠心力に起因する曲率ドリフトが生じる．
 
           粒子が感じる平均的な遠心力は
@@ -227,32 +224,32 @@
           電流$I$のまわりには
           \begin{align}
             B &= \frac{\mu_0 I}{2\pi R_{\r{c}}}\\
-            \nabla B &\parallel \bm{e}_r
+            \grad B &\parallel \bm{e}_r
           \end{align}
           となる．よって，
           \begin{align}
-            \frac{\nabla B}{B} = -\frac{\bm{R}_{\r{c}}}{R_{\r{c}}^2}
+            \frac{\grad B}{B} = -\frac{\bm{R}_{\r{c}}}{R_{\r{c}}^2}
           \end{align}
           が得られる．したがって，磁場勾配ドリフトは，
           \begin{align}
-            \bm{v}_{\nabla B} = \frac{1}{2}\frac{m}{q}v_{\perp}^2 \frac{\bm{R}_{\r{c}} \times \bm{B}}{R_{\r{c}}^2 B^2}
+            \bm{v}_{\grad B} = \frac{1}{2}\frac{m}{q}v_{\perp}^2 \frac{\bm{R}_{\r{c}} \times \bm{B}}{R_{\r{c}}^2 B^2}
           \end{align}
           となる．
 
           以上より，曲率ドリフトと磁場勾配ドリフトの和である\textbf{磁気ドリフト}(magnetic drift)\index{じきどりふと@磁気ドリフト}は
           \begin{align}
-            \bm{v}_{R} + \bm{v}_{\nabla B} = \frac{1}{2}\qty(v_{\parallel}^2 + \frac{1}{2}v_{\perp}^2)\frac{\bm{R}_{\r{c}} \times \bm{B}}{R_{\r{c}}^2 B^2}
+            \bm{v}_{R} + \bm{v}_{\grad B} = \frac{1}{2}\qty(v_{\parallel}^2 + \frac{1}{2}v_{\perp}^2)\frac{\bm{R}_{\r{c}} \times \bm{B}}{R_{\r{c}}^2 B^2}
           \end{align}
           である．磁場勾配で表すと，
           \begin{align}
-            \bm{v}_{R} + \bm{v}_{\nabla B} =\frac{m}{qB}\qty(v_{\parallel}^2 + \frac{1}{2}v_{\perp}^2) \frac{\bm{B} \times \nabla B}{B^2}
+            \bm{v}_{R} + \bm{v}_{\grad B} =\frac{m}{qB}\qty(v_{\parallel}^2 + \frac{1}{2}v_{\perp}^2) \frac{\bm{B} \times \grad B}{B^2}
           \end{align}
           となる．しかし，上の式を見てわかるように，電子とイオンでドリフトの向きが逆である．
           よって，荷電分離により電場が発生する．そのため，$\bm{E}\times\bm{B}$ドリフトが生じる．これは外側に向いている．したがって，プラズマ全体が損失してしまう．
           つまり，単純なトーラス磁場では，プラズマの閉じ込めは不完全である．
 
     \subsection{磁気鏡}
-      \subsubsection{磁気鏡とは？}
+      \subsubsection{磁気鏡とは}
         \textbf{磁気鏡}(magnetic mirror)\index{じきかがみ@磁気鏡}は，磁場が強いところに荷電粒子が近づくと，そこで反射される現象をいう\footnote{地球は巨大な磁気鏡である．}．
 
       \subsubsection{磁気モーメント}
@@ -293,9 +290,6 @@
         となる．もともとの磁場と反対方向であることに注意．反磁性である．
 
         磁場の空間的時間的変化が緩やかなとき，磁気モーメントは保存される\footnote{\refsss{sec:conservation-of-magnetic-moment}にて述べる．}．
-
-
-
       \subsubsection{磁気鏡による粒子反射の物理機構}
         粒子は磁力線に沿ってLarmor旋回しながら磁場の強い領域へと運動していく．このとき，なぜ，粒子の反射が生じるのか．
 
@@ -308,7 +302,7 @@
 
         磁束密度に関するGaussの法則より，
         \begin{align}
-          \nabla \cdot \bm{B} = \frac{1}{r}\pdv{rB_r}{r} + \pdv{B_z}{z} = 0
+          \grad \cdot \bm{B} = \frac{1}{r}\pdv{rB_r}{r} + \pdv{B_z}{z} = 0
         \end{align}
         $r=0$の近傍を考え，$\pdv{B_z}{z} = \r{const.}$とすると，
         \begin{align}
@@ -341,7 +335,7 @@
         \end{align}
         となる．一般には
         \begin{align}
-          F_\parallel = -\mu \nabla_\parallel B
+          F_\parallel = -\mu \grad_\parallel B
         \end{align}
         である\footnote{$F_\parallel$はMirror Force\index{Mirror Force}と呼ばれる．}．
         この力が，磁気鏡，すなわち磁場の強い領域での粒子の反射の物理的機構となる．
@@ -385,7 +379,7 @@
         \end{align}
         となる．全エネルギーは保存されるから，
         \begin{align}
-          \dv{W}{t} = 0 \Rightarrow \dv{\mu}{t} = 0
+          \dv{W}{t} = 0 \implies \dv{\mu}{t} = 0
         \end{align}
         を得る．したがって，磁気モーメントは保存される\footnote{保存性を導く過程で，磁場の変化が緩やかであることを仮定した．
         定量的には，磁場の変化の特徴的長さが，Larmor半径に比較して大きいことが必要となる．
