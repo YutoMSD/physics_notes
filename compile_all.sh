@@ -8,6 +8,7 @@ find "$target_dir" -type f -name "main.tex" | while read -r filename; do
     echo "Processing file: $(basename "$filename") in directory: $file_dir"
     lualatex "$(basename "$filename")"
     lualatex "$(basename "$filename")"
+    echo "Finished processing file: $(basename "$filename") in directory: $file_dir"
     cd "$original_dir" || { echo "Failed to return to the original directory"; exit 1; }
 done
 echo "Finished processing all .tex files."
