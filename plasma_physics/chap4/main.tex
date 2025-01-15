@@ -27,4 +27,120 @@
     \end{align}
     である．
 
+    場の考え方に慣れるために，波形を保ったまま，一定速度で海岸に打ち寄せる波を例に考える．
+    簡単のために1次元とし$\rho(x,t)$，流体の速度は空間的，時間的に変化しないとする$u_x = \r{const.}$\footnote{一般的には空間と時間に依存する．}．
+    これらを粒子密度の連続の式に代入すると，
+    \begin{align}
+      \pdv{\rho}{t} + u_x \pdv{\rho}{x} = 0 \label{eq:cont}
+    \end{align}
+    が得られる．\refe{eq:cont}の解は
+    \begin{align}
+      \rho(x,t) = \rho(x-u_x t) = \r{const.}
+    \end{align}
+    である．これは波形を保ったまま，$x$方向に伝わる波を表している．\reff{eq:cont}の第1項は固定した位置における密度の時間変化，第2項は流体の対流による密度の変化を表している．
+    つまり，生成・消滅がないとき，空間の各点での密度変化は流体の対流による流入・流出によって生じる．
+
+    また，波の頂点にいる観測者から見ると，
+    \begin{align}
+      \dv{\rho}{t} = 0
+    \end{align}
+    なので，
+    \begin{align}
+      \dv{\rho}{t} = \pdv{\rho}{t} + u_x \pdv{\rho}{x} = 0
+    \end{align}
+    つまり，
+    \begin{align}
+      \qty[\pdv{t} + u_x \pdv{x}]\rho = 0
+    \end{align}
+    である．この，
+    \begin{align}
+      \dv{t} = \pdv{t} + u_x \pdv{x}
+    \end{align}
+    を\textbf{対流微分}(Convective Derivative)\index{たいりゅうびぶん@対流微分}という．
+
+    より一般的には，
+    \begin{align}
+      \pdv{\rho}{t} + \div(\rho \bm{u}) = 0
+    \end{align}
+    である．ここで，非圧縮性流体$\div \bm{u} = 0$を考えると，
+    \begin{align}
+      \div(\rho \bm{u}) = \bm{u} \cdot \nabla \rho
+    \end{align}
+    よって，
+    \begin{align}
+      \pdv{\rho}{t} + \bm{u} \cdot \nabla \rho = 0
+    \end{align}
+    である．
+
+    また，次節では以下の\textbf{Euler方程式}\index{Eulerほうていしき@Euler方程式}を導出する．
+    \begin{align}
+      mn\qty[\pdv{t} + (\bm{u} \cdot \nabla)]\bm{u} = nq(\bm{E} + \bm{u} \times \bm{B}) - \nabla p
+    \end{align}
+    また，対流微分は
+    \begin{align}
+      \frac{\r{D}}{\r{D}t} = \pdv{t} + \bm{u} \cdot \nabla
+    \end{align}
+    とも書かれる．
+
+  \section{流体の運動方程式}
+    粒子1個当たりの運動量は$m\bm{u}$である．単位体積当たりの運動量は$n m \bm{u}$である．ここで，粒子の質量を$m$，粒子の数密度を$n$とする．
+    体積$V$に含まれる粒子が持つ全体の運動量$\bm{M}$は$\bm{M} = \int_V n m \bm{u} \dd{V}$である．
+
+    $\bm{M}$の時間変化を考える．時間変化に寄与するのは，(1)外力による運動量の変化(2)面$S$を通しての流体の流入・流出(3)面$S$を介して，面の外側の流体が及ぼす圧力，がある．
+
+    \subsection{外力による運動量の時間変化}
+      位置$\bm{r}$時刻$t$において流体粒子1個あたりに働く力を$\bm{f}^{\r{ext}}(\bm{r},t)$とする\footnote{例：$\bm{f}^{\r{ext}}(\bm{r},t) = q\qty[\bm{E} + \bm{v} \times \bm{B}]$}．
+      体積$V$全体に働く力は，流体密度を$n(\bm{r},t)$とすると，$\int_V n(\bm{r},t) \bm{f}^{\r{ext}}(\bm{r},t) \dd{V}$である．
+      よって，$\bm{M}$の時間変化は，
+      \begin{align}
+        \pdv{\bm{M}}{t} = \int_V \pdv{t}(n m \bm{u}) \dd{V} = \int_V n(\bm{r},t) \bm{f}^{\r{ext}}(\bm{r},t) \dd{V}
+      \end{align}
+      である．したがって，この式が恒等的に成り立つのは
+      \begin{align}
+        \pdv{t}(n m \bm{u}) = n \bm{f}^{\r{ext}}
+      \end{align}
+      が満たされるときである．密度が時間的に変化しない時，
+      \begin{align}
+        \pdv{t}(m \bm{u}(\bm{u},t)) = \bm{f}^{\r{ext}}(\bm{r},t)
+      \end{align}
+      である．
+
+    \subsection{運動量の流入・流出}
+      体積$V$中の粒子総数$N$の時間変化を考える．
+      \begin{align}
+        \pdv{N}{t} = \int_S n\bm{u} \cdot \dd{\bm{S}}
+      \end{align}
+      である．ここで，$\bm{\Gamma} = n\bm{u}$を\textbf{粒子束密度}(Particle Flux Density)\index{りゅうしそくみつど@粒子束密度}という．
+      表面を通しての運動量の流入・流出は，$(m\bm{u})(n\bm{u}\cdot \dd{\bm{S}})$である．
+      したがって，$\bm{M}$の時間変化は，
+      \begin{align}
+        \pdv{\bm{M}}{t} = -\int_S (m\bm{u})(n\bm{u}\cdot \dd{\bm{S}})
+      \end{align}
+      である．左辺は$\int_V \pdv{t}(n m \bm{u}) \dd{V}$と書けるので，$x$成分で考えると，Gaussの定理を使うと，
+      \begin{align}
+        \int_V \qty[\pdv{t}(mnu_x) + \nabla \cdot (mnu_x \bm{u})] \dd{V} = 0
+      \end{align}
+      である．よって，各成分は
+      \begin{align}
+        \pdv{t}(mnu_x) + \nabla \cdot (mnu_x \bm{u}) = 0\\
+        \pdv{t}(mnu_y) + \nabla \cdot (mnu_y \bm{u}) = 0\\
+        \pdv{t}(mnu_z) + \nabla \cdot (mnu_z \bm{u}) = 0
+      \end{align}
+      である．ここで$\nabla \cdot (mnu_x \bm{u}) $の物理的意味を考察する．
+      右辺に移項すると，
+      \begin{align}
+        \pdv{t}(mnu_x) = -\nabla \cdot (mnu_x \bm{u})
+      \end{align}
+      と書けるので，$-\nabla \cdot (mnu_x \bm{u})$は，流体の単位体積当たりに働く力に相当する．
+      さらにベクトル解析の公式を用いて展開すると，
+      \begin{align}
+        \nabla \cdot (mnu_x \bm{u}) = \pdv{x}(mnu_x u_x) + \pdv{y}(mnu_x u_y) + \pdv{z}(mnu_x u_z)
+      \end{align}
+      となる．ここで，\textbf{運動量流速密度}(Momentum Flux Density)\index{うんどうりょうりゅうそくみつど@運動量流速密度}を$P_{ij} = mnu_i u_j$を用いると，
+      \begin{align}
+        \nabla \cdot (mnu_x \bm{u}) = \pdv{x}P_{xx} + \pdv{y}P_{xy} + \pdv{z}P_{xz}
+      \end{align}
+      と書ける\footnote{$P_{xx} = mnu_xu_x = (mu_x)(nu_x)$と書けるので，これは単位時間に$x$軸に垂直な単位面積を横切る$x$方向の運動量を表している．また，$\pdv{P_{xx}}{x}\ [\frac{\r{N}}{\r{m}^3}]$は流体の単位体積当たりに働く力に相当する．}．
+
+      次に，$P_{xy},P_{xz},\pdv{P_{xy}}{y},\pdv{P_{xz}}{z}$の物理的意味を考えよう．
 \end{document}
