@@ -106,6 +106,7 @@
       である．
 
     \subsection{運動量の流入・流出}
+      \label{subsec:momentum_flux}
       体積$V$中の粒子総数$N$の時間変化を考える．
       \begin{align}
         \pdv{N}{t} = \int_S n\bm{u} \cdot \dd{\bm{S}}
@@ -141,6 +142,115 @@
         \nabla \cdot (mnu_x \bm{u}) = \pdv{x}P_{xx} + \pdv{y}P_{xy} + \pdv{z}P_{xz}
       \end{align}
       と書ける\footnote{$P_{xx} = mnu_xu_x = (mu_x)(nu_x)$と書けるので，これは単位時間に$x$軸に垂直な単位面積を横切る$x$方向の運動量を表している．また，$\pdv{P_{xx}}{x}\ [\frac{\r{N}}{\r{m}^3}]$は流体の単位体積当たりに働く力に相当する．}．
+      $-\pdv{P_{xx}}{x}$は外力と等価な働きを持つ．
 
       次に，$P_{xy},P_{xz},\pdv{P_{xy}}{y},\pdv{P_{xz}}{z}$の物理的意味を考えよう．
+      \begin{align}
+        P_{xy} = mnu_xu_y = (mu_x)(nu_y)
+      \end{align}
+      と書ける．$mu_x$は粒子1個が持つ$x$方向の運動量．$nu_y$は単位時間に，$y$軸に垂直な単位面積を横切る粒子の個数である．よって，$P_{xy}$は単位時間に，$y$軸に垂直な単位面積を横切る$x$方向の運動量である．同様に，
+      $P_{xz}$は単位時間に，$z$軸に垂直な単位面積を横切る$x$方向の運動量である．
+
+      以上を踏まえると，運動量の流入・流出は次のように表現できる．
+      \begin{align}
+        \pdv{t} mn
+        \begin{pmatrix}
+          u_x\\
+          u_y\\
+          u_z
+        \end{pmatrix}
+        +
+        \begin{pmatrix}
+          \pdv{x} & \pdv{y} & \pdv{z}
+        \end{pmatrix}
+        \begin{pmatrix}
+          P_{xx} & P_{xy} & P_{xz}\\
+          P_{yx} & P_{yy} & P_{yz}\\
+          P_{zx} & P_{zy} & P_{zz}
+        \end{pmatrix}
+        = 0
+      \end{align}
+      つまり，
+      \begin{align}
+        \pdv{t} mn\bm{u} + \nabla \overset{\leftrightarrow}{P} = 0
+      \end{align}
+      である．ここで，$\overset{\leftrightarrow}{P}$は運動量流速密度を成分とするテンソルである．
+      また，$\overset{\leftrightarrow}{P}$は対称テンソルであり，$P_{ij} = P_{ji}$を満たす．
+
+      ところで，粒子数の保存則は
+      \begin{align}
+        \pdv{n}{t} + \nabla \cdot \bm{\Gamma} = 0 \label{eq:continuity}
+      \end{align}
+      と書けるのであった．運動量の流入・流出の式は
+      \begin{align}
+        \pdv{t} mn\bm{u} + \nabla \overset{\leftrightarrow}{P} = 0 \label{eq:momentum}
+      \end{align}
+      である．よって\refe{eq:continuity}と\refe{eq:momentum}を比較すると，\refe{eq:momentum}は流体の運動量密度の保存則を表していることがわかる．
+
+      (1)外力によって生じる運動量の時間変化と(2)運動量の流入・流出によって生じる運動量の時間変化の両方が存在する場合についてまとめると
+      \begin{align}
+        \pdv{t}(mn\bm{u}) + \nabla \overset{\leftrightarrow}{P} = \bm{F}^{\r{ext}} = n\bm{f}^{\r{ext}} \label{eq:momentum2}
+      \end{align}
+      となる．
+
+    \subsection{圧力勾配による力}
+      辺が$\Delta x, \Delta y, \Delta z$の立方体を考える．この微小体積に働く$x$方向の正味の力は，圧力を$p$として，
+      \begin{align}
+        -\pdv{p}{x}\Delta x \Delta y \Delta z \bm{i}
+      \end{align}
+      である．同様に，$y,z$方向についても，
+      \begin{align}
+        -\pdv{p}{y}\Delta x \Delta y \Delta z \bm{j}\\
+        -\pdv{p}{z}\Delta x \Delta y \Delta z \bm{k}
+      \end{align}
+      となる．よって，立方体全体に働く力は，
+      \begin{align}
+        - \qty[\pdv{p}{x}\bm{i} + \pdv{p}{y}\bm{j} + \pdv{p}{z}\bm{k}]\Delta x \Delta y \Delta z
+      \end{align}
+      である．$\Delta V = \Delta x \Delta y \Delta z$とすると，$-\nabla p \Delta V$と書けるので，単位体積当たりに働く力は
+      \begin{align}
+        \bm{F}^{\r{p}} = -\nabla p
+      \end{align}
+      である．以上で求めた力は流体の各点$(x,y,z)$に単位体積当たりに働く力と考えることができる．よって，\refe{eq:momentum2}は
+      \begin{align}
+        \pdv{t}(mn\bm{u}) + \nabla \overset{\leftrightarrow}{P} = \bm{F}^{\r{ext}} + \bm{F}^{\r{p}} \label{eq:momentum3}
+      \end{align}
+    と書ける\footnote{\refa{chap:appendix}にて，圧力勾配による力の微視的起源を運動論に基づき考察する．}．
+
+  \subsection{運動方程式の保存形}
+    \refe{eq:momentum3}は，(1)外力(2)運動量の流入・流出(3)圧力の全てを考慮した運動量密度の時間変化を表す式である．
+    \begin{align}
+      \pdv{t}(mn\bm{u}) = \bm{F}^{\r{ext}} - \nabla \overset{\leftrightarrow}{P} - \nabla p
+    \end{align}
+    ここで，
+    \begin{align}
+      \overset{\leftrightarrow}{p} = 
+      \begin{pmatrix}
+        p & 0 & 0\\
+        0 & p & 0\\
+        0 & 0 & p
+      \end{pmatrix}
+    \end{align}
+    を定義すると，
+    \begin{align}
+      \nabla p = \begin{pmatrix}
+        \pdv{p}{x}&
+        \pdv{p}{y}&
+        \pdv{p}{z}
+      \end{pmatrix}
+      \begin{pmatrix}
+        p & 0 & 0\\
+        0 & p & 0\\
+        0 & 0 & p
+      \end{pmatrix}
+    \end{align}
+    と書ける．よって，
+    \begin{align}
+      \pdv{t}(mn\bm{u}) = \bm{F}^{\r{ext}} - \nabla \overset{\leftrightarrow}{P} - \nabla \overset{\leftrightarrow}{p} = \bm{F}^{\r{ext}} - \nabla \overset{\leftrightarrow}{\Pi}
+    \end{align}
+    が得られる．これを整理した，
+    \begin{align}
+      \pdv{t}(mn\bm{u}) + \nabla \overset{\leftrightarrow}{\Pi} = \bm{F}^{\r{ext}}
+    \end{align}
+    が\textbf{保存系の運動方程式}\index{ほぞんけいのうんどうほうていしき@保存系の運動方程式}である．
 \end{document}

@@ -1,0 +1,43 @@
+\documentclass{report}
+\input{../head}
+\begin{document}
+\label{chap:appendix}
+\refss{subsec:momentum-flux}ではプラズマ粒子が平均速度$\bm{u}$で全て同じ速度で運動していることを仮定した．しかし，実際には粒子の速度は
+\begin{align}
+  \bm{v} = \bm{u} + \tilde{\bm{v}}
+\end{align}
+となる．ここで，$\tilde{\bm{v}}$は平均速度$\bm{u}$からのずれを表す．微視的な熱運動の速度である．
+このとき，\refss{subsec:momentum_flux}で導出した運動量流速密度は，個々の粒子について，
+\begin{align}
+  mnv_i v_j = mn(u_i + \tilde{v}_i)(u_j + \tilde{v}_j) \label{eq:momentum-flux-tilde}
+\end{align}
+と書ける．
+
+今，プラズマの速度分布関数$f(\bm{r},\bm{v},t)$が平均速度$\bm{u}$を持つ次の\textbf{Shifted Maxwellian}\index{Shifted Maxwellian}で表されるとする．
+\begin{align}
+  f(\bm{r},v_x,v_y,v_z) = n_e (\bm{r}) \qty[\frac{m_e}{2\pi \kb T_e}]^{3/2} \exp(-\frac{m_e}{2\kb T_e}[(v_x - u_x)^2 + (v_y - u_y)^2 + (v_z - u_z)^2])
+\end{align}
+このとき，\refe{eq:momentum-flux-tilde}の平均は以下のように計算される．
+\begin{align}
+  \ev{P_{ij}} = mn\ev{v_i v_j} &= mn\ev{(u_i + \tilde{v}_i)(u_j + \tilde{v}_j)} = mn\ev{u_i u_j} + mnu_i\ev{\tilde{v}_j} + mnu_j\ev{\tilde{v}_i} + mn\ev{\tilde{v}_i \tilde{v}_j}\\
+  &= mnu_iu_j + mn\ev{\tilde{v}_i \tilde{v}_j}
+\end{align}
+第1項は\refss{subsec:momentum_flux}で考えた平均的な流れによる運動量流速密度，第2項はランダムな熱運動に起因する運動量の流れである．また，Maxwell分布の場合には
+\begin{align}
+  \ev{\tilde{v}_i \tilde{v}_j} = \frac{1}{3} \ev{\tilde{v}^2} \delta_{ij}
+\end{align}
+が成り立つ．したがって，
+\begin{align}
+  \ev{P_{ij}} = mnu_iu_j + \frac{1}{3}mn\ev{\tilde{v}^2} \delta_{ij} = mnu_iu_j + n\kb T \delta_{ij} = mnu_iu_j + p \delta_{ij}
+\end{align}
+が得られる．これを行列で表すと一般化された運動量流速密度テンソル
+\begin{align}
+  \overset{\leftrightarrow}{\Pi} = \overset{\leftrightarrow}{P} + \overset{\leftrightarrow}{p} = 
+  \begin{pmatrix}
+    P_{xx} + p & P_{xy} & P_{xz}\\
+    P_{yx} & P_{yy} + p & P_{yz}\\
+    P_{zx} & P_{zy} & P_{zz} + p
+  \end{pmatrix}
+\end{align}
+と書くことができる．
+\end{document}
