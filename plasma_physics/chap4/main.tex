@@ -250,7 +250,110 @@
     \end{align}
     が得られる．これを整理した，
     \begin{align}
-      \pdv{t}(mn\bm{u}) + \nabla \overset{\leftrightarrow}{\Pi} = \bm{F}^{\r{ext}}
+      \pdv{t}(mn\bm{u}) + \nabla \overset{\leftrightarrow}{\Pi} = \bm{F}^{\r{ext}} \label{eq:momentum4}
     \end{align}
     が\textbf{保存系の運動方程式}\index{ほぞんけいのうんどうほうていしき@保存系の運動方程式}である．
+
+  \subsection{Eulerの運動方程式}
+    \begin{align}
+      \pdv{P_{xx}}{x} + \pdv{P_{xy}}{y} + \pdv{P_{xz}}{z} = mu_x \nabla \cdot (n\bm{u}) + mn(\bm{u} \cdot \nabla)u_x
+    \end{align}
+    $y,z$に関しても同様である．また，$\overset{\leftrightarrow}{P}$は
+    \begin{align}
+      \nabla \overset{\leftrightarrow}{P} = m\bm{u} \nabla \cdot (n\bm{u}) + mn(\bm{u} \cdot \nabla)\bm{u}
+    \end{align}
+    これらを\refe{eq:momentum4}に代入して整理すると
+    \begin{align}
+      mn\pdv{\bm{u}}{t} + m\bm{u} \qty[\pdv{n}{t} + \nabla \cdot (n\bm{u})] + mn(\bm{u} \cdot \nabla)\bm{u} = \bm{F}^{\r{ext}} - \nabla p
+    \end{align}
+    $[]$内は密度連続の式より0である．
+    よって，\textbf{Eulerの運動方程式}\index{Eulerのうんどうほうていしき@Eulerの運動方程式}が得られる．
+    \begin{align}
+      mn\pdv{\bm{u}}{t} + mn(\bm{u} \cdot \nabla) = \bm{F}^{\r{ext}} - \nabla p
+    \end{align}
+    また，$\dv{t} = \pdv{t} + \bm{u} \cdot \nabla$を用いると，
+    \begin{align}
+      mn\dv{\bm{u}}{t} = \bm{F}^{\r{ext}} - \nabla p
+    \end{align}
+    とも書ける．
+
+\section{流体のエネルギー方程式}
+  流体の運動方程式
+  \begin{align}
+    mn\qty[\pdv{t} + (\bm{u} \cdot \nabla)]\bm{u} = \bm{F}^{\r{ext}} - \nabla p
+  \end{align}
+  に対し，$\bm{u}$との内積を取る．
+  \begin{align}
+    mn\bm{u} \cdot \pdv{\bm{u}}{t} + mn\bm{u} \cdot (\bm{u} \cdot \nabla)\bm{u} = \bm{u} \cdot \bm{F}^{\r{ext}} - \bm{u} \cdot \nabla p
+  \end{align}
+  第1項は
+  \begin{align}
+    \pdv{\frac{mnu^2}{2}}{t} - \frac{mu^2}{2} \pdv{n}{t}
+  \end{align}
+  第2項は
+  \begin{align}
+    (\bm{u} \cdot \nabla) \qty[\frac{mnu^2}{2}] - \frac{1}{2}mu^2 (\bm{u} \cdot \nabla)n
+  \end{align}
+  と書ける．よって，
+  \begin{align}
+    \pdv{t} \qty(\frac{1}{2} mu^2 n) + \nabla \cdot \qty[\qty(\frac{1}{2} mu^2)(n\bm{u})] = \bm{u} \cdot \bm{F}^{\r{ext}} - \bm{u} \cdot \nabla p \label{eq:energy}
+  \end{align}
+  が得られる．第1項は単位体積当たりの流体としての運動エネルギー(運動エネルギー密度)，第2項は単位時間単位面積を通過する運動エネルギーである(運動エネルギー流速密度)．
+
+  \refe{eq:energy}において，$\bm{F} = 0,\nabla p = 0$の場合を考える．体積分する．
+  \begin{align}
+    \pdv{t} \int_V \frac{1}{2} mu^2 n \dd{V} + \int_S \qty(\frac{1}{2} mu^2)(n\bm{u}) \cdot \dd{\bm{S}} = 0
+  \end{align}
+  が得られる．第1項を$W_k$とおくと，
+  \begin{align}
+    \pdv{W_k}{t} = -\int_S \qty(\frac{1}{2} mu^2)(n\bm{u}) \cdot \dd{\bm{S}}
+  \end{align}
+  と表される．また，\refe{eq:energy}は流体の運動エネルギー密度の時間変化と考えられる．つまり，外力，圧力勾配が無い場合には流体の運動エネルギー密度は保存される．
+
+  しかし，プラズマ粒子は微視的に見るとランダムな熱運動をしている．よって，内部エネルギーも考慮する必要がある．プラズマ流体の内部エネルギー密度は
+  $w_{\r{th}} = \epsilon_{\r{th}} \times n = \frac{3}{2} n\kb T$である．内部エネルギー密度の時間変化は以下のように議論できる．
+  \begin{align}
+    \pdv{\epsilon_{\r{th}}}{t} = \epsilon_{\r{th}} \qty[\pdv{n}{t} + \bm{u} \cdot (n\bm{u})] + n \qty[\pdv{\epsilon_{\r{th}}}{t} + \bm{u} \cdot \nabla \epsilon_{\r{th}}]
+  \end{align}
+  第1項の$[]$内を$S_i$とおく．第2項は流れと共に動く座標系から見た内部エネルギーの変化を表し，$\frac{\r{D}\epsilon_{\r{th}}}{\r{D}t}$と書ける．これは，圧縮性流体で流体の圧縮・膨張による体積変化が断熱的に行われるときには，
+  \begin{align}
+    \frac{\r{D}\epsilon_{\r{th}}}{\r{D}t} = - \frac{p \nabla \cdot \bm{u}}{n}
+  \end{align}
+  よって，
+  \begin{align}
+    \pdv{t} (\epsilon_{\r{th}} n) + \nabla \cdot (\epsilon_{\r{th}} n \bm{u}) = -p \nabla \cdot \bm{u} \label{eq:internal_energy}
+  \end{align}
+  が得られる．
+
+  運動エネルギーも考慮すると，エネルギー密度は
+  \begin{align}
+    W = \qty(\frac{1}{2} mu^2 + \epsilon_{\r{th}})n = \frac{1}{2} mn u^2 + \frac{3}{2} n \kb T
+  \end{align}
+  である．これの時間変化は，
+  \begin{align}
+    \pdv{W}{t} + \nabla \cdot (W \bm{u} + p \bm{u}) = \bm{u} \cdot \bm{F}^{\r{ext}}
+  \end{align}
+  である．
+
+\section{流体モデルのまとめ}
+  \begin{itembox}[l]{密度連続の式}
+    \begin{align}
+      \pdv{n}{t} + \nabla \cdot \gamma = S_i
+    \end{align}
+  \end{itembox}
+  $n$は粒子密度，$\gamma = n\bm{u}$は粒子束密度，$S_i$は生成消滅項．
+
+  \begin{itembox}[l]{運動方程式}
+    \begin{align}
+      \pdv{\bm{M}}{t} + \nabla \overset{\leftrightarrow}{\Pi} = \bm{F}^{\r{ext}}
+    \end{align}
+  \end{itembox}
+  $\bm{M}=mn\bm{u}$は運動量密度，$\overset{\leftrightarrow}{\Pi} = mn\bm{u}\bm{u} + p \delta_{ij}$は運動量流束密度，$\bm{F}^{\r{ext}}$は外力．
+
+  \begin{itembox}[l]{エネルギー方程式}
+    \begin{align}
+      \pdv{W}{t} + \nabla \cdot \bm{Q} = \bm{u} \cdot \bm{F}^{\r{ext}}
+    \end{align}
+  \end{itembox}
+  $W = \frac{1}{2} mn u^2 + \frac{3}{2} n \kb T$はエネルギー密度，$\bm{Q} = W\bm{u} + p\bm{u}$はエネルギー流束密度．
 \end{document}
